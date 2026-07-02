@@ -49,7 +49,7 @@ export default function About() {
       <div className="wrap">
         {/* Heading */}
         <motion.div variants={fadeUp(0)} initial="hidden" animate={inView?"show":{}} className="text-center mb-14">
-          <span className="sec-label" style={{ color:"var(--accent)" }}>About Me</span>
+          <span className="sec-label" style={{ color: "var(--accent-main)" }}>About Me</span>
           <h2 className="font-bold" style={{ fontSize:"clamp(2rem,5vw,3rem)", color:"#fff" }}>
             Crafting <span className="g-text">Intelligent</span> Solutions
           </h2>

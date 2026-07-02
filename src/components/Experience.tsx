@@ -6,8 +6,8 @@ const experiences = [
   {
     role: "Senior AI Engineer & Full Stack Developer",
     company: "Freelance / Self-Employed",
-    period: "2024 – 2026",
-    duration: "2 yrs",
+    period: "2024 – Present",
+    duration: "2+ yrs",
     desc: "Building production AI agents, SaaS platforms, and automation systems for startups and enterprises globally. Delivered 50+ projects with 99%+ client satisfaction.",
     tags: ["AI Agents", "LangChain", "Next.js", "Python", "OpenAI"],
     color: "#7C6FFF",

@@ -19,13 +19,24 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "M Aqib — AI Engineer & Full Stack Developer",
   description: "World-class AI Engineer & Full Stack Developer specializing in AI Agents, SaaS Platforms, Workflow Automation and Modern Web Applications.",
-  keywords: ["AI Engineer", "Full Stack Developer", "AI Agents", "SaaS", "Workflow Automation"],
+  keywords: ["AI Engineer", "Full Stack Developer", "AI Agents", "SaaS", "Workflow Automation", "LangChain", "OpenAI", "Next.js"],
   authors: [{ name: "M Aqib" }],
+  metadataBase: new URL("https://muhammadaqib.vercel.app"),
   openGraph: {
     title: "M Aqib — AI Engineer & Full Stack Developer",
     description: "Building the future with AI & Modern Web Technologies",
     type: "website",
+    url: "https://muhammadaqib.vercel.app",
+    siteName: "M Aqib Portfolio",
+    images: [{ url: "/avatar.jpg", width: 1200, height: 630, alt: "M Aqib — AI Engineer" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "M Aqib — AI Engineer & Full Stack Developer",
+    description: "Building the future with AI & Modern Web Technologies",
+    images: ["/avatar.jpg"],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
