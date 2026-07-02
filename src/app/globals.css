@@ -230,3 +230,8 @@ h1, h2, h3, h4, h5, h6 {
 .animate-spin-slow { animation: spin-slow 26s linear infinite; }
 .animate-float     { animation: float-y 5.5s ease-in-out infinite; }
 .animate-pulse     { animation: pulse-glow 2s ease-in-out infinite; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}

@@ -152,6 +152,9 @@ export default function Projects() {
                       <div className="flex gap-3">
                         <motion.a
                           href={p.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-cursor="Visit"
                           whileHover={{ scale: 1.03 }}
                           whileTap={{ scale: 0.97 }}
                           className="flex-1 text-center font-bold text-sm"
@@ -162,6 +165,9 @@ export default function Projects() {
                         </motion.a>
                         <motion.a
                           href={p.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-cursor="GitHub"
                           whileHover={{ scale: 1.03 }}
                           whileTap={{ scale: 0.97 }}
                           className="font-bold text-sm"

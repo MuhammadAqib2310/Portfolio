@@ -2,8 +2,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import MagneticButton from "@/components/MagneticButton";
 import CountUp from "@/components/CountUp";
+
+const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
 
 const roles = ["AI Engineer", "Full Stack Developer", "AI Agent Builder", "SaaS Architect"];
 
@@ -102,8 +105,12 @@ export default function Hero() {
           opacity: 0.35,
           maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%)",
           WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%)",
+          zIndex: 0,
         }}
       />
+
+      {/* ── Particle field ── */}
+      <ParticleField />
 
       {/* ── Content ── */}
       <div className="wrap relative z-10" style={{ paddingTop: "7.5rem", paddingBottom: "5rem" }}>
