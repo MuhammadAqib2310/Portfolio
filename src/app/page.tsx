@@ -1,0 +1,38 @@
+"use client";
+import dynamic from "next/dynamic";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import TechStack from "@/components/TechStack";
+import Services from "@/components/Services";
+import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
+import Testimonials from "@/components/Testimonials";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+
+const Cursor = dynamic(() => import("@/components/Cursor"), { ssr: false });
+const LoadingScreen = dynamic(() => import("@/components/LoadingScreen"), { ssr: false });
+const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
+
+export default function Home() {
+  return (
+    <>
+      <SmoothScroll />
+      <LoadingScreen />
+      <Cursor />
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <TechStack />
+        <Services />
+        <Projects />
+        <Experience />
+        <Testimonials />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  );
+}

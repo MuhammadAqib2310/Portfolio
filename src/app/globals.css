@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════
+   Design System — Dark Premium Theme
+   ═══════════════════════════════════════════════════ */
+:root {
+  --bg-primary:    #0A0A12;
+  --bg-secondary:  #0F0F1C;
+  --bg-tertiary:   #141424;
+  
+  --accent-main:   #7C6FFF;
+  --accent-cyan:   #00E5FF;
+  --accent-violet: #9D5CF6;
+  --accent-green:  #22C55E;
+  
+  --text-primary:  #FFFFFF;
+  --text-secondary:#B4B8D4;
+  --text-tertiary: #6B7096;
+  
+  --border-subtle: rgba(124,111,255,0.12);
+  --border-glow:   rgba(124,111,255,0.25);
+  
+  --card-bg:       rgba(255,255,255,0.03);
+  --card-border:   rgba(255,255,255,0.08);
+}
+
+/* ═══════════════════════════════════════════════════
+   Base Reset
+   ═══════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg-primary);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+@media (hover: none) {
+  body { cursor: auto; }
+  .cursor, .cursor-follower { display: none !important; }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════
+   Layout Wrapper
+   ═══════════════════════════════════════════════════ */
+.wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 640px)  { .wrap { padding-left: 2.5rem; padding-right: 2.5rem; } }
+@media (min-width: 1024px) { .wrap { padding-left: 4.5rem; padding-right: 4.5rem; } }
+
+.section-pad {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+@media (min-width: 640px)  { .section-pad { padding-top: 7rem;   padding-bottom: 7rem;   } }
+@media (min-width: 1024px) { .section-pad { padding-top: 9rem;   padding-bottom: 9rem;   } }
+
+/* ═══════════════════════════════════════════════════
+   Custom Cursor
+   ═══════════════════════════════════════════════════ */
+.cursor {
+  position: fixed;
+  width: 11px;
+  height: 11px;
+  background: var(--accent-main);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: screen;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 34px;
+  height: 34px;
+  border: 2px solid rgba(124,111,255,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease;
+}
+
+/* ═══════════════════════════════════════════════════
+   Scrollbar
+   ═══════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent-main); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-violet); }
+
+/* ═══════════════════════════════════════════════════
+   Gradient Text Utilities
+   ═══════════════════════════════════════════════════ */
+.gradient-text, .g-text {
+  background: linear-gradient(135deg, #7C6FFF 0%, #00E5FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-2, .g-text-2 {
+  background: linear-gradient(135deg, #00E5FF 0%, #9D5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.g-text-3 {
+  background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════
+   Card Component
+   ═══════════════════════════════════════════════════ */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 24px 64px rgba(124,111,255,0.12);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════
+   Section Label
+   ═══════════════════════════════════════════════════ */
+.sec-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.875rem;
+  opacity: 0.9;
+}
+
+/* ═══════════════════════════════════════════════════
+   Utility Classes
+   ═══════════════════════════════════════════════════ */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+::selection {
+  background: rgba(124,111,255,0.3);
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════
+   Keyframe Animations
+   ═══════════════════════════════════════════════════ */
+@keyframes aurora {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(4%, -3%) scale(1.05); }
+  66%      { transform: translate(-3%, 4%) scale(0.96); }
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-16px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════════════
+   Animation Classes
+   ═══════════════════════════════════════════════════ */
+.anim-aurora     { animation: aurora 18s ease-in-out infinite; }
+.anim-marquee    { animation: marquee 35s linear infinite; }
+.anim-marquee-r  { animation: marquee 38s linear infinite reverse; }
+.anim-spin-slow  { animation: spin-slow 26s linear infinite; }
+.anim-float      { animation: float-y 5.5s ease-in-out infinite; }
+.anim-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* Legacy support */
+.animate-marquee   { animation: marquee 35s linear infinite; }
+.animate-spin-slow { animation: spin-slow 26s linear infinite; }
+.animate-float     { animation: float-y 5.5s ease-in-out infinite; }
+.animate-pulse     { animation: pulse-glow 2s ease-in-out infinite; }
