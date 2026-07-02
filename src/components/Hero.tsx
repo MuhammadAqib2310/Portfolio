@@ -186,7 +186,7 @@ export default function Hero() {
               className="mx-auto lg:mx-0"
             >
               Specializing in AI Agents, SaaS Platforms, Workflow Automation, and Modern Web Applications.
-              Turning complex ideas into elegant, scalable solutions.
+              Turning complex ideas into elegant, scalable solutions that generate real revenue.
             </motion.p>
 
             {/* Stats */}

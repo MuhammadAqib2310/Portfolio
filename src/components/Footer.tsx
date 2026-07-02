@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 
-const links = ["About","Services","Projects","Experience","Contact"];
+const links = ["About", "Services", "Projects", "Process", "Experience", "Contact"];
 
 const socials = [
   { label:"GitHub",   href:"https://github.com/MuhammadAqib2310",

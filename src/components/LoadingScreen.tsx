@@ -2,23 +2,32 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const words = ["Building", "Designing", "Innovating", "Shipping"];
+
 export default function LoadingScreen() {
-  const [loading, setLoading] = useState(true);
+  const [loading,  setLoading]  = useState(true);
   const [progress, setProgress] = useState(0);
+  const [wordIdx,  setWordIdx]  = useState(0);
 
   useEffect(() => {
+    // Cycle words
+    const wt = setInterval(() => setWordIdx(i => (i + 1) % words.length), 600);
+
+    // Progress
     const timer = setInterval(() => {
       setProgress(p => {
-        const next = p + Math.random() * 18;
+        const next = p + Math.random() * 16 + 4;
         if (next >= 100) {
           clearInterval(timer);
+          clearInterval(wt);
           setTimeout(() => setLoading(false), 500);
           return 100;
         }
         return next;
       });
-    }, 90);
-    return () => clearInterval(timer);
+    }, 80);
+
+    return () => { clearInterval(timer); clearInterval(wt); };
   }, []);
 
   return (
@@ -26,49 +35,83 @@ export default function LoadingScreen() {
       {loading && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
+          exit={{ opacity: 0, scale: 1.03 }}
+          transition={{ duration: 0.65, ease: "easeInOut" }}
           className="fixed inset-0 z-[99999] flex flex-col items-center justify-center"
-          style={{ background: "#080810" }}
+          style={{ background: "linear-gradient(135deg, #0A0A15 0%, #0C0B1E 60%, #0A1020 100%)" }}
         >
-          {/* Background orbs */}
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full opacity-20 blur-3xl pointer-events-none"
-            style={{ background: "radial-gradient(circle, #6D5DFE, transparent)" }} />
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full opacity-15 blur-3xl pointer-events-none"
-            style={{ background: "radial-gradient(circle, #00E5FF, transparent)" }} />
+          {/* Orbs */}
+          <div className="absolute pointer-events-none rounded-full"
+            style={{ width: 400, height: 400, top: "15%", left: "10%",
+              background: "radial-gradient(circle, rgba(124,111,255,0.2), transparent 65%)", filter: "blur(60px)" }} />
+          <div className="absolute pointer-events-none rounded-full"
+            style={{ width: 350, height: 350, bottom: "10%", right: "10%",
+              background: "radial-gradient(circle, rgba(0,229,255,0.15), transparent 65%)", filter: "blur(60px)" }} />
 
           {/* Logo */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0, y: 20 }}
+            initial={{ scale: 0.8, opacity: 0, y: 24 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-14"
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-12"
           >
-            <div className="text-4xl sm:text-5xl font-extrabold mb-3 tracking-tight">
-              <span className="gradient-text">M</span>
+            {/* Icon */}
+            <motion.div
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="w-16 h-16 rounded-3xl flex items-center justify-center text-2xl font-black text-white mx-auto mb-5"
+              style={{ background: "linear-gradient(135deg, #7C6FFF, #00E5FF)",
+                boxShadow: "0 8px 32px rgba(124,111,255,0.5)" }}
+            >
+              MA
+            </motion.div>
+
+            <div style={{ fontSize: "clamp(2rem, 6vw, 3rem)", fontWeight: 900, letterSpacing: "-0.04em",
+              fontFamily: "var(--font-space-grotesk, sans-serif)" }}>
+              <span className="g-text">M</span>
               <span style={{ color: "#00E5FF" }}>.</span>
               <span style={{ color: "#fff" }}>Aqib</span>
             </div>
-            <p className="text-[11px] tracking-[0.3em] font-semibold uppercase" style={{ color: "#4B5563" }}>
-              AI Engineer &amp; Full Stack Developer
-            </p>
+
+            {/* Cycling word */}
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={wordIdx}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                style={{ fontSize: "0.72rem", letterSpacing: "0.25em", fontWeight: 700,
+                  textTransform: "uppercase", color: "#7C6FFF", marginTop: "0.5rem" }}
+              >
+                {words[wordIdx]} the Future
+              </motion.p>
+            </AnimatePresence>
           </motion.div>
 
-          {/* Progress bar */}
-          <div className="w-40 sm:w-56">
-            <div className="h-[2px] rounded-full overflow-hidden mb-3" style={{ background: "rgba(255,255,255,0.06)" }}>
+          {/* Progress */}
+          <div style={{ width: "clamp(160px, 30vw, 240px)" }}>
+            <div className="relative h-[2px] rounded-full overflow-hidden mb-3"
+              style={{ background: "rgba(255,255,255,0.06)" }}>
               <motion.div
-                className="h-full rounded-full"
-                style={{
-                  background: "linear-gradient(90deg, #6D5DFE, #00E5FF)",
-                  width: `${Math.min(progress, 100)}%`,
-                  transition: "width 0.1s linear",
-                }}
+                className="absolute top-0 left-0 h-full rounded-full"
+                style={{ background: "linear-gradient(90deg, #7C6FFF, #00E5FF)",
+                  width: `${Math.min(progress, 100)}%`, transition: "width 0.08s linear" }}
+              />
+              {/* Shimmer */}
+              <motion.div
+                className="absolute top-0 h-full w-16 rounded-full"
+                animate={{ left: ["-10%", "110%"] }}
+                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)" }}
               />
             </div>
-            <p className="text-center text-xs font-bold" style={{ color: "#6D5DFE" }}>
-              {Math.min(Math.round(progress), 100)}%
-            </p>
+            <div className="flex justify-between items-center">
+              <span style={{ fontSize: "0.65rem", color: "#3D4060", fontWeight: 600 }}>Loading</span>
+              <span style={{ fontSize: "0.7rem", fontWeight: 800, color: "#7C6FFF" }}>
+                {Math.min(Math.round(progress), 100)}%
+              </span>
+            </div>
           </div>
         </motion.div>
       )}

@@ -63,7 +63,7 @@ export default function About() {
               with <span style={{ color:"#fff" }}>5+ years</span> building production-grade AI systems and
               web apps that scale to millions of users.
             </p>
-            <p className="text-sm sm:text-base leading-relaxed mb-10" style={{ color:"#64748B" }}>
+            <p className="text-sm sm:text-base leading-relaxed mb-10" style={{ color:"#94A3B8" }}>
               From intelligent AI agents and LLM-powered workflows to robust SaaS platforms —
               I combine deep technical knowledge with business acumen to deliver solutions
               that create real competitive advantages.
