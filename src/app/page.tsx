@@ -9,7 +9,7 @@ import WhyMe from "@/components/WhyMe";
 import Projects from "@/components/Projects";
 import Process from "@/components/Process";
 import Experience from "@/components/Experience";
-import Testimonials from "@/components/Testimonials";
+
 import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -36,7 +36,6 @@ export default function Home() {
         <Projects />
         <Process />
         <Experience />
-        <Testimonials />
         <Pricing />
         <Contact />
       </main>
