@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { services } from "@/lib/utils";
 import TiltCard from "@/components/TiltCard";
+import PremiumBG from "@/components/PremiumBG";
 
 const colors = ["#2563EB", "#38BDF8", "#6366F1", "#F59E0B", "#22C55E", "#EF4444"];
 
@@ -17,13 +18,16 @@ export default function Services() {
       className="section-pad relative overflow-hidden"
       style={{ background: "linear-gradient(180deg, #162032 0%, #0F172A 100%)" }}
     >
-      {/* BG glows */}
+      {/* Premium mesh gradient + floating glass shapes + orbs */}
+      <PremiumBG variant="mesh" accent="#2563EB" cyan="#38BDF8" />
+
+      {/* Extra layered glows */}
       <div className="absolute pointer-events-none rounded-full"
-        style={{ width: 600, height: 600, bottom: "-20%", left: "-15%",
-          background: "radial-gradient(circle, rgba(37,99,235,0.09), transparent 65%)", filter: "blur(80px)" }} />
+        style={{ width: 700, height: 700, bottom: "-20%", left: "-15%",
+          background: "radial-gradient(circle, rgba(37,99,235,0.11), transparent 65%)", filter: "blur(90px)" }} />
       <div className="absolute pointer-events-none rounded-full"
-        style={{ width: 400, height: 400, top: "-10%", right: "-5%",
-          background: "radial-gradient(circle, rgba(56,189,248,0.07), transparent 65%)", filter: "blur(70px)" }} />
+        style={{ width: 500, height: 500, top: "-10%", right: "-5%",
+          background: "radial-gradient(circle, rgba(56,189,248,0.09), transparent 65%)", filter: "blur(80px)" }} />
 
       <div className="wrap">
         {/* Heading */}
@@ -50,7 +54,8 @@ export default function Services() {
               <TiltCard
                 key={s.title}
                 intensity={8}
-                className="card overflow-hidden cursor-default"
+                className="overflow-hidden cursor-default"
+                style={{ borderRadius: "1.5rem" }}
               >
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}

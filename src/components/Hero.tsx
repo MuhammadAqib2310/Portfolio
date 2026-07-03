@@ -53,23 +53,31 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute rounded-full anim-aurora"
           style={{ width: "min(900px,120vw)", height: "min(900px,120vw)", top: "-30%", left: "-20%",
-            background: "radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 65%)", filter: "blur(70px)" }} />
+            background: "radial-gradient(circle, rgba(37,99,235,0.28) 0%, transparent 65%)", filter: "blur(70px)" }} />
         <div className="absolute rounded-full"
           style={{ width: "min(700px,90vw)", height: "min(700px,90vw)", bottom: "-20%", right: "-15%",
-            background: "radial-gradient(circle, rgba(56,189,248,0.18) 0%, transparent 65%)", filter: "blur(70px)",
+            background: "radial-gradient(circle, rgba(56,189,248,0.22) 0%, transparent 65%)", filter: "blur(70px)",
             animation: "aurora 22s ease-in-out infinite reverse" }} />
         <div className="absolute rounded-full"
           style={{ width: "min(500px,60vw)", height: "min(500px,60vw)", top: "30%", left: "45%",
-            background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 65%)", filter: "blur(60px)",
+            background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 65%)", filter: "blur(60px)",
             animation: "aurora 14s ease-in-out infinite" }} />
+        {/* Extra soft violet accent */}
+        <div className="absolute rounded-full"
+          style={{ width: "min(400px,50vw)", height: "min(400px,50vw)", bottom: "10%", left: "20%",
+            background: "radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 65%)", filter: "blur(80px)",
+            animation: "aurora 17s ease-in-out infinite 3s" }} />
+        {/* Soft radial gradient center vignette for depth */}
+        <div className="absolute inset-0"
+          style={{ background: "radial-gradient(ellipse 100% 80% at 50% 40%, rgba(37,99,235,0.04) 0%, transparent 70%)" }} />
       </div>
 
       {/* Dot grid */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ backgroundImage: "radial-gradient(rgba(56,189,248,0.12) 1px, transparent 1px)",
-          backgroundSize: "48px 48px", opacity: 0.4,
-          maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%)",
-          WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%)", zIndex: 0 }} />
+        style={{ backgroundImage: "radial-gradient(rgba(56,189,248,0.14) 1px, transparent 1px)",
+          backgroundSize: "48px 48px", opacity: 0.5,
+          maskImage: "radial-gradient(ellipse 85% 75% at 50% 50%, black 20%, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(ellipse 85% 75% at 50% 50%, black 20%, transparent 80%)", zIndex: 0 }} />
 
       {/* Particles */}
       <ParticleField />

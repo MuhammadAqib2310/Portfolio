@@ -2,6 +2,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import PremiumBG from "@/components/PremiumBG";
 
 // ─── EmailJS Config ───────────────────────────────
 // Sign up free at emailjs.com → get these 3 IDs
@@ -95,10 +96,17 @@ export default function Contact() {
       className="section-pad relative overflow-hidden"
       style={{ background: "linear-gradient(180deg, #162032 0%, #0F172A 100%)" }}
     >
-      {/* BG glow */}
+      {/* Premium aurora BG — aurora band + gradient blobs + orbs */}
+      <PremiumBG variant="aurora" accent="#2563EB" cyan="#38BDF8" />
+
+      {/* Deep center radial */}
       <div className="absolute pointer-events-none rounded-full"
-        style={{ width: 700, height: 700, top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-          background: "radial-gradient(circle, rgba(37,99,235,0.07), transparent 65%)", filter: "blur(100px)" }} />
+        style={{ width: 800, height: 800, top: "50%", left: "50%", transform: "translate(-50%,-50%)",
+          background: "radial-gradient(circle, rgba(37,99,235,0.09), transparent 65%)", filter: "blur(120px)" }} />
+      {/* Violet accent */}
+      <div className="absolute pointer-events-none rounded-full"
+        style={{ width: 400, height: 400, top: "20%", right: "10%",
+          background: "radial-gradient(circle, rgba(99,102,241,0.08), transparent 70%)", filter: "blur(80px)" }} />
 
       <div className="wrap">
         {/* Heading */}

@@ -3,6 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { projects } from "@/lib/utils";
 import TiltCard from "@/components/TiltCard";
+import PremiumBG from "@/components/PremiumBG";
 
 const cats = ["All", "AI", "SaaS", "AI Agent"];
 
@@ -32,10 +33,17 @@ export default function Projects() {
       className="section-pad relative overflow-hidden"
       style={{ background: "linear-gradient(180deg, #1E293B 0%, #162032 100%)" }}
     >
-      {/* BG glow */}
+      {/* Premium animated BG — grid + glass shapes + orbs */}
+      <PremiumBG variant="grid" accent="#2563EB" cyan="#38BDF8" />
+
+      {/* Extra deep center glow */}
       <div className="absolute pointer-events-none rounded-full"
-        style={{ width: 700, height: 700, top: "-20%", left: "50%", transform: "translateX(-50%)",
-          background: "radial-gradient(circle, rgba(37,99,235,0.08), transparent 65%)", filter: "blur(100px)" }} />
+        style={{ width: 800, height: 800, top: "-20%", left: "50%", transform: "translateX(-50%)",
+          background: "radial-gradient(circle, rgba(37,99,235,0.12), transparent 65%)", filter: "blur(120px)" }} />
+      {/* Bottom accent glow */}
+      <div className="absolute pointer-events-none rounded-full"
+        style={{ width: 600, height: 400, bottom: "-10%", left: "20%",
+          background: "radial-gradient(ellipse, rgba(56,189,248,0.07), transparent 70%)", filter: "blur(80px)" }} />
 
       <div className="wrap">
         {/* Heading */}
@@ -84,7 +92,8 @@ export default function Projects() {
                 <TiltCard
                   key={p.id}
                   intensity={6}
-                  className="card overflow-hidden cursor-default"
+                  className="overflow-hidden cursor-default"
+                  style={{ borderRadius: "1.5rem" }}
                 >
                   <motion.div
                     layout

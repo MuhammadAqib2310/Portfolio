@@ -1,6 +1,7 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import PremiumBG from "@/components/PremiumBG";
 
 const steps = [
   {
@@ -48,10 +49,13 @@ export default function Process() {
       className="section-pad relative overflow-hidden"
       style={{ background: "linear-gradient(180deg, #162032 0%, #1E293B 100%)" }}
     >
-      {/* BG */}
+      {/* Premium BG — geo lines + process connectors + orbs */}
+      <PremiumBG variant="geo" accent="#2563EB" cyan="#38BDF8" />
+
+      {/* Center ambient glow */}
       <div className="absolute pointer-events-none rounded-full"
-        style={{ width: 600, height: 600, top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-          background: "radial-gradient(circle, rgba(37,99,235,0.06), transparent 65%)", filter: "blur(100px)" }} />
+        style={{ width: 700, height: 700, top: "50%", left: "50%", transform: "translate(-50%,-50%)",
+          background: "radial-gradient(circle, rgba(37,99,235,0.08), transparent 65%)", filter: "blur(120px)" }} />
 
       <div className="wrap">
         <motion.div
@@ -71,11 +75,40 @@ export default function Process() {
 
         {/* Steps */}
         <div className="relative">
-          {/* Connecting line — desktop */}
+          {/* Connecting line — desktop (enhanced with glow) */}
           <div
-            className="hidden lg:block absolute top-12 left-0 right-0 h-px"
-            style={{ background: "linear-gradient(90deg, transparent, #2563EB44, #38BDF844, #6366F144, transparent)", zIndex: 0 }}
+            className="hidden lg:block absolute h-px"
+            style={{
+              top: "48px", left: "12.5%", right: "12.5%",
+              background: "linear-gradient(90deg, #2563EB66, #38BDF866, #6366F166, #22C55E66)",
+              zIndex: 0,
+            }}
           />
+          {/* Animated glow line on top */}
+          <div
+            className="hidden lg:block absolute h-px overflow-hidden"
+            style={{ top: "48px", left: "12.5%", right: "12.5%", zIndex: 1 }}
+          >
+            <div style={{
+              height: "100%",
+              background: "linear-gradient(90deg, transparent, #38BDF8, #2563EB, transparent)",
+              animation: "connectorSweep 3s linear infinite",
+              backgroundSize: "200% 100%",
+            }} />
+          </div>
+          {/* Dot markers at step positions */}
+          {[0,1,2,3].map(i => (
+            <div key={i} className="hidden lg:block absolute"
+              style={{
+                top: "44px", left: `calc(12.5% + ${i} * 25%)`,
+                width: "9px", height: "9px", borderRadius: "50%",
+                background: steps[i].color,
+                boxShadow: `0 0 12px ${steps[i].color}`,
+                zIndex: 2,
+                transform: "translateX(-50%)",
+                animation: `pulse-glow ${2 + i * 0.5}s ease-in-out infinite`,
+              }} />
+          ))}
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step, i) => (
@@ -85,12 +118,21 @@ export default function Process() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
                 className="relative flex flex-col"
+                style={{ zIndex: 3 }}
               >
                 {/* Card */}
                 <motion.div
-                  whileHover={{ y: -6, borderColor: `${step.color}45`, boxShadow: `0 20px 60px ${step.color}15` }}
-                  className="card flex-1 transition-all duration-300 overflow-hidden"
-                  style={{ padding: "1.75rem" }}
+                  whileHover={{ borderColor: `${step.color}50` }}
+                  className="flex-1 transition-all duration-300 overflow-hidden"
+                  style={{
+                    padding: "1.75rem",
+                    borderRadius: "1.5rem",
+                    background: "rgba(255,255,255,0.04)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
+                  }}
                 >
                   {/* Top stripe */}
                   <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px",

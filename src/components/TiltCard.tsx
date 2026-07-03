@@ -16,19 +16,19 @@ export default function TiltCard({
   intensity = 8,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt]   = useState({ x: 0, y: 0 });
-  const [glow, setGlow]   = useState({ x: 50, y: 50 });
+  const [tilt, setTilt]     = useState({ x: 0, y: 0 });
+  const [glow, setGlow]     = useState({ x: 50, y: 50 });
   const [hovered, setHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const cx   = (e.clientX - rect.left) / rect.width;   // 0–1
-    const cy   = (e.clientY - rect.top)  / rect.height;  // 0–1
+    const cx   = (e.clientX - rect.left) / rect.width;
+    const cy   = (e.clientY - rect.top)  / rect.height;
     setTilt({
-      x: (cy - 0.5) * -intensity * 2,  // tilt up/down
-      y: (cx - 0.5) *  intensity * 2,  // tilt left/right
+      x: (cy - 0.5) * -intensity * 2,
+      y: (cx - 0.5) *  intensity * 2,
     });
     setGlow({ x: cx * 100, y: cy * 100 });
   };
@@ -49,27 +49,58 @@ export default function TiltCard({
       animate={{
         rotateX: tilt.x,
         rotateY: tilt.y,
-        scale: hovered ? 1.02 : 1,
+        scale: hovered ? 1.025 : 1,
+        y: hovered ? -6 : 0,
       }}
-      transition={{ type: "spring", stiffness: 300, damping: 24, mass: 0.5 }}
+      transition={{ type: "spring", stiffness: 280, damping: 22, mass: 0.5 }}
       className={className}
       style={{
         transformStyle: "preserve-3d",
         position: "relative",
         overflow: "hidden",
+        /* Glassmorphism layer */
+        background: hovered
+          ? "rgba(255,255,255,0.055)"
+          : "rgba(255,255,255,0.035)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        /* Premium border + glow on hover */
+        boxShadow: hovered
+          ? "0 8px 48px rgba(37,99,235,0.22), 0 2px 16px rgba(56,189,248,0.12), 0 0 0 1px rgba(56,189,248,0.25)"
+          : "0 4px 24px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06)",
+        border: hovered
+          ? "1px solid rgba(56,189,248,0.3)"
+          : "1px solid rgba(255,255,255,0.08)",
+        transition: "box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease",
         ...style,
       }}
     >
-      {/* Shine highlight */}
+      {/* Mouse-follow radial shine */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: `radial-gradient(circle at ${glow.x}% ${glow.y}%, rgba(255,255,255,0.06) 0%, transparent 60%)`,
+          background: `radial-gradient(circle at ${glow.x}% ${glow.y}%, rgba(255,255,255,0.08) 0%, transparent 55%)`,
           pointerEvents: "none",
           zIndex: 2,
           opacity: hovered ? 1 : 0,
           transition: "opacity 0.3s",
+          borderRadius: "inherit",
+        }}
+      />
+      {/* Top edge highlight on hover */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: "10%",
+          right: "10%",
+          height: "1px",
+          background: "linear-gradient(90deg, transparent, rgba(56,189,248,0.6), transparent)",
+          pointerEvents: "none",
+          zIndex: 3,
+          opacity: hovered ? 1 : 0,
+          transition: "opacity 0.35s",
         }}
       />
       {children}
