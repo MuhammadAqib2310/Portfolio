@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { testimonials } from "@/lib/utils";
 
 const avatarGrads = [
-  "linear-gradient(135deg, #7C6FFF, #00E5FF)",
-  "linear-gradient(135deg, #00E5FF, #9D5CF6)",
-  "linear-gradient(135deg, #9D5CF6, #EF4444)",
+  "linear-gradient(135deg, #2563EB, #38BDF8)",
+  "linear-gradient(135deg, #38BDF8, #6366F1)",
+  "linear-gradient(135deg, #6366F1, #EF4444)",
   "linear-gradient(135deg, #F59E0B, #22C55E)",
 ];
 
@@ -19,7 +19,7 @@ export default function Testimonials() {
       id="testimonials"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0B0E20 0%, #0D1228 100%)" }}
+      style={{ background: "linear-gradient(180deg, #1E293B 0%, #162032 100%)" }}
     >
       {/* BG glow */}
       <div
@@ -46,7 +46,7 @@ export default function Testimonials() {
           </h2>
           <p
             className="text-sm sm:text-base mt-3 mx-auto"
-            style={{ color: "#6B7096", maxWidth: 420 }}
+            style={{ color: "#64748B", maxWidth: 420 }}
           >
             What world-class clients say about working with me
           </p>
@@ -129,7 +129,7 @@ export default function Testimonials() {
                   </div>
                   <div
                     className="truncate"
-                    style={{ fontSize: "0.75rem", color: "#6B7096", marginTop: "0.1rem" }}
+                    style={{ fontSize: "0.75rem", color: "#64748B", marginTop: "0.1rem" }}
                   >
                     {t.role}
                   </div>
@@ -181,7 +181,7 @@ export default function Testimonials() {
                 {value}
               </div>
               <div
-                style={{ fontSize: "0.7rem", color: "#6B7096", marginTop: "0.3rem", fontWeight: 600, letterSpacing: "0.05em" }}
+                style={{ fontSize: "0.7rem", color: "#64748B", marginTop: "0.3rem", fontWeight: 600, letterSpacing: "0.05em" }}
               >
                 {label}
               </div>

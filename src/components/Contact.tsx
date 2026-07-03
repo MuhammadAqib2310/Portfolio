@@ -80,8 +80,8 @@ export default function Contact() {
   };
 
   const focus  = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.target.style.borderColor = "rgba(124,111,255,0.5)";
-    e.target.style.boxShadow   = "0 0 0 3px rgba(124,111,255,0.1)";
+    e.target.style.borderColor = "rgba(37,99,235,0.5)";
+    e.target.style.boxShadow   = "0 0 0 3px rgba(37,99,235,0.1)";
   };
   const blur   = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>, id: string) => {
     e.target.style.borderColor = errors[id as keyof Errors] ? "#EF4444" : "rgba(255,255,255,0.08)";
@@ -93,12 +93,12 @@ export default function Contact() {
       id="contact"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0D1228 0%, #0A0A18 100%)" }}
+      style={{ background: "linear-gradient(180deg, #162032 0%, #0F172A 100%)" }}
     >
       {/* BG glow */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 700, height: 700, top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-          background: "radial-gradient(circle, rgba(124,111,255,0.07), transparent 65%)", filter: "blur(100px)" }} />
+          background: "radial-gradient(circle, rgba(37,99,235,0.07), transparent 65%)", filter: "blur(100px)" }} />
 
       <div className="wrap">
         {/* Heading */}
@@ -108,11 +108,11 @@ export default function Contact() {
           transition={{ duration: 0.65 }}
           className="text-center mb-14"
         >
-          <span className="sec-label" style={{ color: "#7C6FFF" }}>Get In Touch</span>
+          <span className="sec-label" style={{ color: "#2563EB" }}>Get In Touch</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             Let&apos;s <span className="g-text">Build Together</span>
           </h2>
-          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color: "#6B7096", maxWidth: 480 }}>
+          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color: "#64748B", maxWidth: 480 }}>
             Have a project in mind? Let&apos;s discuss how AI and modern web tech can transform your business.
           </p>
         </motion.div>
@@ -130,7 +130,7 @@ export default function Contact() {
               <h3 className="font-bold mb-3" style={{ fontSize: "clamp(1.2rem,3vw,1.5rem)", color: "#fff" }}>
                 Ready to level up with AI?
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "#6B7096" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "#64748B" }}>
                 I work with startups and enterprises to build AI-powered solutions that create real competitive advantages.
               </p>
             </div>
@@ -143,11 +143,11 @@ export default function Contact() {
                 style={{ padding: "1rem" }}
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
-                  style={{ background: "rgba(124,111,255,0.14)", border: "1px solid rgba(124,111,255,0.25)" }}>
+                  style={{ background: "rgba(37,99,235,0.14)", border: "1px solid rgba(37,99,235,0.25)" }}>
                   {icon}
                 </div>
                 <div>
-                  <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#3D4060" }}>
+                  <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#334155" }}>
                     {label}
                   </div>
                   {href ? (
@@ -194,7 +194,7 @@ export default function Contact() {
                   ✅
                 </motion.div>
                 <h3 className="font-bold mb-2" style={{ fontSize: "1.25rem", color: "#22C55E" }}>Message Sent!</h3>
-                <p className="text-sm" style={{ color: "#6B7096" }}>I&apos;ll get back to you within 24 hours.</p>
+                <p className="text-sm" style={{ color: "#64748B" }}>I&apos;ll get back to you within 24 hours.</p>
                 <button
                   onClick={() => setSent(false)}
                   className="mt-6 text-sm font-semibold"
@@ -218,7 +218,7 @@ export default function Contact() {
                     <div key={id}>
                       <label
                         className="block font-bold mb-2"
-                        style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7096" }}
+                        style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#64748B" }}
                       >
                         {id === "name" ? "Full Name" : "Email"}
                       </label>
@@ -241,7 +241,7 @@ export default function Contact() {
                 <div>
                   <label
                     className="block font-bold mb-2"
-                    style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7096" }}
+                    style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#64748B" }}
                   >
                     Subject
                   </label>
@@ -262,7 +262,7 @@ export default function Contact() {
                 <div>
                   <label
                     className="block font-bold mb-2"
-                    style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7096" }}
+                    style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#64748B" }}
                   >
                     Message
                   </label>
@@ -290,13 +290,13 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   disabled={sending}
-                  whileHover={{ scale: sending ? 1 : 1.02, boxShadow: sending ? "none" : "0 0 40px rgba(124,111,255,0.45)" }}
+                  whileHover={{ scale: sending ? 1 : 1.02, boxShadow: sending ? "none" : "0 0 40px rgba(37,99,235,0.45)" }}
                   whileTap={{ scale: sending ? 1 : 0.98 }}
                   className="w-full font-bold text-sm flex items-center justify-center gap-2 text-white"
                   style={{
                     padding: "0.9rem",
                     borderRadius: "0.875rem",
-                    background: sending ? "rgba(124,111,255,0.5)" : "linear-gradient(135deg, #7C6FFF, #00E5FF)",
+                    background: sending ? "rgba(37,99,235,0.5)" : "linear-gradient(135deg, #2563EB, #38BDF8)",
                     cursor: sending ? "not-allowed" : "none",
                   }}
                 >
@@ -310,7 +310,7 @@ export default function Contact() {
                   )}
                 </motion.button>
 
-                <p className="text-center text-xs" style={{ color: "#3D4060" }}>
+                <p className="text-center text-xs" style={{ color: "#334155" }}>
                   🔒 Your information is kept private and never shared.
                 </p>
               </form>

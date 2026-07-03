@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { services } from "@/lib/utils";
 import TiltCard from "@/components/TiltCard";
 
-const colors = ["#7C6FFF", "#00E5FF", "#9D5CF6", "#F59E0B", "#22C55E", "#EF4444"];
+const colors = ["#2563EB", "#38BDF8", "#6366F1", "#F59E0B", "#22C55E", "#EF4444"];
 
 export default function Services() {
   const ref    = useRef(null);
@@ -15,15 +15,15 @@ export default function Services() {
       id="services"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0E0C22 0%, #0B1020 100%)" }}
+      style={{ background: "linear-gradient(180deg, #162032 0%, #0F172A 100%)" }}
     >
       {/* BG glows */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 600, height: 600, bottom: "-20%", left: "-15%",
-          background: "radial-gradient(circle, rgba(124,111,255,0.09), transparent 65%)", filter: "blur(80px)" }} />
+          background: "radial-gradient(circle, rgba(37,99,235,0.09), transparent 65%)", filter: "blur(80px)" }} />
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 400, height: 400, top: "-10%", right: "-5%",
-          background: "radial-gradient(circle, rgba(0,229,255,0.07), transparent 65%)", filter: "blur(70px)" }} />
+          background: "radial-gradient(circle, rgba(56,189,248,0.07), transparent 65%)", filter: "blur(70px)" }} />
 
       <div className="wrap">
         {/* Heading */}
@@ -33,11 +33,11 @@ export default function Services() {
           transition={{ duration: 0.65 }}
           className="text-center mb-14"
         >
-          <span className="sec-label" style={{ color: "#7C6FFF" }}>What I Do</span>
+          <span className="sec-label" style={{ color: "#2563EB" }}>What I Do</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             AI-Powered <span className="g-text">Services</span>
           </h2>
-          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color: "#6B7096", maxWidth: 480 }}>
+          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color: "#64748B", maxWidth: 480 }}>
             End-to-end solutions from intelligent agents to production SaaS platforms
           </p>
         </motion.div>
@@ -67,7 +67,7 @@ export default function Services() {
                   </div>
 
                   <h3 className="text-base font-bold mb-2.5" style={{ color: "#fff" }}>{s.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#6B7096" }}>{s.desc}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "#64748B" }}>{s.desc}</p>
 
                   {/* Accent line on bottom */}
                   <div

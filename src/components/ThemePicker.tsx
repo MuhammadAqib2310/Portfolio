@@ -4,6 +4,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const themes = [
   {
+    name: "Blue",
+    accent: "#2563EB",
+    cyan:   "#38BDF8",
+    violet: "#6366F1",
+    bg:     "#0F172A",
+    bg2:    "#1E293B",
+  },
+  {
     name: "Violet",
     accent: "#7C6FFF",
     cyan:   "#00E5FF",
@@ -30,7 +38,7 @@ const themes = [
   {
     name: "Emerald",
     accent: "#10B981",
-    cyan:   "#00E5FF",
+    cyan:   "#38BDF8",
     violet: "#34D399",
     bg:     "#050F0A",
     bg2:    "#071510",
@@ -42,14 +50,6 @@ const themes = [
     violet: "#F97316",
     bg:     "#100E05",
     bg2:    "#181205",
-  },
-  {
-    name: "Pink",
-    accent: "#EC4899",
-    cyan:   "#F472B6",
-    violet: "#A855F7",
-    bg:     "#150510",
-    bg2:    "#1A071A",
   },
 ];
 
@@ -106,7 +106,7 @@ export default function ThemePicker() {
             }}
           >
             <p style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.18em",
-              textTransform: "uppercase", color: "#6B7096", marginBottom: "0.875rem" }}>
+              textTransform: "uppercase", color: "#64748B", marginBottom: "0.875rem" }}>
               Theme Color
             </p>
 
@@ -133,7 +133,7 @@ export default function ThemePicker() {
                     }}
                   />
                   <span style={{ fontSize: "0.65rem", fontWeight: 600,
-                    color: i === active ? "#fff" : "#6B7096" }}>
+                    color: i === active ? "#fff" : "#64748B" }}>
                     {t.name}
                   </span>
                   {i === active && (
@@ -149,7 +149,7 @@ export default function ThemePicker() {
 
             <div className="mt-3 pt-3 flex items-center justify-between"
               style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-              <span style={{ fontSize: "0.65rem", color: "#6B7096" }}>
+              <span style={{ fontSize: "0.65rem", color: "#64748B" }}>
                 Active: <strong style={{ color: "#fff" }}>{current.name}</strong>
               </span>
               <div className="w-3 h-3 rounded-full"

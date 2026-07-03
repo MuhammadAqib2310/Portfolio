@@ -48,10 +48,10 @@ export default function TechStack() {
   const inView = useInView(ref, { once:true, margin:"-60px" });
 
   return (
-    <section id="tech" ref={ref} className="section-pad relative overflow-hidden" style={{ background:"linear-gradient(180deg, #0D1025 0%, #0B0B1E 100%)" }}>
+    <section id="tech" ref={ref} className="section-pad relative overflow-hidden" style={{ background:"linear-gradient(180deg, #1E293B 0%, #0F172A 100%)" }}>
       <div className="absolute pointer-events-none rounded-full"
         style={{ width:700, height:280, top:"50%", left:"50%", transform:"translate(-50%,-50%)",
-          background:"radial-gradient(ellipse,rgba(0,229,255,0.1),transparent 65%)", filter:"blur(60px)" }} />
+          background:"radial-gradient(ellipse,rgba(56,189,248,0.1),transparent 65%)", filter:"blur(60px)" }} />
 
       <div className="wrap mb-12">
         <motion.div
@@ -61,7 +61,7 @@ export default function TechStack() {
           <h2 className="font-bold" style={{ fontSize:"clamp(2rem,5vw,3rem)", color:"#fff" }}>
             My <span className="g-text-2">Tech Arsenal</span>
           </h2>
-          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color:"#6B7280", maxWidth:480 }}>
+          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color:"#64748B", maxWidth:480 }}>
             Cutting-edge tools I use to build world-class products
           </p>
         </motion.div>
@@ -70,9 +70,9 @@ export default function TechStack() {
       {/* Row 1 — forward */}
       <div className="relative mb-4 overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(90deg,#0D1025,transparent)" }} />
+          style={{ background:"linear-gradient(90deg,#1E293B,transparent)" }} />
         <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(-90deg,#0D1025,transparent)" }} />
+          style={{ background:"linear-gradient(-90deg,#1E293B,transparent)" }} />
         <div className="flex gap-3 anim-marquee" style={{ width:"max-content" }}>
           {row1.map((t,i) => <Chip key={i} t={t} i={i} />)}
         </div>
@@ -81,9 +81,9 @@ export default function TechStack() {
       {/* Row 2 — reverse */}
       <div className="relative overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(90deg,#0D1025,transparent)" }} />
+          style={{ background:"linear-gradient(90deg,#1E293B,transparent)" }} />
         <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(-90deg,#0D1025,transparent)" }} />
+          style={{ background:"linear-gradient(-90deg,#1E293B,transparent)" }} />
         <div className="flex gap-3 anim-marquee-r" style={{ width:"max-content" }}>
           {row2.map((t,i) => <Chip key={i} t={t} i={i} />)}
         </div>

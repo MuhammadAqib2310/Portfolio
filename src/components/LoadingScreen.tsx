@@ -38,15 +38,15 @@ export default function LoadingScreen() {
           exit={{ opacity: 0, scale: 1.03 }}
           transition={{ duration: 0.65, ease: "easeInOut" }}
           className="fixed inset-0 z-[99999] flex flex-col items-center justify-center"
-          style={{ background: "linear-gradient(135deg, #0A0A15 0%, #0C0B1E 60%, #0A1020 100%)" }}
+          style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #162032 100%)" }}
         >
           {/* Orbs */}
           <div className="absolute pointer-events-none rounded-full"
             style={{ width: 400, height: 400, top: "15%", left: "10%",
-              background: "radial-gradient(circle, rgba(124,111,255,0.2), transparent 65%)", filter: "blur(60px)" }} />
+              background: "radial-gradient(circle, rgba(37,99,235,0.2), transparent 65%)", filter: "blur(60px)" }} />
           <div className="absolute pointer-events-none rounded-full"
             style={{ width: 350, height: 350, bottom: "10%", right: "10%",
-              background: "radial-gradient(circle, rgba(0,229,255,0.15), transparent 65%)", filter: "blur(60px)" }} />
+              background: "radial-gradient(circle, rgba(56,189,248,0.15), transparent 65%)", filter: "blur(60px)" }} />
 
           {/* Logo */}
           <motion.div
@@ -60,8 +60,8 @@ export default function LoadingScreen() {
               animate={{ rotate: [0, 5, -5, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               className="w-16 h-16 rounded-3xl flex items-center justify-center text-2xl font-black text-white mx-auto mb-5"
-              style={{ background: "linear-gradient(135deg, #7C6FFF, #00E5FF)",
-                boxShadow: "0 8px 32px rgba(124,111,255,0.5)" }}
+              style={{ background: "linear-gradient(135deg, #2563EB, #38BDF8)",
+                boxShadow: "0 8px 32px rgba(37,99,235,0.5)" }}
             >
               MA
             </motion.div>
@@ -69,7 +69,7 @@ export default function LoadingScreen() {
             <div style={{ fontSize: "clamp(2rem, 6vw, 3rem)", fontWeight: 900, letterSpacing: "-0.04em",
               fontFamily: "var(--font-space-grotesk, sans-serif)" }}>
               <span className="g-text">M</span>
-              <span style={{ color: "#00E5FF" }}>.</span>
+              <span style={{ color: "#38BDF8" }}>.</span>
               <span style={{ color: "#fff" }}>Aqib</span>
             </div>
 
@@ -82,7 +82,7 @@ export default function LoadingScreen() {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.3 }}
                 style={{ fontSize: "0.72rem", letterSpacing: "0.25em", fontWeight: 700,
-                  textTransform: "uppercase", color: "#7C6FFF", marginTop: "0.5rem" }}
+                  textTransform: "uppercase", color: "#2563EB", marginTop: "0.5rem" }}
               >
                 {words[wordIdx]} the Future
               </motion.p>
@@ -95,7 +95,7 @@ export default function LoadingScreen() {
               style={{ background: "rgba(255,255,255,0.06)" }}>
               <motion.div
                 className="absolute top-0 left-0 h-full rounded-full"
-                style={{ background: "linear-gradient(90deg, #7C6FFF, #00E5FF)",
+                style={{ background: "linear-gradient(90deg, #2563EB, #38BDF8)",
                   width: `${Math.min(progress, 100)}%`, transition: "width 0.08s linear" }}
               />
               {/* Shimmer */}
@@ -107,8 +107,8 @@ export default function LoadingScreen() {
               />
             </div>
             <div className="flex justify-between items-center">
-              <span style={{ fontSize: "0.65rem", color: "#3D4060", fontWeight: 600 }}>Loading</span>
-              <span style={{ fontSize: "0.7rem", fontWeight: 800, color: "#7C6FFF" }}>
+              <span style={{ fontSize: "0.65rem", color: "#334155", fontWeight: 600 }}>Loading</span>
+              <span style={{ fontSize: "0.7rem", fontWeight: 800, color: "#2563EB" }}>
                 {Math.min(Math.round(progress), 100)}%
               </span>
             </div>

@@ -8,7 +8,7 @@ const steps = [
     icon: "💬",
     title: "Discovery Call",
     desc: "We start with a free 30-min call to understand your vision, goals, and technical requirements in depth.",
-    color: "#7C6FFF",
+    color: "#2563EB",
     duration: "Day 1",
   },
   {
@@ -16,7 +16,7 @@ const steps = [
     icon: "📋",
     title: "Strategy & Proposal",
     desc: "I deliver a detailed technical proposal with architecture plan, timeline, milestones, and fixed pricing.",
-    color: "#00E5FF",
+    color: "#38BDF8",
     duration: "Day 2–3",
   },
   {
@@ -24,7 +24,7 @@ const steps = [
     icon: "⚙️",
     title: "Build & Iterate",
     desc: "Agile development with weekly demos. You see progress every step of the way with full transparency.",
-    color: "#9D5CF6",
+    color: "#6366F1",
     duration: "Week 1–4",
   },
   {
@@ -46,12 +46,12 @@ export default function Process() {
       id="process"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0A1020 0%, #0C0B1E 100%)" }}
+      style={{ background: "linear-gradient(180deg, #162032 0%, #1E293B 100%)" }}
     >
       {/* BG */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 600, height: 600, top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-          background: "radial-gradient(circle, rgba(124,111,255,0.06), transparent 65%)", filter: "blur(100px)" }} />
+          background: "radial-gradient(circle, rgba(37,99,235,0.06), transparent 65%)", filter: "blur(100px)" }} />
 
       <div className="wrap">
         <motion.div
@@ -60,11 +60,11 @@ export default function Process() {
           transition={{ duration: 0.65 }}
           className="text-center mb-16"
         >
-          <span className="sec-label" style={{ color: "#7C6FFF" }}>How I Work</span>
+          <span className="sec-label" style={{ color: "#2563EB" }}>How I Work</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             My <span className="g-text">Process</span>
           </h2>
-          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color: "#6B7096", maxWidth: 460 }}>
+          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color: "#64748B", maxWidth: 460 }}>
             A proven 4-step process that takes your idea from concept to production
           </p>
         </motion.div>
@@ -74,7 +74,7 @@ export default function Process() {
           {/* Connecting line — desktop */}
           <div
             className="hidden lg:block absolute top-12 left-0 right-0 h-px"
-            style={{ background: "linear-gradient(90deg, transparent, #7C6FFF44, #00E5FF44, #9D5CF644, transparent)", zIndex: 0 }}
+            style={{ background: "linear-gradient(90deg, transparent, #2563EB44, #38BDF844, #6366F144, transparent)", zIndex: 0 }}
           />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -114,7 +114,7 @@ export default function Process() {
                   </div>
 
                   <h3 className="font-bold mb-2" style={{ fontSize: "1rem", color: "#fff" }}>{step.title}</h3>
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: "#6B7096" }}>{step.desc}</p>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: "#64748B" }}>{step.desc}</p>
 
                   {/* Duration badge */}
                   <div className="inline-flex items-center gap-1.5"
@@ -136,17 +136,17 @@ export default function Process() {
           transition={{ delay: 0.7 }}
           className="text-center mt-14"
         >
-          <p className="text-sm mb-5" style={{ color: "#6B7096" }}>
+          <p className="text-sm mb-5" style={{ color: "#64748B" }}>
             Ready to start? First call is always free.
           </p>
           <motion.button
-            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(124,111,255,0.5)" }}
+            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(37,99,235,0.5)" }}
             whileTap={{ scale: 0.97 }}
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             className="font-bold text-white text-sm rounded-2xl"
             style={{ padding: "0.875rem 2.5rem",
-              background: "linear-gradient(135deg, #7C6FFF, #00E5FF)",
-              boxShadow: "0 4px 28px rgba(124,111,255,0.35)" }}
+              background: "linear-gradient(135deg, #2563EB, #38BDF8)",
+              boxShadow: "0 4px 28px rgba(37,99,235,0.35)" }}
           >
             Book Free Discovery Call →
           </motion.button>

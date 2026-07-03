@@ -7,14 +7,14 @@ import TiltCard from "@/components/TiltCard";
 const cats = ["All", "AI", "SaaS", "AI Agent"];
 
 const thumbGrad = [
-  "135deg, rgba(124,111,255,.22), rgba(0,229,255,.06)",
-  "135deg, rgba(0,229,255,.22), rgba(157,92,246,.06)",
-  "135deg, rgba(157,92,246,.22), rgba(239,68,68,.06)",
+  "135deg, rgba(37,99,235,.22), rgba(56,189,248,.06)",
+  "135deg, rgba(56,189,248,.22), rgba(99,102,241,.06)",
+  "135deg, rgba(99,102,241,.22), rgba(239,68,68,.06)",
   "135deg, rgba(245,158,11,.22), rgba(34,197,94,.06)",
-  "135deg, rgba(34,197,94,.22), rgba(0,229,255,.06)",
+  "135deg, rgba(34,197,94,.22), rgba(56,189,248,.06)",
   "135deg, rgba(239,68,68,.22), rgba(245,158,11,.06)",
-  "135deg, rgba(124,111,255,.22), rgba(157,92,246,.06)",
-  "135deg, rgba(0,229,255,.22), rgba(34,197,94,.06)",
+  "135deg, rgba(37,99,235,.22), rgba(99,102,241,.06)",
+  "135deg, rgba(56,189,248,.22), rgba(34,197,94,.06)",
 ];
 const emojis = ["🌤️", "📊", "🔐", "🤖", "📞", "💼", "🎙️", "🚀"];
 
@@ -30,12 +30,12 @@ export default function Projects() {
       id="projects"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0C0B1E 0%, #0A1020 100%)" }}
+      style={{ background: "linear-gradient(180deg, #1E293B 0%, #162032 100%)" }}
     >
       {/* BG glow */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 700, height: 700, top: "-20%", left: "50%", transform: "translateX(-50%)",
-          background: "radial-gradient(circle, rgba(124,111,255,0.08), transparent 65%)", filter: "blur(100px)" }} />
+          background: "radial-gradient(circle, rgba(37,99,235,0.08), transparent 65%)", filter: "blur(100px)" }} />
 
       <div className="wrap">
         {/* Heading */}
@@ -49,7 +49,7 @@ export default function Projects() {
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             Featured <span className="g-text-2">Projects</span>
           </h2>
-          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color: "#6B7096", maxWidth: 480 }}>
+          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color: "#64748B", maxWidth: 480 }}>
             Real-world AI and web solutions delivering measurable business impact
           </p>
         </motion.div>
@@ -64,10 +64,10 @@ export default function Projects() {
               className="rounded-xl text-xs sm:text-sm font-bold transition-all duration-200"
               style={{
                 padding: "0.5rem 1.25rem",
-                background: active === c ? "linear-gradient(135deg, #7C6FFF, #00E5FF)" : "rgba(255,255,255,0.05)",
-                color:  active === c ? "#fff" : "#6B7096",
+                background: active === c ? "linear-gradient(135deg, #2563EB, #38BDF8)" : "rgba(255,255,255,0.05)",
+                color:  active === c ? "#fff" : "#64748B",
                 border: active === c ? "none" : "1px solid rgba(255,255,255,0.08)",
-                boxShadow: active === c ? "0 4px 20px rgba(124,111,255,.35)" : "none",
+                boxShadow: active === c ? "0 4px 20px rgba(37,99,235,.35)" : "none",
               }}
             >
               {c}
@@ -106,7 +106,7 @@ export default function Projects() {
                         className="absolute top-3 right-3 text-[11px] font-bold"
                         style={{ padding: "0.25rem 0.625rem", borderRadius: "0.625rem",
                           background: "rgba(0,0,0,0.55)", color: "#A89CFF",
-                          border: "1px solid rgba(124,111,255,0.4)", backdropFilter: "blur(8px)" }}
+                          border: "1px solid rgba(37,99,235,0.4)", backdropFilter: "blur(8px)" }}
                       >
                         {p.category}
                       </span>
@@ -116,7 +116,7 @@ export default function Projects() {
                       <h3 className="font-bold mb-2" style={{ fontSize: "clamp(0.95rem,2vw,1.1rem)", color: "#fff" }}>
                         {p.title}
                       </h3>
-                      <p className="text-xs sm:text-sm mb-4 leading-relaxed line-clamp-2" style={{ color: "#6B7096" }}>
+                      <p className="text-xs sm:text-sm mb-4 leading-relaxed line-clamp-2" style={{ color: "#64748B" }}>
                         {p.description}
                       </p>
 
@@ -128,7 +128,7 @@ export default function Projects() {
                         {Object.entries(p.metrics).map(([k, v]) => (
                           <div key={k}>
                             <div className="text-sm font-black g-text">{v as string}</div>
-                            <div className="text-[10px] capitalize" style={{ color: "#6B7096" }}>{k}</div>
+                            <div className="text-[10px] capitalize" style={{ color: "#64748B" }}>{k}</div>
                           </div>
                         ))}
                       </div>
@@ -140,8 +140,8 @@ export default function Projects() {
                             key={t}
                             className="text-[11px] font-semibold"
                             style={{ padding: "0.2rem 0.5rem", borderRadius: "0.5rem",
-                              background: "rgba(124,111,255,0.1)", color: "#A89CFF",
-                              border: "1px solid rgba(124,111,255,0.2)" }}
+                              background: "rgba(37,99,235,0.1)", color: "#A89CFF",
+                              border: "1px solid rgba(37,99,235,0.2)" }}
                           >
                             {t}
                           </span>
@@ -159,7 +159,7 @@ export default function Projects() {
                           whileTap={{ scale: 0.97 }}
                           className="flex-1 text-center font-bold text-sm"
                           style={{ padding: "0.625rem", borderRadius: "0.75rem",
-                            background: "linear-gradient(135deg, #7C6FFF, #00E5FF)", color: "#fff" }}
+                            background: "linear-gradient(135deg, #2563EB, #38BDF8)", color: "#fff" }}
                         >
                           Live Demo →
                         </motion.a>

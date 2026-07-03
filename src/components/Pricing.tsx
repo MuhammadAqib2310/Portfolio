@@ -7,7 +7,7 @@ const plans = [
     name: "Starter",
     tag: "For small businesses",
     price: { usd: "$500", desc: "starting from" },
-    color: "#00E5FF",
+    color: "#38BDF8",
     features: [
       "Landing page or simple web app",
       "Basic AI integration",
@@ -23,7 +23,7 @@ const plans = [
     name: "Professional",
     tag: "Most popular",
     price: { usd: "$1,500", desc: "starting from" },
-    color: "#7C6FFF",
+    color: "#2563EB",
     features: [
       "Full SaaS or AI-powered web app",
       "LLM / AI Agents integration",
@@ -40,7 +40,7 @@ const plans = [
     name: "Enterprise",
     tag: "For scale-ups",
     price: { usd: "Custom", desc: "let's talk" },
-    color: "#9D5CF6",
+    color: "#6366F1",
     features: [
       "Complex multi-agent AI systems",
       "Custom LLM fine-tuning",
@@ -65,12 +65,12 @@ export default function Pricing() {
       id="pricing"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0B0E20 0%, #0A0A15 100%)" }}
+      style={{ background: "linear-gradient(180deg, #1E293B 0%, #0F172A 100%)" }}
     >
       {/* BG glows */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 700, height: 700, top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-          background: "radial-gradient(circle, rgba(124,111,255,0.07), transparent 65%)", filter: "blur(100px)" }} />
+          background: "radial-gradient(circle, rgba(37,99,235,0.07), transparent 65%)", filter: "blur(100px)" }} />
 
       <div className="wrap">
         <motion.div
@@ -79,11 +79,11 @@ export default function Pricing() {
           transition={{ duration: 0.65 }}
           className="text-center mb-14"
         >
-          <span className="sec-label" style={{ color: "#9D5CF6" }}>Investment</span>
+          <span className="sec-label" style={{ color: "#6366F1" }}>Investment</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             Transparent <span className="g-text">Pricing</span>
           </h2>
-          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color: "#6B7096", maxWidth: 460 }}>
+          <p className="text-sm sm:text-base mt-3 mx-auto" style={{ color: "#64748B", maxWidth: 460 }}>
             No hidden fees. Fixed prices. You know exactly what you&apos;re getting before we start.
           </p>
         </motion.div>
@@ -104,8 +104,8 @@ export default function Pricing() {
                 <div
                   className="absolute -top-4 left-1/2 -translate-x-1/2 z-10 font-bold text-xs text-white whitespace-nowrap"
                   style={{ padding: "0.3rem 1rem", borderRadius: "999px",
-                    background: "linear-gradient(135deg, #7C6FFF, #00E5FF)",
-                    boxShadow: "0 4px 20px rgba(124,111,255,0.5)" }}
+                    background: "linear-gradient(135deg, #2563EB, #38BDF8)",
+                    boxShadow: "0 4px 20px rgba(37,99,235,0.5)" }}
                 >
                   ⭐ Most Popular
                 </div>
@@ -146,7 +146,7 @@ export default function Pricing() {
                     <span className="font-extrabold g-text" style={{ fontSize: "clamp(2rem,5vw,2.5rem)", lineHeight: 1 }}>
                       {plan.price.usd}
                     </span>
-                    <span style={{ fontSize: "0.75rem", color: "#6B7096", paddingBottom: "0.25rem" }}>
+                    <span style={{ fontSize: "0.75rem", color: "#64748B", paddingBottom: "0.25rem" }}>
                       {plan.price.desc}
                     </span>
                   </div>
@@ -173,7 +173,7 @@ export default function Pricing() {
                   className="w-full font-bold text-sm rounded-2xl"
                   style={{
                     padding: "0.875rem",
-                    background: plan.popular ? `linear-gradient(135deg, #7C6FFF, #00E5FF)` : `${plan.color}18`,
+                    background: plan.popular ? `linear-gradient(135deg, #2563EB, #38BDF8)` : `${plan.color}18`,
                     border: plan.popular ? "none" : `1px solid ${plan.color}35`,
                     color: plan.popular ? "#fff" : plan.color,
                     boxShadow: plan.popular ? `0 4px 24px ${plan.color}35` : "none",
@@ -192,7 +192,7 @@ export default function Pricing() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.6 }}
           className="flex flex-wrap justify-center gap-6 mt-12 text-sm"
-          style={{ color: "#6B7096" }}
+          style={{ color: "#64748B" }}
         >
           {["✅ Free discovery call", "✅ Fixed price contracts", "✅ 30-day support included", "✅ NDA available"].map(item => (
             <span key={item}>{item}</span>

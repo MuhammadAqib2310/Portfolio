@@ -1,31 +1,36 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════
-   Design System — Dark Premium Theme
+   Design System — Blue Professional Theme
    ═══════════════════════════════════════════════════ */
 :root {
-  --bg-primary:    #0A0A12;
-  --bg-secondary:  #0F0F1C;
-  --bg-tertiary:   #141424;
-  
-  --accent-main:   #7C6FFF;
-  --accent-cyan:   #00E5FF;
-  --accent-violet: #9D5CF6;
+  /* ── Backgrounds ── */
+  --bg-primary:    #0F172A;
+  --bg-secondary:  #1E293B;
+  --bg-tertiary:   #162032;
+
+  /* ── Accent Colors ── */
+  --accent-main:   #2563EB;
+  --accent-cyan:   #38BDF8;
+  --accent-violet: #6366F1;
   --accent-green:  #22C55E;
-  
+
+  /* ── Text ── */
   --text-primary:  #FFFFFF;
-  --text-secondary:#B4B8D4;
-  --text-tertiary: #6B7096;
-  
-  --border-subtle: rgba(124,111,255,0.12);
-  --border-glow:   rgba(124,111,255,0.25);
-  
-  --card-bg:       rgba(255,255,255,0.03);
+  --text-secondary:#94A3B8;
+  --text-tertiary: #64748B;
+
+  /* ── Borders ── */
+  --border-subtle: rgba(37,99,235,0.15);
+  --border-glow:   rgba(37,99,235,0.35);
+
+  /* ── Cards ── */
+  --card-bg:       rgba(255,255,255,0.04);
   --card-border:   rgba(255,255,255,0.08);
-  
-  /* legacy aliases */
-  --accent:        #7C6FFF;
-  --cyan:          #00E5FF;
+
+  /* ── Legacy aliases ── */
+  --accent:        #2563EB;
+  --cyan:          #38BDF8;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -108,7 +113,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   width: 34px;
   height: 34px;
-  border: 2px solid rgba(124,111,255,0.4);
+  border: 2px solid rgba(37,99,235,0.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
@@ -160,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .card:hover {
   border-color: var(--border-glow);
-  box-shadow: 0 24px 64px rgba(124,111,255,0.12);
+  box-shadow: 0 24px 64px rgba(37,99,235,0.15);
   transform: translateY(-2px);
 }
 

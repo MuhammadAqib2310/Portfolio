@@ -16,7 +16,7 @@ export default function Footer() {
   const scrollTo = (id: string) => document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior:"smooth" });
 
   return (
-    <footer style={{ background:"#060612", borderTop:"1px solid rgba(108,99,255,0.15)" }}>
+    <footer style={{ background:"#0F172A", borderTop:"1px solid rgba(37,99,235,0.15)" }}>
       <div className="wrap" style={{ paddingTop:"3.5rem", paddingBottom:"3.5rem" }}>
 
         {/* Top */}
@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <button onClick={() => scrollTo("hero")} className="text-2xl font-extrabold mb-1 block tracking-tight">
               <span className="g-text">M</span>
-              <span style={{ color:"#00E5FF" }}>.</span>
+              <span style={{ color:"#38BDF8" }}>.</span>
               <span style={{ color:"#fff" }}>Aqib</span>
             </button>
             <p className="text-xs" style={{ color:"#374151" }}>AI Engineer &amp; Full Stack Developer</p>
@@ -50,15 +50,15 @@ export default function Footer() {
                 aria-label={s.label}
                 whileHover={{ scale:1.12, y:-3 }} whileTap={{ scale:.95 }}
                 className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200"
-                style={{ background:"rgba(255,255,255,0.05)", border:"1px solid rgba(255,255,255,0.08)", color:"#6B7280" }}
+                style={{ background:"rgba(255,255,255,0.05)", border:"1px solid rgba(255,255,255,0.08)", color:"#64748B" }}
                 onMouseEnter={e=>{
                   const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.color="#6C63FF"; el.style.borderColor="rgba(108,99,255,0.4)";
-                  el.style.background="rgba(108,99,255,0.1)";
+                  el.style.color="#6C63FF"; el.style.borderColor="rgba(37,99,235,0.4)";
+                  el.style.background="rgba(37,99,235,0.1)";
                 }}
                 onMouseLeave={e=>{
                   const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.color="#6B7280"; el.style.borderColor="rgba(255,255,255,0.08)";
+                  el.style.color="#64748B"; el.style.borderColor="rgba(255,255,255,0.08)";
                   el.style.background="rgba(255,255,255,0.05)";
                 }}>
                 {s.icon}
@@ -69,13 +69,13 @@ export default function Footer() {
 
         {/* Gradient divider */}
         <div className="h-px mb-7"
-          style={{ background:"linear-gradient(90deg, transparent, rgba(108,99,255,0.35) 30%, rgba(0,229,255,0.25) 70%, transparent)" }} />
+          style={{ background:"linear-gradient(90deg, transparent, rgba(37,99,235,0.35) 30%, rgba(56,189,248,0.25) 70%, transparent)" }} />
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-xs" style={{ color:"#374151" }}>
           <span>© {new Date().getFullYear()} M Aqib. All rights reserved.</span>
           <span>
-            Built with <span className="g-text font-bold">Next.js</span> &amp; <span style={{ color:"#00E5FF" }}>Framer Motion</span>
+            Built with <span className="g-text font-bold">Next.js</span> &amp; <span style={{ color:"#38BDF8" }}>Framer Motion</span>
           </span>
         </div>
       </div>
