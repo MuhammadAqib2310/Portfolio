@@ -10,7 +10,7 @@ import Projects from "@/components/Projects";
 import Process from "@/components/Process";
 import Experience from "@/components/Experience";
 
-import Pricing from "@/components/Pricing";
+
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -36,7 +36,6 @@ export default function Home() {
         <Projects />
         <Process />
         <Experience />
-        <Pricing />
         <Contact />
       </main>
       <Footer />
