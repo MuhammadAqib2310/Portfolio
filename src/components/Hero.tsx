@@ -79,8 +79,8 @@ export default function Hero() {
       <ParticleField />
 
       {/* Content */}
-      <div className="wrap relative z-10" style={{ paddingTop: "7.5rem", paddingBottom: "5rem" }}>
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-10">
+      <div className="wrap relative z-10" style={{ paddingTop: "6rem", paddingBottom: "4rem" }}>
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-10">
 
           {/* Left */}
           <motion.div variants={stagger} initial="hidden" animate="show"
@@ -175,11 +175,11 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.55, ease }}
             className="flex-shrink-0 relative"
-            style={{ padding: "0 60px", marginTop: "1rem" }}>
+            style={{ padding: "0 40px", marginTop: "1rem" }}>
 
             {/* Glow */}
             <div className="absolute inset-0 pointer-events-none rounded-full"
-              style={{ background: "radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(129,140,248,0.18) 45%, transparent 70%)",
+              style={{ background: "radial-gradient(circle, rgba(99,102,241,0.35) 0%, rgba(129,140,248,0.15) 45%, transparent 70%)",
                 filter: "blur(50px)", transform: "scale(1.5)" }} />
 
             {/* Spinning ring */}
@@ -195,7 +195,7 @@ export default function Hero() {
 
             {/* Photo */}
             <div className="relative rounded-full overflow-hidden"
-              style={{ width: "clamp(220px, 28vw, 320px)", height: "clamp(220px, 28vw, 320px)",
+              style={{ width: "clamp(180px, 28vw, 300px)", height: "clamp(180px, 28vw, 300px)",
                 border: "3px solid rgba(99,102,241,0.35)",
                 boxShadow: "0 0 0 1px rgba(129,140,248,0.12), inset 0 0 40px rgba(255,255,255,0.08)" }}>
               {imgError ? (
@@ -210,20 +210,20 @@ export default function Hero() {
               )}
             </div>
 
-            {/* Badge left */}
+            {/* Badge left — hidden on very small screens */}
             <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute whitespace-nowrap font-bold text-xs"
-              style={{ left: 0, top: "26%", padding: "0.5rem 0.875rem", borderRadius: "0.875rem",
+              className="absolute whitespace-nowrap font-bold text-xs hidden sm:block"
+              style={{ left: -8, top: "26%", padding: "0.5rem 0.75rem", borderRadius: "0.875rem",
                 background: "rgba(99,102,241,0.2)", border: "1px solid rgba(99,102,241,0.5)",
                 color: "#93C5FD", backdropFilter: "blur(16px)", zIndex: 10,
                 boxShadow: "0 4px 20px rgba(99,102,241,0.25)" }}>
               🤖 AI Specialist
             </motion.div>
 
-            {/* Badge right */}
+            {/* Badge right — hidden on very small screens */}
             <motion.div animate={{ y: [8, -8, 8] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute whitespace-nowrap font-bold text-xs"
-              style={{ right: 0, bottom: "26%", padding: "0.5rem 0.875rem", borderRadius: "0.875rem",
+              className="absolute whitespace-nowrap font-bold text-xs hidden sm:block"
+              style={{ right: -8, bottom: "26%", padding: "0.5rem 0.75rem", borderRadius: "0.875rem",
                 background: "rgba(129,140,248,0.15)", border: "1px solid rgba(129,140,248,0.4)",
                 color: "#818CF8", backdropFilter: "blur(16px)", zIndex: 10,
                 boxShadow: "0 4px 20px rgba(129,140,248,0.18)" }}>
@@ -233,7 +233,7 @@ export default function Hero() {
             {/* Open to work */}
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.5 }}
               className="absolute whitespace-nowrap font-bold text-xs"
-              style={{ bottom: "-18px", left: "50%", transform: "translateX(-50%)",
+              style={{ bottom: "-22px", left: "50%", transform: "translateX(-50%)",
                 padding: "0.4rem 0.875rem", borderRadius: "999px",
                 background: "rgba(34,197,94,0.15)", border: "1px solid rgba(34,197,94,0.35)",
                 color: "#22C55E", backdropFilter: "blur(16px)", zIndex: 10 }}>

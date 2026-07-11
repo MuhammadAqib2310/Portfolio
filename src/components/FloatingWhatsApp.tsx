@@ -30,8 +30,8 @@ export default function FloatingWhatsApp() {
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           style={{
             position: "fixed",
-            bottom: "2rem",
-            right: "2rem",
+            bottom: "1.25rem",
+            right: "1.25rem",
             zIndex: 9999,
             display: "flex",
             flexDirection: "column",
