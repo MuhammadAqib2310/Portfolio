@@ -5,6 +5,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import MagneticButton from "@/components/MagneticButton";
 import CountUp from "@/components/CountUp";
+import TextScramble from "@/components/TextScramble";
 
 const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
 const NeuralNetwork = dynamic(() => import("@/components/NeuralNetwork"), { ssr: false });
@@ -102,9 +103,9 @@ export default function Hero() {
             <motion.h1 variants={item}
               style={{ fontSize: "clamp(2.5rem, 6vw, 4.75rem)", lineHeight: 1.05, marginBottom: "1.25rem" }}>
               <span style={{ color: "#fff" }}>Building the</span><br />
-              <span className="g-text">Future with AI</span><br />
+              <TextScramble text="Future with AI" className="g-text" trigger={true} delay={800} speed={30} /><br />
               <span style={{ color: "#fff" }}>&amp; </span>
-              <span className="g-text-2">Web Tech</span>
+              <TextScramble text="Web Tech" className="g-text-2" trigger={true} delay={1200} speed={30} />
             </motion.h1>
 
             {/* Typewriter */}

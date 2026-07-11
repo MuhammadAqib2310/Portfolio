@@ -14,11 +14,12 @@ import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
-const Cursor        = dynamic(() => import("@/components/Cursor"),           { ssr: false });
-const LoadingScreen  = dynamic(() => import("@/components/LoadingScreen"),   { ssr: false });
-const SmoothScroll   = dynamic(() => import("@/components/SmoothScroll"),    { ssr: false });
-const ThemePicker    = dynamic(() => import("@/components/ThemePicker"),     { ssr: false });
+const Cursor           = dynamic(() => import("@/components/Cursor"),           { ssr: false });
+const LoadingScreen    = dynamic(() => import("@/components/LoadingScreen"),    { ssr: false });
+const SmoothScroll     = dynamic(() => import("@/components/SmoothScroll"),     { ssr: false });
+const ThemePicker      = dynamic(() => import("@/components/ThemePicker"),      { ssr: false });
 const FloatingWhatsApp = dynamic(() => import("@/components/FloatingWhatsApp"), { ssr: false });
+const ScrollProgress   = dynamic(() => import("@/components/ScrollProgress"),   { ssr: false });
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <Cursor />
       <ThemePicker />
       <FloatingWhatsApp />
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />

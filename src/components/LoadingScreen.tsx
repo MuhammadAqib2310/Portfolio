@@ -3,31 +3,50 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const words = ["Building", "Designing", "Innovating", "Shipping"];
+const CHARS  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#";
 
 export default function LoadingScreen() {
-  const [loading,  setLoading]  = useState(true);
-  const [progress, setProgress] = useState(0);
-  const [wordIdx,  setWordIdx]  = useState(0);
+  const [loading,   setLoading]   = useState(true);
+  const [progress,  setProgress]  = useState(0);
+  const [wordIdx,   setWordIdx]   = useState(0);
+  const [scramble,  setScramble]  = useState("M.Aqib");
+  const [revealed,  setRevealed]  = useState(false);
 
+  /* scramble → reveal logo */
   useEffect(() => {
-    // Cycle words
-    const wt = setInterval(() => setWordIdx(i => (i + 1) % words.length), 600);
+    const target = "M.Aqib";
+    let frame = 0;
+    const total = target.length * 4;
+    const tick = () => {
+      const chars = target.split("").map((ch, i) => {
+        if (ch === ".") return ".";
+        if (frame >= (i / target.length) * total * 1.4) return ch;
+        return CHARS[Math.floor(Math.random() * CHARS.length)];
+      });
+      setScramble(chars.join(""));
+      frame++;
+      if (frame < total * 1.4) setTimeout(tick, 40);
+      else { setScramble(target); setRevealed(true); }
+    };
+    const t = setTimeout(tick, 300);
+    return () => clearTimeout(t);
+  }, []);
 
-    // Progress
-    const timer = setInterval(() => {
+  /* cycle words + progress */
+  useEffect(() => {
+    const wt = setInterval(() => setWordIdx(i => (i + 1) % words.length), 550);
+    const pt = setInterval(() => {
       setProgress(p => {
-        const next = p + Math.random() * 16 + 4;
+        const next = p + Math.random() * 14 + 4;
         if (next >= 100) {
-          clearInterval(timer);
-          clearInterval(wt);
-          setTimeout(() => setLoading(false), 500);
+          clearInterval(pt); clearInterval(wt);
+          setTimeout(() => setLoading(false), 600);
           return 100;
         }
         return next;
       });
-    }, 80);
-
-    return () => { clearInterval(timer); clearInterval(wt); };
+    }, 75);
+    return () => { clearInterval(wt); clearInterval(pt); };
   }, []);
 
   return (
@@ -35,84 +54,121 @@ export default function LoadingScreen() {
       {loading && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.03 }}
-          transition={{ duration: 0.65, ease: "easeInOut" }}
-          className="fixed inset-0 z-[99999] flex flex-col items-center justify-center"
-          style={{ background: "linear-gradient(135deg, #08080C 0%, #0F0F14 60%, #0C0C11 100%)" }}
+          exit={{ opacity: 0, scale: 1.04 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed inset-0 z-[99999] flex flex-col items-center justify-center overflow-hidden"
+          style={{ background: "#08080C" }}
         >
-          {/* Orbs */}
-          <div className="absolute pointer-events-none rounded-full"
-            style={{ width: 400, height: 400, top: "15%", left: "10%",
-              background: "radial-gradient(circle, rgba(99,102,241,0.2), transparent 65%)", filter: "blur(60px)" }} />
-          <div className="absolute pointer-events-none rounded-full"
-            style={{ width: 350, height: 350, bottom: "10%", right: "10%",
-              background: "radial-gradient(circle, rgba(129,140,248,0.15), transparent 65%)", filter: "blur(60px)" }} />
+          {/* Animated grid */}
+          <div style={{
+            position: "absolute", inset: 0, pointerEvents: "none",
+            backgroundImage: "linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }} />
 
-          {/* Logo */}
+          {/* Orbs */}
+          <div className="absolute pointer-events-none rounded-full anim-aurora"
+            style={{ width: 500, height: 500, top: "5%", left: "5%",
+              background: "radial-gradient(circle, rgba(99,102,241,0.18), transparent 65%)", filter: "blur(70px)" }} />
+          <div className="absolute pointer-events-none rounded-full"
+            style={{ width: 400, height: 400, bottom: "5%", right: "5%",
+              background: "radial-gradient(circle, rgba(129,140,248,0.12), transparent 65%)", filter: "blur(70px)",
+              animation: "aurora 16s ease-in-out infinite reverse" }} />
+
+          {/* Center content */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0, y: 24 }}
+            initial={{ scale: 0.85, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-12"
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center relative z-10"
+            style={{ marginBottom: "3rem" }}
           >
-            {/* Icon */}
+            {/* Logo icon */}
             <motion.div
-              animate={{ rotate: [0, 5, -5, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-16 h-16 rounded-3xl flex items-center justify-center text-2xl font-black text-white mx-auto mb-5"
-              style={{ background: "linear-gradient(135deg, #6366F1, #818CF8)",
-                boxShadow: "0 8px 32px rgba(99,102,241,0.5)" }}
+              animate={{ rotate: [0, 6, -6, 0], boxShadow: ["0 8px 32px rgba(99,102,241,0.4)", "0 8px 48px rgba(99,102,241,0.7)", "0 8px 32px rgba(99,102,241,0.4)"] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-20 h-20 rounded-3xl flex items-center justify-center text-2xl font-black text-white mx-auto mb-6"
+              style={{ background: "linear-gradient(135deg, #6366F1, #818CF8)", letterSpacing: "-0.02em", fontSize: "1.1rem" }}
             >
               MA
             </motion.div>
 
-            <div style={{ fontSize: "clamp(2rem, 6vw, 3rem)", fontWeight: 900, letterSpacing: "-0.04em",
-              fontFamily: "var(--font-space-grotesk, sans-serif)" }}>
-              <span className="g-text">M</span>
-              <span style={{ color: "#818CF8" }}>.</span>
-              <span style={{ color: "#fff" }}>Aqib</span>
+            {/* Scramble name */}
+            <div style={{
+              fontSize: "clamp(2.5rem, 7vw, 3.5rem)", fontWeight: 900,
+              letterSpacing: "-0.04em", fontFamily: "var(--font-space-grotesk, sans-serif)",
+              fontVariantNumeric: "tabular-nums",
+            }}>
+              <span style={{
+                background: revealed
+                  ? "linear-gradient(135deg, #FFFFFF 0%, #818CF8 100%)"
+                  : "linear-gradient(135deg, #6366F1 0%, #818CF8 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+                transition: "all 0.5s",
+              }}>
+                {scramble}
+              </span>
             </div>
 
             {/* Cycling word */}
             <AnimatePresence mode="wait">
               <motion.p
                 key={wordIdx}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.3 }}
-                style={{ fontSize: "0.72rem", letterSpacing: "0.25em", fontWeight: 700,
-                  textTransform: "uppercase", color: "#6366F1", marginTop: "0.5rem" }}
+                initial={{ opacity: 0, y: 6, filter: "blur(4px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
+                transition={{ duration: 0.28 }}
+                style={{ fontSize: "0.7rem", letterSpacing: "0.28em", fontWeight: 700,
+                  textTransform: "uppercase", color: "#6366F1", marginTop: "0.625rem" }}
               >
                 {words[wordIdx]} the Future
               </motion.p>
             </AnimatePresence>
           </motion.div>
 
-          {/* Progress */}
-          <div style={{ width: "clamp(160px, 30vw, 240px)" }}>
-            <div className="relative h-[2px] rounded-full overflow-hidden mb-3"
-              style={{ background: "rgba(255,255,255,0.06)" }}>
+          {/* Progress bar */}
+          <div style={{ width: "clamp(180px, 32vw, 260px)", position: "relative", zIndex: 10 }}>
+            <div className="relative rounded-full overflow-hidden mb-3"
+              style={{ height: "2px", background: "rgba(255,255,255,0.06)" }}>
               <motion.div
                 className="absolute top-0 left-0 h-full rounded-full"
-                style={{ background: "linear-gradient(90deg, #6366F1, #818CF8)",
-                  width: `${Math.min(progress, 100)}%`, transition: "width 0.08s linear" }}
+                style={{
+                  width: `${Math.min(progress, 100)}%`,
+                  background: "linear-gradient(90deg, #6366F1, #818CF8, #C9A962)",
+                  boxShadow: "0 0 8px rgba(99,102,241,0.6)",
+                  transition: "width 0.08s linear",
+                }}
               />
-              {/* Shimmer */}
+              {/* Moving shimmer */}
               <motion.div
                 className="absolute top-0 h-full w-16 rounded-full"
                 animate={{ left: ["-10%", "110%"] }}
-                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)" }}
+                transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
+                style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)" }}
               />
             </div>
+
             <div className="flex justify-between items-center">
-              <span style={{ fontSize: "0.65rem", color: "#334155", fontWeight: 600 }}>Loading</span>
-              <span style={{ fontSize: "0.7rem", fontWeight: 800, color: "#6366F1" }}>
-                {Math.min(Math.round(progress), 100)}%
+              <span style={{ fontSize: "0.62rem", color: "#334155", fontWeight: 600, letterSpacing: "0.12em" }}>
+                LOADING
               </span>
+              <motion.span
+                style={{ fontSize: "0.72rem", fontWeight: 900, fontVariantNumeric: "tabular-nums" }}
+                animate={{ color: progress === 100 ? "#C9A962" : "#6366F1" }}
+              >
+                {Math.min(Math.round(progress), 100)}%
+              </motion.span>
             </div>
           </div>
+
+          {/* Bottom tag */}
+          <motion.p
+            initial={{ opacity: 0 }} animate={{ opacity: 0.4 }} transition={{ delay: 0.8 }}
+            style={{ position: "absolute", bottom: "2rem", fontSize: "0.62rem",
+              color: "#55555F", letterSpacing: "0.2em", fontWeight: 600 }}
+          >
+            AI ENGINEER · FULL STACK · SAAS
+          </motion.p>
         </motion.div>
       )}
     </AnimatePresence>
