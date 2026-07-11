@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 const themes = [
   {
     name: "Blue",
-    accent: "#E879A0",
-    cyan:   "#FCA5C0",
-    violet: "#C084A0",
-    bg:     "#0D0A0E",
-    bg2:    "#13101A",
+    accent: "#FFFFFF",
+    cyan:   "#E2E2E2",
+    violet: "#A0A0A0",
+    bg:     "#080808",
+    bg2:    "#111111",
   },
   {
     name: "Violet",
@@ -38,7 +38,7 @@ const themes = [
   {
     name: "Emerald",
     accent: "#10B981",
-    cyan:   "#FCA5C0",
+    cyan:   "#E2E2E2",
     violet: "#34D399",
     bg:     "#050F0A",
     bg2:    "#071510",

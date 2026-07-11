@@ -81,8 +81,8 @@ export default function Contact() {
   };
 
   const focus  = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.target.style.borderColor = "rgba(232,121,160,0.5)";
-    e.target.style.boxShadow   = "0 0 0 3px rgba(232,121,160,0.1)";
+    e.target.style.borderColor = "rgba(255,255,255,0.5)";
+    e.target.style.boxShadow   = "0 0 0 3px rgba(255,255,255,0.1)";
   };
   const blur   = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>, id: string) => {
     e.target.style.borderColor = errors[id as keyof Errors] ? "#EF4444" : "rgba(255,255,255,0.08)";
@@ -94,19 +94,19 @@ export default function Contact() {
       id="contact"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #100D16 0%, #0D0A0E 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0D0D0D 0%, #080808 100%)" }}
     >
       {/* Premium aurora BG — aurora band + gradient blobs + orbs */}
-      <PremiumBG variant="aurora" accent="#E879A0" cyan="#FCA5C0" />
+      <PremiumBG variant="aurora" accent="#FFFFFF" cyan="#E2E2E2" />
 
       {/* Deep center radial */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 800, height: 800, top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-          background: "radial-gradient(circle, rgba(232,121,160,0.09), transparent 65%)", filter: "blur(120px)" }} />
+          background: "radial-gradient(circle, rgba(255,255,255,0.09), transparent 65%)", filter: "blur(120px)" }} />
       {/* Violet accent */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 400, height: 400, top: "20%", right: "10%",
-          background: "radial-gradient(circle, rgba(192,132,160,0.08), transparent 70%)", filter: "blur(80px)" }} />
+          background: "radial-gradient(circle, rgba(160,160,160,0.08), transparent 70%)", filter: "blur(80px)" }} />
 
       <div className="wrap">
         {/* Heading */}
@@ -116,7 +116,7 @@ export default function Contact() {
           transition={{ duration: 0.65 }}
           className="text-center mb-14"
         >
-          <span className="sec-label" style={{ color: "#E879A0" }}>Get In Touch</span>
+          <span className="sec-label" style={{ color: "#FFFFFF" }}>Get In Touch</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             Let&apos;s <span className="g-text">Build Together</span>
           </h2>
@@ -151,7 +151,7 @@ export default function Contact() {
                 style={{ padding: "1rem" }}
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
-                  style={{ background: "rgba(232,121,160,0.14)", border: "1px solid rgba(232,121,160,0.25)" }}>
+                  style={{ background: "rgba(255,255,255,0.14)", border: "1px solid rgba(255,255,255,0.25)" }}>
                   {icon}
                 </div>
                 <div>
@@ -298,13 +298,13 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   disabled={sending}
-                  whileHover={{ scale: sending ? 1 : 1.02, boxShadow: sending ? "none" : "0 0 40px rgba(232,121,160,0.45)" }}
+                  whileHover={{ scale: sending ? 1 : 1.02, boxShadow: sending ? "none" : "0 0 40px rgba(255,255,255,0.45)" }}
                   whileTap={{ scale: sending ? 1 : 0.98 }}
                   className="w-full font-bold text-sm flex items-center justify-center gap-2 text-white"
                   style={{
                     padding: "0.9rem",
                     borderRadius: "0.875rem",
-                    background: sending ? "rgba(232,121,160,0.5)" : "linear-gradient(135deg, #E879A0, #FCA5C0)",
+                    background: sending ? "rgba(255,255,255,0.5)" : "linear-gradient(135deg, #FFFFFF, #E2E2E2)",
                     cursor: sending ? "not-allowed" : "none",
                   }}
                 >

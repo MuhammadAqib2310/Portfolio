@@ -83,14 +83,14 @@ export default function Cursor() {
   const dotSize   = state === "click" ? 6  : state === "hover" ? 8  : 10;
   const ringSize  = state === "click" ? 28 : state === "hover" ? 48 : 34;
   const ringBorder = state === "hover"
-    ? "2px solid rgba(232,121,160,0.9)"
+    ? "2px solid rgba(255,255,255,0.9)"
     : state === "text"
-    ? "2px solid rgba(252,165,192,0.7)"
-    : "1.5px solid rgba(232,121,160,0.5)";
-  const dotColor = state === "hover"  ? "#FCA5C0"
-    : state === "text"   ? "#FCA5C0"
+    ? "2px solid rgba(226,226,226,0.7)"
+    : "1.5px solid rgba(255,255,255,0.5)";
+  const dotColor = state === "hover"  ? "#E2E2E2"
+    : state === "text"   ? "#E2E2E2"
     : state === "click"  ? "#fff"
-    : "#E879A0";
+    : "#FFFFFF";
 
   return (
     <>
@@ -129,7 +129,7 @@ export default function Cursor() {
           zIndex:    99998,
           opacity:   visible ? (state === "hover" ? 1 : 0.75) : 0,
           transition: "width 0.25s cubic-bezier(0.22,1,0.36,1), height 0.25s cubic-bezier(0.22,1,0.36,1), border 0.2s, opacity 0.3s",
-          background: state === "hover" ? "rgba(232,121,160,0.06)" : "transparent",
+          background: state === "hover" ? "rgba(255,255,255,0.06)" : "transparent",
           willChange: "transform",
           backdropFilter: state === "hover" ? "blur(2px)" : "none",
         }}
@@ -169,7 +169,7 @@ export default function Cursor() {
             transform: `translate(${pos.current.x}px, ${pos.current.y}px) translate(-50%, -50%)`,
             width:     2,
             height:    20,
-            background: "#FCA5C0",
+            background: "#E2E2E2",
             borderRadius: 1,
             pointerEvents: "none",
             zIndex:    99999,

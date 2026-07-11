@@ -5,7 +5,7 @@ import { services } from "@/lib/utils";
 import TiltCard from "@/components/TiltCard";
 import PremiumBG from "@/components/PremiumBG";
 
-const colors = ["#E879A0", "#FCA5C0", "#C084A0", "#F59E0B", "#22C55E", "#EF4444"];
+const colors = ["#FFFFFF", "#E2E2E2", "#A0A0A0", "#F59E0B", "#22C55E", "#EF4444"];
 
 export default function Services() {
   const ref    = useRef(null);
@@ -16,18 +16,18 @@ export default function Services() {
       id="services"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #100D16 0%, #0D0A0E 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0D0D0D 0%, #080808 100%)" }}
     >
       {/* Premium mesh gradient + floating glass shapes + orbs */}
-      <PremiumBG variant="mesh" accent="#E879A0" cyan="#FCA5C0" />
+      <PremiumBG variant="mesh" accent="#FFFFFF" cyan="#E2E2E2" />
 
       {/* Extra layered glows */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 700, height: 700, bottom: "-20%", left: "-15%",
-          background: "radial-gradient(circle, rgba(232,121,160,0.11), transparent 65%)", filter: "blur(90px)" }} />
+          background: "radial-gradient(circle, rgba(255,255,255,0.11), transparent 65%)", filter: "blur(90px)" }} />
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 500, height: 500, top: "-10%", right: "-5%",
-          background: "radial-gradient(circle, rgba(252,165,192,0.09), transparent 65%)", filter: "blur(80px)" }} />
+          background: "radial-gradient(circle, rgba(226,226,226,0.09), transparent 65%)", filter: "blur(80px)" }} />
 
       <div className="wrap">
         {/* Heading */}
@@ -37,7 +37,7 @@ export default function Services() {
           transition={{ duration: 0.65 }}
           className="text-center mb-14"
         >
-          <span className="sec-label" style={{ color: "#E879A0" }}>What I Do</span>
+          <span className="sec-label" style={{ color: "#FFFFFF" }}>What I Do</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             AI-Powered <span className="g-text">Services</span>
           </h2>

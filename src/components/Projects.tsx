@@ -8,14 +8,14 @@ const cats = ["All", "AI", "SaaS", "AI Agent"];
 
 /* Per-project accent colors */
 const projectAccents = [
-  { from: "#E879A0", to: "#FCA5C0", glow: "rgba(232,121,160,0.5)"   },
-  { from: "#FCA5C0", to: "#C084A0", glow: "rgba(252,165,192,0.5)"  },
-  { from: "#C084A0", to: "#A855F7", glow: "rgba(192,132,160,0.5)"  },
+  { from: "#FFFFFF", to: "#E2E2E2", glow: "rgba(255,255,255,0.5)"   },
+  { from: "#E2E2E2", to: "#A0A0A0", glow: "rgba(226,226,226,0.5)"  },
+  { from: "#A0A0A0", to: "#A855F7", glow: "rgba(160,160,160,0.5)"  },
   { from: "#F59E0B", to: "#EF4444", glow: "rgba(245,158,11,0.5)"  },
-  { from: "#22C55E", to: "#FCA5C0", glow: "rgba(34,197,94,0.5)"   },
+  { from: "#22C55E", to: "#E2E2E2", glow: "rgba(34,197,94,0.5)"   },
   { from: "#EF4444", to: "#F59E0B", glow: "rgba(239,68,68,0.5)"   },
-  { from: "#8B5CF6", to: "#FCA5C0", glow: "rgba(139,92,246,0.5)"  },
-  { from: "#06B6D4", to: "#C084A0", glow: "rgba(6,182,212,0.5)"   },
+  { from: "#8B5CF6", to: "#E2E2E2", glow: "rgba(139,92,246,0.5)"  },
+  { from: "#06B6D4", to: "#A0A0A0", glow: "rgba(6,182,212,0.5)"   },
 ];
 
 const emojis     = ["🌤️","📊","🔐","🤖","📞","💼","🎙️","🚀"];
@@ -107,7 +107,7 @@ function ProjectCard({ p, i, idx }: { p: typeof projects[0]; i: number; idx: num
           padding: "0.25rem 0.75rem", borderRadius: "999px",
           background: `${acc.from}25`,
           border: `1px solid ${acc.from}50`,
-          color: acc.from === "#E879A0" ? "#93C5FD" : acc.from === "#FCA5C0" ? "#7DD3FC" : "#C4B5FD",
+          color: acc.from === "#FFFFFF" ? "#93C5FD" : acc.from === "#E2E2E2" ? "#7DD3FC" : "#C4B5FD",
           fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.08em",
           backdropFilter: "blur(10px)",
         }}>
@@ -196,9 +196,9 @@ function ProjectCard({ p, i, idx }: { p: typeof projects[0]; i: number; idx: num
               padding: "0.22rem 0.6rem", borderRadius: "0.5rem",
               background: `${acc.from}12`,
               border: `1px solid ${acc.from}28`,
-              color: acc.from === "#E879A0" ? "#93C5FD"
-                   : acc.from === "#FCA5C0" ? "#7DD3FC"
-                   : acc.from === "#C084A0" ? "#C4B5FD"
+              color: acc.from === "#FFFFFF" ? "#93C5FD"
+                   : acc.from === "#E2E2E2" ? "#7DD3FC"
+                   : acc.from === "#A0A0A0" ? "#C4B5FD"
                    : acc.from === "#22C55E" ? "#86EFAC"
                    : "#C4B5FD",
               letterSpacing: "0.03em",
@@ -275,17 +275,17 @@ export default function Projects() {
       id="projects"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #13101A 0%, #100D16 100%)" }}
+      style={{ background: "linear-gradient(180deg, #111111 0%, #0D0D0D 100%)" }}
     >
-      <PremiumBG variant="grid" accent="#E879A0" cyan="#FCA5C0" />
+      <PremiumBG variant="grid" accent="#FFFFFF" cyan="#E2E2E2" />
 
       {/* deep glow */}
       <div className="absolute pointer-events-none"
         style={{ width: 900, height: 900, top: "-25%", left: "50%", transform: "translateX(-50%)",
-          background: "radial-gradient(circle, rgba(232,121,160,0.13), transparent 65%)", filter: "blur(130px)", borderRadius: "50%" }} />
+          background: "radial-gradient(circle, rgba(255,255,255,0.13), transparent 65%)", filter: "blur(130px)", borderRadius: "50%" }} />
       <div className="absolute pointer-events-none"
         style={{ width: 600, height: 400, bottom: "-10%", left: "15%",
-          background: "radial-gradient(ellipse, rgba(252,165,192,0.07), transparent 70%)", filter: "blur(90px)", borderRadius: "50%" }} />
+          background: "radial-gradient(ellipse, rgba(226,226,226,0.07), transparent 70%)", filter: "blur(90px)", borderRadius: "50%" }} />
 
       <div className="wrap">
 
@@ -299,12 +299,12 @@ export default function Projects() {
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "0.5rem",
             padding: "0.35rem 1rem", borderRadius: "999px", marginBottom: "1rem",
-            background: "rgba(252,165,192,0.1)", border: "1px solid rgba(252,165,192,0.25)",
+            background: "rgba(226,226,226,0.1)", border: "1px solid rgba(226,226,226,0.25)",
             fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.2em",
-            color: "#FCA5C0", textTransform: "uppercase",
+            color: "#E2E2E2", textTransform: "uppercase",
           }}>
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#FCA5C0",
-              boxShadow: "0 0 8px #FCA5C0", display: "inline-block" }} />
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#E2E2E2",
+              boxShadow: "0 0 8px #E2E2E2", display: "inline-block" }} />
             Portfolio
           </div>
 
@@ -337,11 +337,11 @@ export default function Projects() {
                 fontSize: "0.78rem", fontWeight: 700,
                 display: "flex", alignItems: "center", gap: "0.4rem",
                 background: active === c
-                  ? "linear-gradient(135deg, #E879A0, #FCA5C0)"
+                  ? "linear-gradient(135deg, #FFFFFF, #E2E2E2)"
                   : "rgba(255,255,255,0.04)",
                 color: active === c ? "#fff" : "#64748B",
                 border: active === c ? "none" : "1px solid rgba(255,255,255,0.08)",
-                boxShadow: active === c ? "0 4px 20px rgba(232,121,160,0.4)" : "none",
+                boxShadow: active === c ? "0 4px 20px rgba(255,255,255,0.4)" : "none",
                 transition: "all 0.25s",
                 cursor: "none",
               }}
@@ -385,15 +385,15 @@ export default function Projects() {
             Want to see more work or discuss a custom project?
           </p>
           <motion.button
-            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(232,121,160,0.45)" }}
+            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(255,255,255,0.45)" }}
             whileTap={{ scale: 0.97 }}
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             style={{
               padding: "0.875rem 2.5rem",
               borderRadius: "999px",
-              background: "linear-gradient(135deg, #E879A0, #FCA5C0)",
+              background: "linear-gradient(135deg, #FFFFFF, #E2E2E2)",
               color: "#fff", fontWeight: 800, fontSize: "0.875rem",
-              boxShadow: "0 4px 28px rgba(232,121,160,0.35)",
+              boxShadow: "0 4px 28px rgba(255,255,255,0.35)",
               border: "none", cursor: "none",
             }}
           >

@@ -9,7 +9,7 @@ const steps = [
     icon: "💬",
     title: "Discovery Call",
     desc: "We start with a free 30-min call to understand your vision, goals, and technical requirements in depth.",
-    color: "#E879A0",
+    color: "#FFFFFF",
     duration: "Day 1",
   },
   {
@@ -17,7 +17,7 @@ const steps = [
     icon: "📋",
     title: "Strategy & Proposal",
     desc: "I deliver a detailed technical proposal with architecture plan, timeline, milestones, and fixed pricing.",
-    color: "#FCA5C0",
+    color: "#E2E2E2",
     duration: "Day 2–3",
   },
   {
@@ -25,7 +25,7 @@ const steps = [
     icon: "⚙️",
     title: "Build & Iterate",
     desc: "Agile development with weekly demos. You see progress every step of the way with full transparency.",
-    color: "#C084A0",
+    color: "#A0A0A0",
     duration: "Week 1–4",
   },
   {
@@ -47,15 +47,15 @@ export default function Process() {
       id="process"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #100D16 0%, #13101A 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0D0D0D 0%, #111111 100%)" }}
     >
       {/* Premium BG — geo lines + process connectors + orbs */}
-      <PremiumBG variant="geo" accent="#E879A0" cyan="#FCA5C0" />
+      <PremiumBG variant="geo" accent="#FFFFFF" cyan="#E2E2E2" />
 
       {/* Center ambient glow */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 700, height: 700, top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-          background: "radial-gradient(circle, rgba(232,121,160,0.08), transparent 65%)", filter: "blur(120px)" }} />
+          background: "radial-gradient(circle, rgba(255,255,255,0.08), transparent 65%)", filter: "blur(120px)" }} />
 
       <div className="wrap">
         <motion.div
@@ -64,7 +64,7 @@ export default function Process() {
           transition={{ duration: 0.65 }}
           className="text-center mb-16"
         >
-          <span className="sec-label" style={{ color: "#E879A0" }}>How I Work</span>
+          <span className="sec-label" style={{ color: "#FFFFFF" }}>How I Work</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             My <span className="g-text">Process</span>
           </h2>
@@ -80,7 +80,7 @@ export default function Process() {
             className="hidden lg:block absolute h-px"
             style={{
               top: "48px", left: "12.5%", right: "12.5%",
-              background: "linear-gradient(90deg, #E879A066, #FCA5C066, #C084A066, #22C55E66)",
+              background: "linear-gradient(90deg, #FFFFFF66, #E2E2E266, #A0A0A066, #22C55E66)",
               zIndex: 0,
             }}
           />
@@ -91,7 +91,7 @@ export default function Process() {
           >
             <div style={{
               height: "100%",
-              background: "linear-gradient(90deg, transparent, #FCA5C0, #E879A0, transparent)",
+              background: "linear-gradient(90deg, transparent, #E2E2E2, #FFFFFF, transparent)",
               animation: "connectorSweep 3s linear infinite",
               backgroundSize: "200% 100%",
             }} />
@@ -182,13 +182,13 @@ export default function Process() {
             Ready to start? First call is always free.
           </p>
           <motion.button
-            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(232,121,160,0.5)" }}
+            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(255,255,255,0.5)" }}
             whileTap={{ scale: 0.97 }}
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             className="font-bold text-white text-sm rounded-2xl"
             style={{ padding: "0.875rem 2.5rem",
-              background: "linear-gradient(135deg, #E879A0, #FCA5C0)",
-              boxShadow: "0 4px 28px rgba(232,121,160,0.35)" }}
+              background: "linear-gradient(135deg, #FFFFFF, #E2E2E2)",
+              boxShadow: "0 4px 28px rgba(255,255,255,0.35)" }}
           >
             Book Free Discovery Call →
           </motion.button>
