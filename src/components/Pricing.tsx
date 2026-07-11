@@ -7,7 +7,7 @@ const plans = [
     name: "Starter",
     tag: "For small businesses",
     price: { usd: "$500", desc: "starting from" },
-    color: "#F7E7CE",
+    color: "#818CF8",
     features: [
       "Landing page or simple web app",
       "Basic AI integration",
@@ -23,7 +23,7 @@ const plans = [
     name: "Professional",
     tag: "Most popular",
     price: { usd: "$1,500", desc: "starting from" },
-    color: "#D4AF37",
+    color: "#6366F1",
     features: [
       "Full SaaS or AI-powered web app",
       "LLM / AI Agents integration",
@@ -40,7 +40,7 @@ const plans = [
     name: "Enterprise",
     tag: "For scale-ups",
     price: { usd: "Custom", desc: "let's talk" },
-    color: "#A0A0AB",
+    color: "#9A9AA5",
     features: [
       "Complex multi-agent AI systems",
       "Custom LLM fine-tuning",
@@ -65,7 +65,7 @@ export default function Pricing() {
       id="pricing"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #141420 0%, #0A0A0F 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0F0F14 0%, #08080C 100%)" }}
     >
       {/* BG glows */}
       <div className="absolute pointer-events-none rounded-full"
@@ -79,7 +79,7 @@ export default function Pricing() {
           transition={{ duration: 0.65 }}
           className="text-center mb-14"
         >
-          <span className="sec-label" style={{ color: "#A0A0AB" }}>Investment</span>
+          <span className="sec-label" style={{ color: "#9A9AA5" }}>Investment</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             Transparent <span className="g-text">Pricing</span>
           </h2>
@@ -104,8 +104,8 @@ export default function Pricing() {
                 <div
                   className="absolute -top-4 left-1/2 -translate-x-1/2 z-10 font-bold text-xs text-white whitespace-nowrap"
                   style={{ padding: "0.3rem 1rem", borderRadius: "999px",
-                    background: "linear-gradient(135deg, #D4AF37, #F7E7CE)",
-                    boxShadow: "0 4px 20px rgba(212,175,55,0.5)" }}
+                    background: "linear-gradient(135deg, #6366F1, #818CF8)",
+                    boxShadow: "0 4px 20px rgba(99,102,241,0.5)" }}
                 >
                   ⭐ Most Popular
                 </div>
@@ -173,7 +173,7 @@ export default function Pricing() {
                   className="w-full font-bold text-sm rounded-2xl"
                   style={{
                     padding: "0.875rem",
-                    background: plan.popular ? `linear-gradient(135deg, #D4AF37, #F7E7CE)` : `${plan.color}18`,
+                    background: plan.popular ? `linear-gradient(135deg, #6366F1, #818CF8)` : `${plan.color}18`,
                     border: plan.popular ? "none" : `1px solid ${plan.color}35`,
                     color: plan.popular ? "#fff" : plan.color,
                     boxShadow: plan.popular ? `0 4px 24px ${plan.color}35` : "none",

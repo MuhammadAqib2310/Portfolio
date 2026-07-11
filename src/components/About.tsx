@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const skills = [
   { name: "AI/ML Engineering",    pct: 95, color: "#6C63FF" },
-  { name: "Full Stack Dev",        pct: 92, color: "#F7E7CE" },
+  { name: "Full Stack Dev",        pct: 92, color: "#818CF8" },
   { name: "LLM Integration",       pct: 95, color: "#8B5CF6" },
   { name: "SaaS Architecture",     pct: 88, color: "#F59E0B" },
   { name: "Workflow Automation",   pct: 90, color: "#22C55E" },
@@ -37,11 +37,11 @@ export default function About() {
   const inView = useInView(ref, { once:true, margin:"-80px" });
 
   return (
-    <section id="about" ref={ref} className="section-pad relative overflow-hidden" style={{ background:"linear-gradient(180deg, #0A0A0F 0%, #0F0F1A 100%)" }}>
+    <section id="about" ref={ref} className="section-pad relative overflow-hidden" style={{ background:"linear-gradient(180deg, #08080C 0%, #0C0C11 100%)" }}>
       {/* BG glows */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width:500, height:500, top:"-10%", right:"-10%",
-          background:"radial-gradient(circle,rgba(247,231,206,0.07),transparent 65%)", filter:"blur(80px)" }} />
+          background:"radial-gradient(circle,rgba(129,140,248,0.07),transparent 65%)", filter:"blur(80px)" }} />
       <div className="absolute pointer-events-none rounded-full"
         style={{ width:400, height:400, bottom:0, left:"-8%",
           background:"radial-gradient(circle,rgba(255,255,255,0.07),transparent 65%)", filter:"blur(70px)" }} />
@@ -76,7 +76,7 @@ export default function About() {
                   initial={{ opacity:0, scale:.92 }}
                   animate={inView ? { opacity:1, scale:1 } : {}}
                   transition={{ delay:.3 + i*.07, duration:.5 }}
-                  whileHover={{ y:-4, borderColor:"rgba(212,175,55,0.3)" }}
+                  whileHover={{ y:-4, borderColor:"rgba(99,102,241,0.3)" }}
                   className="card p-4 cursor-default">
                   <div className="text-2xl mb-2">{icon}</div>
                   <div className="text-sm font-bold mb-0.5" style={{ color:"#fff" }}>{title}</div>
@@ -98,7 +98,7 @@ export default function About() {
           <motion.div variants={fadeRight(0.2)} initial="hidden" animate={inView?"show":{}}
             className="p-7 rounded-3xl" style={{ background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.1)" }}>
             <h3 className="text-base font-bold mb-8 flex items-center gap-2" style={{ color:"#fff" }}>
-              <span className="w-1 h-6 rounded-full" style={{ background:"linear-gradient(#6C63FF,#F7E7CE)" }} />
+              <span className="w-1 h-6 rounded-full" style={{ background:"linear-gradient(#6C63FF,#818CF8)" }} />
               Core Competencies
             </h3>
             <div className="space-y-6">

@@ -14,13 +14,13 @@ const reasons = [
     icon: "🎯",
     title: "Production-Ready Code",
     desc: "Clean, documented, scalable architecture. Not prototypes — real systems built to handle millions of users.",
-    color: "#D4AF37",
+    color: "#6366F1",
   },
   {
     icon: "🤖",
     title: "AI-First Thinking",
     desc: "I don't just add AI as a feature — I architect solutions where AI creates your core competitive advantage.",
-    color: "#F7E7CE",
+    color: "#818CF8",
   },
   {
     icon: "🔒",
@@ -32,7 +32,7 @@ const reasons = [
     icon: "📞",
     title: "Direct Communication",
     desc: "You talk directly to me — the engineer — not a project manager. Fast decisions, zero miscommunication.",
-    color: "#A0A0AB",
+    color: "#9A9AA5",
   },
   {
     icon: "🔄",
@@ -58,7 +58,7 @@ export default function WhyMe() {
       id="why-me"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #141420 0%, #0F0F1A 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0F0F14 0%, #0C0C11 100%)" }}
     >
       {/* glows */}
       <div className="absolute pointer-events-none rounded-full"
@@ -66,7 +66,7 @@ export default function WhyMe() {
           background: "radial-gradient(circle, rgba(255,255,255,0.08), transparent 65%)", filter: "blur(80px)" }} />
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 400, height: 400, bottom: 0, left: "-8%",
-          background: "radial-gradient(circle, rgba(247,231,206,0.06), transparent 65%)", filter: "blur(70px)" }} />
+          background: "radial-gradient(circle, rgba(129,140,248,0.06), transparent 65%)", filter: "blur(70px)" }} />
 
       <div className="wrap">
         {/* Heading */}
@@ -76,7 +76,7 @@ export default function WhyMe() {
           transition={{ duration: 0.65 }}
           className="text-center mb-16"
         >
-          <span className="sec-label" style={{ color: "#F7E7CE" }}>Why Work With Me</span>
+          <span className="sec-label" style={{ color: "#818CF8" }}>Why Work With Me</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             The <span className="g-text-2">Difference</span> You Feel
           </h2>
@@ -97,7 +97,7 @@ export default function WhyMe() {
               key={label}
               className="text-center rounded-2xl"
               style={{ padding: "1.5rem 1rem", background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(212,175,55,0.15)" }}
+                border: "1px solid rgba(99,102,241,0.15)" }}
             >
               <div className="font-extrabold g-text" style={{ fontSize: "clamp(1.8rem,4vw,2.5rem)", lineHeight: 1 }}>
                 <CountUp end={end} suffix={suffix} duration={2000} />
@@ -143,12 +143,12 @@ export default function WhyMe() {
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.7 }}
           className="mt-14 rounded-3xl overflow-hidden relative"
-          style={{ padding: "2.5rem", background: "linear-gradient(135deg, rgba(212,175,55,0.15), rgba(123,47,247,0.1), rgba(15,191,110,0.08))",
-            border: "1px solid rgba(212,175,55,0.25)" }}
+          style={{ padding: "2.5rem", background: "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(79,70,229,0.1), rgba(34,197,94,0.08))",
+            border: "1px solid rgba(99,102,241,0.25)" }}
         >
           {/* BG glow */}
           <div className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(212,175,55,0.12), transparent 60%)" }} />
+            style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(99,102,241,0.12), transparent 60%)" }} />
 
           <div className="relative flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
@@ -168,13 +168,13 @@ export default function WhyMe() {
                 <span className="text-xs font-bold" style={{ color: "#22C55E" }}>Open to Work</span>
               </div>
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 0 32px rgba(212,175,55,0.5)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 32px rgba(99,102,241,0.5)" }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 className="font-bold text-white text-sm rounded-2xl"
                 style={{ padding: "0.75rem 1.75rem",
-                  background: "linear-gradient(135deg, #D4AF37, #7B2FF7, #0FBF6E)",
-                  boxShadow: "0 4px 20px rgba(212,175,55,0.35)" }}
+                  background: "linear-gradient(135deg, #6366F1, #818CF8)",
+                  boxShadow: "0 4px 20px rgba(99,102,241,0.35)" }}
               >
                 Start a Project →
               </motion.button>

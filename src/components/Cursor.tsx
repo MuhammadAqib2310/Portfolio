@@ -85,12 +85,12 @@ export default function Cursor() {
   const ringBorder = state === "hover"
     ? "2px solid rgba(255,255,255,0.9)"
     : state === "text"
-    ? "2px solid rgba(247,231,206,0.7)"
-    : "1.5px solid rgba(212,175,55,0.5)";
-  const dotColor = state === "hover"  ? "#F7E7CE"
-    : state === "text"   ? "#F7E7CE"
+    ? "2px solid rgba(129,140,248,0.7)"
+    : "1.5px solid rgba(99,102,241,0.5)";
+  const dotColor = state === "hover"  ? "#818CF8"
+    : state === "text"   ? "#818CF8"
     : state === "click"  ? "#fff"
-    : "#D4AF37";
+    : "#6366F1";
 
   return (
     <>
@@ -169,7 +169,7 @@ export default function Cursor() {
             transform: `translate(${pos.current.x}px, ${pos.current.y}px) translate(-50%, -50%)`,
             width:     2,
             height:    20,
-            background: "#F7E7CE",
+            background: "#818CF8",
             borderRadius: 1,
             pointerEvents: "none",
             zIndex:    99999,

@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 const themes = [
   {
     name: "Blue",
-    accent: "#D4AF37",
-    cyan:   "#F7E7CE",
-    violet: "#A0A0AB",
-    bg:     "#0A0A0F",
-    bg2:    "#141420",
+    accent: "#6366F1",
+    cyan:   "#818CF8",
+    violet: "#9A9AA5",
+    bg:     "#08080C",
+    bg2:    "#0F0F14",
   },
   {
     name: "Violet",
@@ -38,7 +38,7 @@ const themes = [
   {
     name: "Emerald",
     accent: "#10B981",
-    cyan:   "#F7E7CE",
+    cyan:   "#818CF8",
     violet: "#34D399",
     bg:     "#050F0A",
     bg2:    "#071510",
@@ -170,7 +170,7 @@ export default function ThemePicker() {
           height: "52px",
           background: `linear-gradient(135deg, ${current.accent}, ${current.cyan})`,
           boxShadow: `0 4px 24px ${current.accent}50`,
-          border: "2px solid rgba(212,175,55,0.15)",
+          border: "2px solid rgba(99,102,241,0.15)",
         }}
         aria-label="Change theme color"
       >
@@ -206,7 +206,7 @@ export default function ThemePicker() {
         {/* Shine effect */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(135deg, rgba(212,175,55,0.2) 0%, transparent 60%)" }}
+          style={{ background: "linear-gradient(135deg, rgba(99,102,241,0.2) 0%, transparent 60%)" }}
         />
       </motion.button>
     </div>

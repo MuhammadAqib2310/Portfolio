@@ -47,7 +47,7 @@ export default function Navbar() {
       <motion.div
         className="fixed top-0 left-0 h-[2px] z-[1001] origin-left w-full"
         style={{
-          background: "linear-gradient(90deg, #D4AF37 0%, #7B2FF7 50%, #0FBF6E 100%)",
+          background: "linear-gradient(90deg, #6366F1 0%, #818CF8 100%)",
           scaleX,
         }}
       />
@@ -69,7 +69,7 @@ export default function Navbar() {
             backdropFilter: "blur(32px)",
             WebkitBackdropFilter: "blur(32px)",
             border: scrolled
-              ? "1px solid rgba(212,175,55,0.25)"
+              ? "1px solid rgba(99,102,241,0.25)"
               : "1px solid rgba(255,255,255,0.1)",
             boxShadow: scrolled
               ? "0 8px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)"
@@ -85,8 +85,8 @@ export default function Navbar() {
             <div
               className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm text-white flex-shrink-0"
               style={{
-                background: "linear-gradient(135deg, #D4AF37 0%, #7B2FF7 100%)",
-                boxShadow: "0 4px 16px rgba(212,175,55,0.45)",
+                background: "linear-gradient(135deg, #6366F1 0%, #818CF8 100%)",
+                boxShadow: "0 4px 16px rgba(99,102,241,0.45)",
                 letterSpacing: "0",
               }}
             >
@@ -101,7 +101,7 @@ export default function Navbar() {
                   letterSpacing: "-0.03em",
                 }}
               >
-                M<span style={{ color: "#D4AF37" }}>.</span>Aqib
+                M<span style={{ color: "#C9A962" }}>.</span>Aqib
               </span>
               <span style={{ fontSize: "0.6rem", color: "#64748B", letterSpacing: "0.12em", fontWeight: 600 }}>
                 AI ENGINEER
@@ -135,7 +135,7 @@ export default function Navbar() {
                     <motion.span
                       layoutId="nav-active"
                       className="absolute inset-0 rounded-xl"
-                      style={{ background: "rgba(212,175,55,0.18)", border: "1px solid rgba(212,175,55,0.25)" }}
+                      style={{ background: "rgba(99,102,241,0.18)", border: "1px solid rgba(99,102,241,0.25)" }}
                       transition={{ type: "spring", bounce: 0.2, duration: 0.45 }}
                     />
                   )}
@@ -154,8 +154,8 @@ export default function Navbar() {
               className="hidden md:flex items-center gap-2 font-bold text-white text-sm rounded-xl"
               style={{
                 padding: "0.6rem 1.4rem",
-                background: "linear-gradient(135deg, #D4AF37 0%, #7B2FF7 100%)",
-                boxShadow: "0 4px 20px rgba(212,175,55,0.35)",
+                background: "linear-gradient(135deg, #6366F1 0%, #818CF8 100%)",
+                boxShadow: "0 4px 20px rgba(99,102,241,0.35)",
               }}
             >
               Hire Me
@@ -170,7 +170,7 @@ export default function Navbar() {
               onClick={() => setOpen(v => !v)}
               className="md:hidden w-10 h-10 rounded-xl flex flex-col justify-center items-center gap-[5px] transition-all"
               style={{
-                background: open ? "rgba(212,175,55,0.2)" : "rgba(255,255,255,0.06)",
+                background: open ? "rgba(99,102,241,0.2)" : "rgba(255,255,255,0.06)",
                 border: "1px solid rgba(255,255,255,0.1)",
               }}
             >
@@ -202,7 +202,7 @@ export default function Navbar() {
               className="mt-2 rounded-2xl overflow-hidden"
               style={{
                 background: "rgba(10,10,18,0.98)",
-                border: "1px solid rgba(212,175,55,0.2)",
+                border: "1px solid rgba(99,102,241,0.2)",
                 backdropFilter: "blur(32px)",
                 boxShadow: "0 16px 64px rgba(0,0,0,0.4)",
               }}
@@ -241,7 +241,7 @@ export default function Navbar() {
                 <button
                   onClick={() => scrollTo("contact")}
                   className="w-full py-3 rounded-xl text-sm font-bold text-white"
-                  style={{ background: "linear-gradient(135deg, #D4AF37, #7B2FF7, #0FBF6E)" }}
+                  style={{ background: "linear-gradient(135deg, #6366F1, #818CF8)" }}
                 >
                   Hire Me →
                 </button>

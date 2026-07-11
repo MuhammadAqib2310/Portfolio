@@ -9,7 +9,7 @@ const steps = [
     icon: "💬",
     title: "Discovery Call",
     desc: "We start with a free 30-min call to understand your vision, goals, and technical requirements in depth.",
-    color: "#D4AF37",
+    color: "#6366F1",
     duration: "Day 1",
   },
   {
@@ -17,7 +17,7 @@ const steps = [
     icon: "📋",
     title: "Strategy & Proposal",
     desc: "I deliver a detailed technical proposal with architecture plan, timeline, milestones, and fixed pricing.",
-    color: "#0FBF6E",
+    color: "#22C55E",
     duration: "Day 2–3",
   },
   {
@@ -25,7 +25,7 @@ const steps = [
     icon: "⚙️",
     title: "Build & Iterate",
     desc: "Agile development with weekly demos. You see progress every step of the way with full transparency.",
-    color: "#A0A0AB",
+    color: "#9A9AA5",
     duration: "Week 1–4",
   },
   {
@@ -47,10 +47,10 @@ export default function Process() {
       id="process"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0F0F1A 0%, #141420 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0C0C11 0%, #0F0F14 100%)" }}
     >
       {/* Premium BG — geo lines + process connectors + orbs */}
-      <PremiumBG variant="geo" accent="#D4AF37" cyan="#0FBF6E" />
+      <PremiumBG variant="geo" accent="#6366F1" cyan="#818CF8" />
 
       {/* Center ambient glow */}
       <div className="absolute pointer-events-none rounded-full"
@@ -64,7 +64,7 @@ export default function Process() {
           transition={{ duration: 0.65 }}
           className="text-center mb-16"
         >
-          <span className="sec-label" style={{ color: "#D4AF37" }}>How I Work</span>
+          <span className="sec-label" style={{ color: "#6366F1" }}>How I Work</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             My <span className="g-text">Process</span>
           </h2>
@@ -80,7 +80,7 @@ export default function Process() {
             className="hidden lg:block absolute h-px"
             style={{
               top: "48px", left: "12.5%", right: "12.5%",
-              background: "linear-gradient(90deg, #D4AF3766, #F7E7CE66, #A0A0AB66, #22C55E66)",
+              background: "linear-gradient(90deg, #6366F166, #818CF866, #9A9AA566, #22C55E66)",
               zIndex: 0,
             }}
           />
@@ -91,7 +91,7 @@ export default function Process() {
           >
             <div style={{
               height: "100%",
-              background: "linear-gradient(90deg, transparent, #F7E7CE, #D4AF37, transparent)",
+              background: "linear-gradient(90deg, transparent, #818CF8, #6366F1, transparent)",
               animation: "connectorSweep 3s linear infinite",
               backgroundSize: "200% 100%",
             }} />
@@ -182,13 +182,13 @@ export default function Process() {
             Ready to start? First call is always free.
           </p>
           <motion.button
-            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(212,175,55,0.5)" }}
+            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(99,102,241,0.5)" }}
             whileTap={{ scale: 0.97 }}
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             className="font-bold text-white text-sm rounded-2xl"
             style={{ padding: "0.875rem 2.5rem",
-              background: "linear-gradient(135deg, #D4AF37, #F7E7CE)",
-              boxShadow: "0 4px 28px rgba(212,175,55,0.35)" }}
+              background: "linear-gradient(135deg, #6366F1, #818CF8)",
+              boxShadow: "0 4px 28px rgba(99,102,241,0.35)" }}
           >
             Book Free Discovery Call →
           </motion.button>

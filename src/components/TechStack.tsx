@@ -3,7 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const techs = [
-  { name:"Next.js",      color:"#D4AF37" },
+  { name:"Next.js",      color:"#6366F1" },
   { name:"TypeScript",   color:"#3B82F6" },
   { name:"Python",       color:"#FBBF24" },
   { name:"OpenAI",       color:"#10B981" },
@@ -48,7 +48,7 @@ export default function TechStack() {
   const inView = useInView(ref, { once:true, margin:"-60px" });
 
   return (
-    <section id="tech" ref={ref} className="section-pad relative overflow-hidden" style={{ background:"linear-gradient(180deg, #141420 0%, #0A0A0F 100%)" }}>
+    <section id="tech" ref={ref} className="section-pad relative overflow-hidden" style={{ background:"linear-gradient(180deg, #0F0F14 0%, #08080C 100%)" }}>
       {/* Animated dots + floating orbs */}
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
         {/* Drifting mesh blobs */}
@@ -56,7 +56,7 @@ export default function TechStack() {
           position: "absolute", borderRadius: "50%",
           width: "clamp(400px,50vw,700px)", height: "clamp(200px,25vw,350px)",
           top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-          background: "radial-gradient(ellipse, rgba(247,231,206,0.12), transparent 65%)",
+          background: "radial-gradient(ellipse, rgba(129,140,248,0.12), transparent 65%)",
           filter: "blur(70px)",
           animation: "aurora 20s ease-in-out infinite",
         }} />
@@ -72,7 +72,7 @@ export default function TechStack() {
           position: "absolute", borderRadius: "50%",
           width: 300, height: 250,
           bottom: "10%", right: "5%",
-          background: "radial-gradient(ellipse, rgba(123,47,247,0.08), transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(79,70,229,0.08), transparent 70%)",
           filter: "blur(60px)",
           animation: "bgOrb2 19s ease-in-out infinite",
         }} />
@@ -103,9 +103,9 @@ export default function TechStack() {
       {/* Row 1 — forward */}
       <div className="relative mb-4 overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(90deg,#141420,transparent)" }} />
+          style={{ background:"linear-gradient(90deg,#0F0F14,transparent)" }} />
         <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(-90deg,#141420,transparent)" }} />
+          style={{ background:"linear-gradient(-90deg,#0F0F14,transparent)" }} />
         <div className="flex gap-3 anim-marquee" style={{ width:"max-content" }}>
           {row1.map((t,i) => <Chip key={i} t={t} i={i} />)}
         </div>
@@ -114,9 +114,9 @@ export default function TechStack() {
       {/* Row 2 — reverse */}
       <div className="relative overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(90deg,#141420,transparent)" }} />
+          style={{ background:"linear-gradient(90deg,#0F0F14,transparent)" }} />
         <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(-90deg,#141420,transparent)" }} />
+          style={{ background:"linear-gradient(-90deg,#0F0F14,transparent)" }} />
         <div className="flex gap-3 anim-marquee-r" style={{ width:"max-content" }}>
           {row2.map((t,i) => <Chip key={i} t={t} i={i} />)}
         </div>

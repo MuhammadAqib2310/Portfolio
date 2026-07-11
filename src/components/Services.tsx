@@ -5,7 +5,7 @@ import { services } from "@/lib/utils";
 import TiltCard from "@/components/TiltCard";
 import PremiumBG from "@/components/PremiumBG";
 
-const colors = ["#D4AF37", "#F7E7CE", "#A0A0AB", "#F59E0B", "#22C55E", "#EF4444"];
+const colors = ["#6366F1", "#818CF8", "#9A9AA5", "#F59E0B", "#22C55E", "#EF4444"];
 
 export default function Services() {
   const ref    = useRef(null);
@@ -16,10 +16,10 @@ export default function Services() {
       id="services"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0F0F1A 0%, #0A0A0F 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0C0C11 0%, #08080C 100%)" }}
     >
       {/* Premium mesh gradient + floating glass shapes + orbs */}
-      <PremiumBG variant="mesh" accent="#D4AF37" cyan="#0FBF6E" />
+      <PremiumBG variant="mesh" accent="#6366F1" cyan="#818CF8" />
 
       {/* Extra layered glows */}
       <div className="absolute pointer-events-none rounded-full"
@@ -27,7 +27,7 @@ export default function Services() {
           background: "radial-gradient(circle, rgba(255,255,255,0.11), transparent 65%)", filter: "blur(90px)" }} />
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 500, height: 500, top: "-10%", right: "-5%",
-          background: "radial-gradient(circle, rgba(247,231,206,0.09), transparent 65%)", filter: "blur(80px)" }} />
+          background: "radial-gradient(circle, rgba(129,140,248,0.09), transparent 65%)", filter: "blur(80px)" }} />
 
       <div className="wrap">
         {/* Heading */}
@@ -37,7 +37,7 @@ export default function Services() {
           transition={{ duration: 0.65 }}
           className="text-center mb-14"
         >
-          <span className="sec-label" style={{ color: "#D4AF37" }}>What I Do</span>
+          <span className="sec-label" style={{ color: "#6366F1" }}>What I Do</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             AI-Powered <span className="g-text">Services</span>
           </h2>

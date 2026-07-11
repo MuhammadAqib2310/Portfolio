@@ -81,7 +81,7 @@ export default function Contact() {
   };
 
   const focus  = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.target.style.borderColor = "rgba(212,175,55,0.5)";
+    e.target.style.borderColor = "rgba(99,102,241,0.5)";
     e.target.style.boxShadow   = "0 0 0 3px rgba(255,255,255,0.1)";
   };
   const blur   = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>, id: string) => {
@@ -94,10 +94,10 @@ export default function Contact() {
       id="contact"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0F0F1A 0%, #0A0A0F 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0C0C11 0%, #08080C 100%)" }}
     >
       {/* Premium aurora BG — aurora band + gradient blobs + orbs */}
-      <PremiumBG variant="aurora" accent="#D4AF37" cyan="#0FBF6E" />
+      <PremiumBG variant="aurora" accent="#6366F1" cyan="#818CF8" />
 
       {/* Deep center radial */}
       <div className="absolute pointer-events-none rounded-full"
@@ -106,7 +106,7 @@ export default function Contact() {
       {/* Violet accent */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 400, height: 400, top: "20%", right: "10%",
-          background: "radial-gradient(circle, rgba(123,47,247,0.08), transparent 70%)", filter: "blur(80px)" }} />
+          background: "radial-gradient(circle, rgba(79,70,229,0.08), transparent 70%)", filter: "blur(80px)" }} />
 
       <div className="wrap">
         {/* Heading */}
@@ -116,7 +116,7 @@ export default function Contact() {
           transition={{ duration: 0.65 }}
           className="text-center mb-14"
         >
-          <span className="sec-label" style={{ color: "#D4AF37" }}>Get In Touch</span>
+          <span className="sec-label" style={{ color: "#6366F1" }}>Get In Touch</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             Let&apos;s <span className="g-text">Build Together</span>
           </h2>
@@ -151,7 +151,7 @@ export default function Contact() {
                 style={{ padding: "1rem" }}
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
-                  style={{ background: "rgba(255,255,255,0.14)", border: "1px solid rgba(212,175,55,0.25)" }}>
+                  style={{ background: "rgba(255,255,255,0.14)", border: "1px solid rgba(99,102,241,0.25)" }}>
                   {icon}
                 </div>
                 <div>
@@ -298,13 +298,13 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   disabled={sending}
-                  whileHover={{ scale: sending ? 1 : 1.02, boxShadow: sending ? "none" : "0 0 40px rgba(212,175,55,0.45)" }}
+                  whileHover={{ scale: sending ? 1 : 1.02, boxShadow: sending ? "none" : "0 0 40px rgba(99,102,241,0.45)" }}
                   whileTap={{ scale: sending ? 1 : 0.98 }}
                   className="w-full font-bold text-sm flex items-center justify-center gap-2 text-white"
                   style={{
                     padding: "0.9rem",
                     borderRadius: "0.875rem",
-                    background: sending ? "rgba(212,175,55,0.5)" : "linear-gradient(135deg, #D4AF37, #F7E7CE)",
+                    background: sending ? "rgba(99,102,241,0.5)" : "linear-gradient(135deg, #6366F1, #818CF8)",
                     cursor: sending ? "not-allowed" : "none",
                   }}
                 >

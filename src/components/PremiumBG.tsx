@@ -5,8 +5,8 @@ import { useEffect, useRef } from "react";
    PremiumBG — drop-in animated background layer
    Props:
      variant: "mesh" | "grid" | "aurora" | "dots" | "geo"
-     accent:  primary color hex  (default #D4AF37)
-     cyan:    secondary color hex (default #F7E7CE)
+     accent:  primary color hex  (default #6366F1)
+     cyan:    secondary color hex (default #818CF8)
    All absolutely positioned, pointer-events:none, z:0
 ───────────────────────────────────────────────────────── */
 
@@ -191,7 +191,7 @@ function ProcessConnectors({ accent, cyan }: { accent: string; cyan: string }) {
         <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor={accent} stopOpacity="0.8" />
           <stop offset="33%" stopColor={cyan} stopOpacity="0.8" />
-          <stop offset="66%" stopColor="#A0A0AB" stopOpacity="0.8" />
+          <stop offset="66%" stopColor="#9A9AA5" stopOpacity="0.8" />
           <stop offset="100%" stopColor="#22C55E" stopOpacity="0.8" />
         </linearGradient>
       </defs>
@@ -205,7 +205,7 @@ function ProcessConnectors({ accent, cyan }: { accent: string; cyan: string }) {
 
       {/* Moving dot along connector */}
       {[0, 1, 2].map(idx => (
-        <circle key={idx} r="4" fill={idx === 0 ? accent : idx === 1 ? cyan : "#A0A0AB"} filter="url(#processGlow)">
+        <circle key={idx} r="4" fill={idx === 0 ? accent : idx === 1 ? cyan : "#9A9AA5"} filter="url(#processGlow)">
           <animateMotion dur={`${4 + idx * 1.5}s`} begin={`${idx * 1.5}s`} repeatCount="indefinite"
             path="M 90,0 L 710,0" />
           <animate attributeName="opacity" values="0;1;1;0" dur={`${4 + idx * 1.5}s`} begin={`${idx * 1.5}s`} repeatCount="indefinite" />
@@ -222,7 +222,7 @@ function AuroraBand({ accent, cyan }: { accent: string; cyan: string }) {
       {/* Main aurora sweep */}
       <div style={{
         position: "absolute", left: "-20%", right: "-20%", height: "55%", top: "10%",
-        background: `linear-gradient(135deg, ${accent}22 0%, ${cyan}16 35%, #A0A0AB14 65%, transparent 80%)`,
+        background: `linear-gradient(135deg, ${accent}22 0%, ${cyan}16 35%, #9A9AA514 65%, transparent 80%)`,
         filter: "blur(70px)",
         animation: "auroraBand 16s ease-in-out infinite",
         borderRadius: "60%",
@@ -240,7 +240,7 @@ function AuroraBand({ accent, cyan }: { accent: string; cyan: string }) {
       {/* Tertiary accent */}
       <div style={{
         position: "absolute", left: "40%", right: "10%", height: "30%", top: "55%",
-        background: `radial-gradient(ellipse, #A0A0AB18 0%, transparent 70%)`,
+        background: `radial-gradient(ellipse, #9A9AA518 0%, transparent 70%)`,
         filter: "blur(60px)",
         animation: "bgOrb3 12s ease-in-out infinite",
         borderRadius: "50%",
@@ -273,7 +273,7 @@ function MeshGradient({ accent, cyan }: { accent: string; cyan: string }) {
         { top: "50%", left: "58%", w: 520, h: 420, color: cyan,   delay: 4,  dur: 20 },
         { top: "20%", left: "33%", w: 380, h: 320, color: accent, delay: 8,  dur: 14 },
         { top: "68%", left: "8%",  w: 400, h: 340, color: cyan,   delay: 2,  dur: 18 },
-        { top: "10%", left: "70%", w: 340, h: 300, color: "#A0A0AB", delay: 6, dur: 22 },
+        { top: "10%", left: "70%", w: 340, h: 300, color: "#9A9AA5", delay: 6, dur: 22 },
       ].map((b, i) => (
         <div key={i} style={{
           position: "absolute", borderRadius: "50%", pointerEvents: "none",
@@ -298,10 +298,10 @@ function FloatingGlass({ accent, cyan }: { accent: string; cyan: string }) {
   const shapes = [
     { size: 80,  top: "8%",  left: "3%",  delay: 0,   dur: 12, color: accent },
     { size: 55,  top: "75%", left: "6%",  delay: 3,   dur: 16, color: cyan },
-    { size: 65,  top: "15%", left: "88%", delay: 6,   dur: 14, color: "#A0A0AB" },
+    { size: 65,  top: "15%", left: "88%", delay: 6,   dur: 14, color: "#9A9AA5" },
     { size: 45,  top: "80%", left: "85%", delay: 2,   dur: 18, color: accent },
     { size: 100, top: "45%", left: "92%", delay: 8,   dur: 20, color: cyan },
-    { size: 70,  top: "55%", left: "1%",  delay: 4,   dur: 15, color: "#A0A0AB" },
+    { size: 70,  top: "55%", left: "1%",  delay: 4,   dur: 15, color: "#9A9AA5" },
   ];
   return (
     <div style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0, overflow: "hidden" }}>
@@ -387,8 +387,8 @@ const CSS_KEYFRAMES = `
 /* ── Main export ── */
 export default function PremiumBG({
   variant = "mesh",
-  accent = "#D4AF37",
-  cyan = "#0FBF6E",
+  accent = "#6366F1",
+  cyan = "#22C55E",
 }: Props) {
   return (
     <>

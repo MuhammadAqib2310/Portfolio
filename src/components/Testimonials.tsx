@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { testimonials } from "@/lib/utils";
 
 const avatarGrads = [
-  "linear-gradient(135deg, #D4AF37, #F7E7CE)",
-  "linear-gradient(135deg, #F7E7CE, #A0A0AB)",
-  "linear-gradient(135deg, #A0A0AB, #EF4444)",
+  "linear-gradient(135deg, #6366F1, #818CF8)",
+  "linear-gradient(135deg, #818CF8, #9A9AA5)",
+  "linear-gradient(135deg, #9A9AA5, #EF4444)",
   "linear-gradient(135deg, #F59E0B, #22C55E)",
 ];
 
@@ -19,7 +19,7 @@ export default function Testimonials() {
       id="testimonials"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #141420 0%, #0F0F1A 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0F0F14 0%, #0C0C11 100%)" }}
     >
       {/* BG glow */}
       <div
