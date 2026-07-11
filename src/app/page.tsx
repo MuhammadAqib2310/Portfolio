@@ -13,6 +13,7 @@ import Experience from "@/components/Experience";
 
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import SocialProof from "@/components/SocialProof";
 
 const Cursor           = dynamic(() => import("@/components/Cursor"),           { ssr: false });
 const LoadingScreen    = dynamic(() => import("@/components/LoadingScreen"),    { ssr: false });
@@ -33,6 +34,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <SocialProof />
         <About />
         <TechStack />
         <Services />

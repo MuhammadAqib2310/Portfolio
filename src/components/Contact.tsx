@@ -59,6 +59,13 @@ export default function Contact() {
   const ref    = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("aqibm8123@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const openWhatsApp = (msg?: string) => {
     const text = msg
@@ -181,7 +188,23 @@ export default function Contact() {
                   transform: hoveredCard === i ? "translateX(3px)" : "translateX(0)",
                   fontSize: "1.1rem",
                 }}>
-                  →
+                  {c.label === "Email" ? (
+                    <motion.button
+                      onClick={e => { e.preventDefault(); copyEmail(); }}
+                      whileTap={{ scale: 0.9 }}
+                      title="Copy email"
+                      style={{
+                        background: copied ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.06)",
+                        border: `1px solid ${copied ? "rgba(34,197,94,0.3)" : "rgba(255,255,255,0.1)"}`,
+                        borderRadius: "0.5rem", padding: "0.25rem 0.5rem",
+                        color: copied ? "#22C55E" : "#9A9AA5",
+                        fontSize: "0.65rem", fontWeight: 700, cursor: "none",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      {copied ? "✓ Copied" : "Copy"}
+                    </motion.button>
+                  ) : "→"}
                 </div>
               </motion.a>
             ))}
