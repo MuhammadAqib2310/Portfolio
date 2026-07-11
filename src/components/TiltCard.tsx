@@ -66,10 +66,10 @@ export default function TiltCard({
         WebkitBackdropFilter: "blur(12px)",
         /* Premium border + glow on hover */
         boxShadow: hovered
-          ? "0 8px 48px rgba(255,255,255,0.22), 0 2px 16px rgba(226,226,226,0.12), 0 0 0 1px rgba(226,226,226,0.25)"
+          ? "0 8px 48px rgba(255,255,255,0.22), 0 2px 16px rgba(247,231,206,0.12), 0 0 0 1px rgba(247,231,206,0.25)"
           : "0 4px 24px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06)",
         border: hovered
-          ? "1px solid rgba(226,226,226,0.3)"
+          ? "1px solid rgba(247,231,206,0.3)"
           : "1px solid rgba(255,255,255,0.08)",
         transition: "box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease",
         ...style,
@@ -96,7 +96,7 @@ export default function TiltCard({
           left: "10%",
           right: "10%",
           height: "1px",
-          background: "linear-gradient(90deg, transparent, rgba(226,226,226,0.6), transparent)",
+          background: "linear-gradient(90deg, transparent, rgba(247,231,206,0.6), transparent)",
           pointerEvents: "none",
           zIndex: 3,
           opacity: hovered ? 1 : 0,

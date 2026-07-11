@@ -47,7 +47,7 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #080808 0%, #111111 50%, #080808 100%)" }}>
+      style={{ background: "linear-gradient(135deg, #0A0A0F 0%, #141420 50%, #0A0A0F 100%)" }}>
 
       {/* Aurora glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -56,16 +56,16 @@ export default function Hero() {
             background: "radial-gradient(circle, rgba(255,255,255,0.28) 0%, transparent 65%)", filter: "blur(70px)" }} />
         <div className="absolute rounded-full"
           style={{ width: "min(700px,90vw)", height: "min(700px,90vw)", bottom: "-20%", right: "-15%",
-            background: "radial-gradient(circle, rgba(226,226,226,0.22) 0%, transparent 65%)", filter: "blur(70px)",
+            background: "radial-gradient(circle, rgba(123,47,247,0.22) 0%, transparent 65%)", filter: "blur(70px)",
             animation: "aurora 22s ease-in-out infinite reverse" }} />
         <div className="absolute rounded-full"
           style={{ width: "min(500px,60vw)", height: "min(500px,60vw)", top: "30%", left: "45%",
-            background: "radial-gradient(circle, rgba(160,160,160,0.15) 0%, transparent 65%)", filter: "blur(60px)",
+            background: "radial-gradient(circle, rgba(123,47,247,0.15) 0%, transparent 65%)", filter: "blur(60px)",
             animation: "aurora 14s ease-in-out infinite" }} />
         {/* Extra soft violet accent */}
         <div className="absolute rounded-full"
           style={{ width: "min(400px,50vw)", height: "min(400px,50vw)", bottom: "10%", left: "20%",
-            background: "radial-gradient(circle, rgba(160,160,160,0.1) 0%, transparent 65%)", filter: "blur(80px)",
+            background: "radial-gradient(circle, rgba(123,47,247,0.1) 0%, transparent 65%)", filter: "blur(80px)",
             animation: "aurora 17s ease-in-out infinite 3s" }} />
         {/* Soft radial gradient center vignette for depth */}
         <div className="absolute inset-0"
@@ -74,7 +74,7 @@ export default function Hero() {
 
       {/* Dot grid */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ backgroundImage: "radial-gradient(rgba(226,226,226,0.14) 1px, transparent 1px)",
+        style={{ backgroundImage: "radial-gradient(rgba(247,231,206,0.14) 1px, transparent 1px)",
           backgroundSize: "48px 48px", opacity: 0.5,
           maskImage: "radial-gradient(ellipse 85% 75% at 50% 50%, black 20%, transparent 80%)",
           WebkitMaskImage: "radial-gradient(ellipse 85% 75% at 50% 50%, black 20%, transparent 80%)", zIndex: 0 }} />
@@ -94,7 +94,7 @@ export default function Hero() {
             <motion.div variants={item}>
               <div className="inline-flex items-center gap-2.5 mb-8 font-semibold"
                 style={{ padding: "0.45rem 1rem", borderRadius: "999px", fontSize: "0.78rem",
-                  background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.35)",
+                  background: "rgba(212,175,55,0.15)", border: "1px solid rgba(212,175,55,0.35)",
                   color: "#93C5FD", letterSpacing: "0.02em" }}>
                 <span className="w-2 h-2 rounded-full flex-shrink-0"
                   style={{ background: "#22C55E", boxShadow: "0 0 8px #22C55E", animation: "pulse-glow 2s ease-in-out infinite" }} />
@@ -117,7 +117,7 @@ export default function Hero() {
               style={{ fontSize: "clamp(1rem, 2.5vw, 1.35rem)", color: "#94A3B8", minHeight: "2.2rem", fontWeight: 500 }}>
               <span>I&apos;m a&nbsp;</span>
               <span ref={roleRef} className="g-text font-bold" />
-              <span className="anim-pulse-glow" style={{ color: "#FFFFFF", fontSize: "1.1em", marginLeft: "1px" }}>|</span>
+              <span className="anim-pulse-glow" style={{ color: "#D4AF37", fontSize: "1.1em", marginLeft: "1px" }}>|</span>
             </motion.div>
 
             {/* Description */}
@@ -152,8 +152,8 @@ export default function Hero() {
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
                 className="font-bold text-white text-sm rounded-2xl"
                 style={{ padding: "0.85rem 2rem",
-                  background: "linear-gradient(135deg, #FFFFFF 0%, #E2E2E2 100%)",
-                  boxShadow: "0 4px 28px rgba(255,255,255,0.45)" }}>
+                  background: "linear-gradient(135deg, #D4AF37 0%, #7B2FF7 50%, #0FBF6E 100%)",
+                  boxShadow: "0 4px 28px rgba(212,175,55,0.45)" }}>
                 View Projects →
               </MagneticButton>
               <MagneticButton
@@ -166,8 +166,8 @@ export default function Hero() {
               <MagneticButton href="/resume.pdf" download
                 className="font-bold text-sm rounded-2xl flex items-center gap-2"
                 style={{ padding: "0.85rem 2rem",
-                  border: "1px solid rgba(226,226,226,0.35)", color: "#E2E2E2",
-                  background: "rgba(226,226,226,0.07)" }}>
+                  border: "1px solid rgba(247,231,206,0.35)", color: "#F7E7CE",
+                  background: "rgba(247,231,206,0.07)" }}>
                 ↓ Resume
               </MagneticButton>
             </motion.div>
@@ -183,29 +183,29 @@ export default function Hero() {
 
             {/* Glow */}
             <div className="absolute inset-0 pointer-events-none rounded-full"
-              style={{ background: "radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(226,226,226,0.18) 45%, transparent 70%)",
+              style={{ background: "radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(247,231,206,0.18) 45%, transparent 70%)",
                 filter: "blur(50px)", transform: "scale(1.5)" }} />
 
             {/* Spinning ring */}
             <div className="absolute anim-spin-slow pointer-events-none"
               style={{ inset: "-12px", borderRadius: "50%",
-                background: "conic-gradient(from 0deg, #FFFFFF 0%, #E2E2E2 33%, #A0A0A0 66%, transparent 80%, #FFFFFF 100%)",
+                background: "conic-gradient(from 0deg, #D4AF37 0%, #F7E7CE 33%, #A0A0AB 66%, transparent 80%, #D4AF37 100%)",
                 WebkitMask: "radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px))",
                 mask: "radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px))" }} />
 
             {/* Static ring */}
             <div className="absolute pointer-events-none"
-              style={{ inset: "-6px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.25)" }} />
+              style={{ inset: "-6px", borderRadius: "50%", border: "1px solid rgba(212,175,55,0.25)" }} />
 
             {/* Photo */}
             <div className="relative rounded-full overflow-hidden"
               style={{ width: "clamp(220px, 28vw, 320px)", height: "clamp(220px, 28vw, 320px)",
-                border: "3px solid rgba(255,255,255,0.35)",
-                boxShadow: "0 0 0 1px rgba(226,226,226,0.12), inset 0 0 40px rgba(255,255,255,0.08)" }}>
+                border: "3px solid rgba(212,175,55,0.35)",
+                boxShadow: "0 0 0 1px rgba(247,231,206,0.12), inset 0 0 40px rgba(255,255,255,0.08)" }}>
               {imgError ? (
                 <div className="absolute inset-0 flex items-center justify-center font-black select-none"
                   style={{ fontSize: "clamp(3rem,8vw,5rem)",
-                    background: "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(226,226,226,0.1))", color: "#FFFFFF" }}>
+                    background: "linear-gradient(135deg, rgba(212,175,55,0.2), rgba(247,231,206,0.1))", color: "#D4AF37" }}>
                   MA
                 </div>
               ) : (
@@ -218,9 +218,9 @@ export default function Hero() {
             <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
               className="absolute whitespace-nowrap font-bold text-xs"
               style={{ left: 0, top: "26%", padding: "0.5rem 0.875rem", borderRadius: "0.875rem",
-                background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.5)",
+                background: "rgba(212,175,55,0.2)", border: "1px solid rgba(212,175,55,0.5)",
                 color: "#93C5FD", backdropFilter: "blur(16px)", zIndex: 10,
-                boxShadow: "0 4px 20px rgba(255,255,255,0.25)" }}>
+                boxShadow: "0 4px 20px rgba(212,175,55,0.25)" }}>
               🤖 AI Specialist
             </motion.div>
 
@@ -228,9 +228,9 @@ export default function Hero() {
             <motion.div animate={{ y: [8, -8, 8] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               className="absolute whitespace-nowrap font-bold text-xs"
               style={{ right: 0, bottom: "26%", padding: "0.5rem 0.875rem", borderRadius: "0.875rem",
-                background: "rgba(226,226,226,0.15)", border: "1px solid rgba(226,226,226,0.4)",
-                color: "#E2E2E2", backdropFilter: "blur(16px)", zIndex: 10,
-                boxShadow: "0 4px 20px rgba(226,226,226,0.18)" }}>
+                background: "rgba(247,231,206,0.15)", border: "1px solid rgba(247,231,206,0.4)",
+                color: "#F7E7CE", backdropFilter: "blur(16px)", zIndex: 10,
+                boxShadow: "0 4px 20px rgba(247,231,206,0.18)" }}>
               ⚡ Full Stack
             </motion.div>
 
@@ -253,7 +253,7 @@ export default function Hero() {
         <span style={{ fontSize: "0.65rem", letterSpacing: "0.2em", color: "#334155", fontWeight: 600 }}>SCROLL</span>
         <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.6, repeat: Infinity }}
           style={{ width: "1px", height: "36px",
-            background: "linear-gradient(to bottom, #FFFFFF, transparent)", borderRadius: "1px" }} />
+            background: "linear-gradient(to bottom, #D4AF37, transparent)", borderRadius: "1px" }} />
       </motion.div>
     </section>
   );
