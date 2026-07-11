@@ -13,7 +13,7 @@ interface Particle {
   pulseSpeed: number;
 }
 
-const COLORS = ["#2563EB", "#38BDF8", "#6366F1", "#2563EB", "#38BDF8"];
+const COLORS = ["#E879A0", "#FCA5C0", "#C084A0", "#E879A0", "#FCA5C0"];
 const PARTICLE_COUNT = 110;
 const CONNECTION_DIST = 130;
 const MOUSE_REPEL_DIST = 120;

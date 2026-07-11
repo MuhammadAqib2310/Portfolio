@@ -48,7 +48,7 @@ export default function TechStack() {
   const inView = useInView(ref, { once:true, margin:"-60px" });
 
   return (
-    <section id="tech" ref={ref} className="section-pad relative overflow-hidden" style={{ background:"linear-gradient(180deg, #1E293B 0%, #0F172A 100%)" }}>
+    <section id="tech" ref={ref} className="section-pad relative overflow-hidden" style={{ background:"linear-gradient(180deg, #13101A 0%, #0D0A0E 100%)" }}>
       {/* Animated dots + floating orbs */}
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
         {/* Drifting mesh blobs */}
@@ -56,7 +56,7 @@ export default function TechStack() {
           position: "absolute", borderRadius: "50%",
           width: "clamp(400px,50vw,700px)", height: "clamp(200px,25vw,350px)",
           top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-          background: "radial-gradient(ellipse, rgba(56,189,248,0.12), transparent 65%)",
+          background: "radial-gradient(ellipse, rgba(252,165,192,0.12), transparent 65%)",
           filter: "blur(70px)",
           animation: "aurora 20s ease-in-out infinite",
         }} />
@@ -64,7 +64,7 @@ export default function TechStack() {
           position: "absolute", borderRadius: "50%",
           width: 350, height: 300,
           top: "10%", left: "5%",
-          background: "radial-gradient(ellipse, rgba(37,99,235,0.09), transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(232,121,160,0.09), transparent 70%)",
           filter: "blur(60px)",
           animation: "bgOrb1 16s ease-in-out infinite",
         }} />
@@ -72,14 +72,14 @@ export default function TechStack() {
           position: "absolute", borderRadius: "50%",
           width: 300, height: 250,
           bottom: "10%", right: "5%",
-          background: "radial-gradient(ellipse, rgba(99,102,241,0.08), transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(192,132,160,0.08), transparent 70%)",
           filter: "blur(60px)",
           animation: "bgOrb2 19s ease-in-out infinite",
         }} />
         {/* Subtle grid */}
         <div style={{
           position: "absolute", inset: 0,
-          backgroundImage: "linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(232,121,160,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(232,121,160,0.04) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
           maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%)",
           WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%)",
@@ -103,9 +103,9 @@ export default function TechStack() {
       {/* Row 1 — forward */}
       <div className="relative mb-4 overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(90deg,#1E293B,transparent)" }} />
+          style={{ background:"linear-gradient(90deg,#13101A,transparent)" }} />
         <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(-90deg,#1E293B,transparent)" }} />
+          style={{ background:"linear-gradient(-90deg,#13101A,transparent)" }} />
         <div className="flex gap-3 anim-marquee" style={{ width:"max-content" }}>
           {row1.map((t,i) => <Chip key={i} t={t} i={i} />)}
         </div>
@@ -114,9 +114,9 @@ export default function TechStack() {
       {/* Row 2 — reverse */}
       <div className="relative overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(90deg,#1E293B,transparent)" }} />
+          style={{ background:"linear-gradient(90deg,#13101A,transparent)" }} />
         <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background:"linear-gradient(-90deg,#1E293B,transparent)" }} />
+          style={{ background:"linear-gradient(-90deg,#13101A,transparent)" }} />
         <div className="flex gap-3 anim-marquee-r" style={{ width:"max-content" }}>
           {row2.map((t,i) => <Chip key={i} t={t} i={i} />)}
         </div>

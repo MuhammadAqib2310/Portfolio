@@ -10,7 +10,7 @@ const experiences = [
     duration: "2+ yrs",
     desc: "Building production AI agents, SaaS platforms, and automation systems for startups and enterprises globally. Delivered 50+ projects with 99%+ client satisfaction.",
     tags: ["AI Agents", "LangChain", "Next.js", "Python", "OpenAI"],
-    color: "#2563EB",
+    color: "#E879A0",
     icon: "🤖",
     current: true,
   },
@@ -21,7 +21,7 @@ const experiences = [
     duration: "1 yr",
     desc: "Designed and deployed intelligent workflow automation systems that reduced client operational costs by 45%. Integrated cutting-edge LLMs into existing enterprise software.",
     tags: ["LLM Integration", "FastAPI", "React", "AWS", "Docker"],
-    color: "#38BDF8",
+    color: "#FCA5C0",
     icon: "⚡",
     current: false,
   },
@@ -32,7 +32,7 @@ const experiences = [
     duration: "1 yr",
     desc: "Developed multi-tenant SaaS applications with real-time features using React and Node.js. Architected databases and APIs serving 10K+ daily active users.",
     tags: ["React", "Node.js", "PostgreSQL", "Redis", "Stripe"],
-    color: "#6366F1",
+    color: "#C084A0",
     icon: "🚀",
     current: false,
   },
@@ -47,16 +47,16 @@ export default function Experience() {
       id="experience"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #162032 0%, #1E293B 100%)" }}
+      style={{ background: "linear-gradient(180deg, #100D16 0%, #13101A 100%)" }}
     >
       {/* BG glow */}
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 500, height: 500, top: "30%", right: "-12%",
-          background: "radial-gradient(circle, rgba(99,102,241,0.08), transparent 65%)",
+          background: "radial-gradient(circle, rgba(192,132,160,0.08), transparent 65%)",
           filter: "blur(80px)" }} />
       <div className="absolute pointer-events-none rounded-full"
         style={{ width: 400, height: 400, bottom: "10%", left: "-10%",
-          background: "radial-gradient(circle, rgba(37,99,235,0.07), transparent 65%)",
+          background: "radial-gradient(circle, rgba(232,121,160,0.07), transparent 65%)",
           filter: "blur(70px)" }} />
 
       <div className="wrap">
@@ -67,7 +67,7 @@ export default function Experience() {
           transition={{ duration: 0.65 }}
           className="text-center mb-16"
         >
-          <span className="sec-label" style={{ color: "#6366F1" }}>Career</span>
+          <span className="sec-label" style={{ color: "#C084A0" }}>Career</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#fff" }}>
             Work <span className="g-text">Experience</span>
           </h2>
@@ -86,7 +86,7 @@ export default function Experience() {
               style={{
                 left: "19px",
                 width: "2px",
-                background: "linear-gradient(to bottom, #2563EB, #38BDF8, #6366F1, transparent)",
+                background: "linear-gradient(to bottom, #E879A0, #FCA5C0, #C084A0, transparent)",
                 borderRadius: "1px",
               }}
             />
@@ -118,7 +118,7 @@ export default function Experience() {
                           className="absolute -top-1 -right-1 w-3 h-3 rounded-full border-2"
                           style={{
                             background: "#22C55E",
-                            borderColor: "#162032",
+                            borderColor: "#100D16",
                             boxShadow: "0 0 8px #22C55E",
                             animation: "pulse-glow 2s ease-in-out infinite",
                           }}
@@ -158,7 +158,7 @@ export default function Experience() {
                           {exp.icon}
                           {exp.current && (
                             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full border-2"
-                              style={{ background: "#22C55E", borderColor: "#162032" }} />
+                              style={{ background: "#22C55E", borderColor: "#100D16" }} />
                           )}
                         </div>
                         <span

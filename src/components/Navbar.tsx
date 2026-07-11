@@ -47,7 +47,7 @@ export default function Navbar() {
       <motion.div
         className="fixed top-0 left-0 h-[2px] z-[1001] origin-left w-full"
         style={{
-          background: "linear-gradient(90deg, #2563EB 0%, #38BDF8 50%, #6366F1 100%)",
+          background: "linear-gradient(90deg, #E879A0 0%, #FCA5C0 50%, #C084A0 100%)",
           scaleX,
         }}
       />
@@ -64,12 +64,12 @@ export default function Navbar() {
           style={{
             padding: "0.875rem 1.75rem",
             background: scrolled
-              ? "rgba(15,23,42,0.97)"
+              ? "rgba(13,10,14,0.97)"
               : "rgba(255,255,255,0.05)",
             backdropFilter: "blur(32px)",
             WebkitBackdropFilter: "blur(32px)",
             border: scrolled
-              ? "1px solid rgba(37,99,235,0.25)"
+              ? "1px solid rgba(232,121,160,0.25)"
               : "1px solid rgba(255,255,255,0.1)",
             boxShadow: scrolled
               ? "0 8px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)"
@@ -85,8 +85,8 @@ export default function Navbar() {
             <div
               className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm text-white flex-shrink-0"
               style={{
-                background: "linear-gradient(135deg, #2563EB 0%, #38BDF8 100%)",
-                boxShadow: "0 4px 16px rgba(37,99,235,0.45)",
+                background: "linear-gradient(135deg, #E879A0 0%, #FCA5C0 100%)",
+                boxShadow: "0 4px 16px rgba(232,121,160,0.45)",
                 letterSpacing: "0",
               }}
             >
@@ -101,7 +101,7 @@ export default function Navbar() {
                   letterSpacing: "-0.03em",
                 }}
               >
-                M<span style={{ color: "#2563EB" }}>.</span>Aqib
+                M<span style={{ color: "#E879A0" }}>.</span>Aqib
               </span>
               <span style={{ fontSize: "0.6rem", color: "#64748B", letterSpacing: "0.12em", fontWeight: 600 }}>
                 AI ENGINEER
@@ -135,7 +135,7 @@ export default function Navbar() {
                     <motion.span
                       layoutId="nav-active"
                       className="absolute inset-0 rounded-xl"
-                      style={{ background: "rgba(37,99,235,0.18)", border: "1px solid rgba(37,99,235,0.25)" }}
+                      style={{ background: "rgba(232,121,160,0.18)", border: "1px solid rgba(232,121,160,0.25)" }}
                       transition={{ type: "spring", bounce: 0.2, duration: 0.45 }}
                     />
                   )}
@@ -149,13 +149,13 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <motion.button
               onClick={() => scrollTo("contact")}
-              whileHover={{ scale: 1.04, boxShadow: "0 0 32px rgba(37,99,235,0.55)" }}
+              whileHover={{ scale: 1.04, boxShadow: "0 0 32px rgba(232,121,160,0.55)" }}
               whileTap={{ scale: 0.97 }}
               className="hidden md:flex items-center gap-2 font-bold text-white text-sm rounded-xl"
               style={{
                 padding: "0.6rem 1.4rem",
-                background: "linear-gradient(135deg, #2563EB 0%, #38BDF8 100%)",
-                boxShadow: "0 4px 20px rgba(37,99,235,0.35)",
+                background: "linear-gradient(135deg, #E879A0 0%, #FCA5C0 100%)",
+                boxShadow: "0 4px 20px rgba(232,121,160,0.35)",
               }}
             >
               Hire Me
@@ -170,7 +170,7 @@ export default function Navbar() {
               onClick={() => setOpen(v => !v)}
               className="md:hidden w-10 h-10 rounded-xl flex flex-col justify-center items-center gap-[5px] transition-all"
               style={{
-                background: open ? "rgba(37,99,235,0.2)" : "rgba(255,255,255,0.06)",
+                background: open ? "rgba(232,121,160,0.2)" : "rgba(255,255,255,0.06)",
                 border: "1px solid rgba(255,255,255,0.1)",
               }}
             >
@@ -202,7 +202,7 @@ export default function Navbar() {
               className="mt-2 rounded-2xl overflow-hidden"
               style={{
                 background: "rgba(10,10,18,0.98)",
-                border: "1px solid rgba(37,99,235,0.2)",
+                border: "1px solid rgba(232,121,160,0.2)",
                 backdropFilter: "blur(32px)",
                 boxShadow: "0 16px 64px rgba(0,0,0,0.4)",
               }}
@@ -224,7 +224,7 @@ export default function Navbar() {
                   }}
                   onMouseEnter={e => {
                     e.currentTarget.style.color = "#fff";
-                    e.currentTarget.style.background = "rgba(37,99,235,0.08)";
+                    e.currentTarget.style.background = "rgba(232,121,160,0.08)";
                   }}
                   onMouseLeave={e => {
                     e.currentTarget.style.color = "#B4B8D4";
@@ -241,7 +241,7 @@ export default function Navbar() {
                 <button
                   onClick={() => scrollTo("contact")}
                   className="w-full py-3 rounded-xl text-sm font-bold text-white"
-                  style={{ background: "linear-gradient(135deg, #2563EB, #38BDF8)" }}
+                  style={{ background: "linear-gradient(135deg, #E879A0, #FCA5C0)" }}
                 >
                   Hire Me →
                 </button>
