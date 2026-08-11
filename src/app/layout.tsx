@@ -17,8 +17,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const BASE_URL = "https://muhammadaqib.vercel.app";
-// ⚠️  Update BASE_URL above to your actual deployed domain once live.
+const BASE_URL = "https://portfolio-two-henna-88muozl67z.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
