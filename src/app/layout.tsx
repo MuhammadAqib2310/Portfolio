@@ -98,7 +98,7 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: "google-site-verification-placeholder",
+    google: "QBWH88hrLhSx9o6yFqBZfU6Nv9En_pfg3FrJol8QssE",
   },
 
   category: "technology",
