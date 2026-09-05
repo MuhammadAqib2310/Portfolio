@@ -16,27 +16,26 @@ export default function Footer() {
   const scrollTo = (id: string) => document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior:"smooth" });
 
   return (
-    <footer style={{ background:"#08080C", borderTop:"1px solid rgba(99,102,241,0.15)" }}>
+    <footer style={{ background:"#F4F3EE", borderTop:"1px solid rgba(201,162,39,0.2)" }}>
       <div className="wrap" style={{ paddingTop:"3.5rem", paddingBottom:"3.5rem" }}>
 
-        {/* Top */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
           <div className="text-center md:text-left">
             <button onClick={() => scrollTo("hero")} className="text-2xl font-extrabold mb-1 block tracking-tight">
               <span className="g-text">M</span>
-              <span style={{ color:"#818CF8" }}>.</span>
-              <span style={{ color:"#fff" }}>Aqib</span>
+              <span style={{ color:"#C9A227" }}>.</span>
+              <span style={{ color:"#1E3A5F" }}>Aqib</span>
             </button>
-            <p className="text-xs" style={{ color:"#374151" }}>AI Engineer &amp; Full Stack Developer</p>
+            <p className="text-xs" style={{ color:"#94A3B8" }}>AI Engineer &amp; Full Stack Developer</p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-5 sm:gap-7">
             {links.map(l => (
               <button key={l} onClick={() => scrollTo(l)}
                 className="text-xs sm:text-sm font-medium transition-colors duration-200"
-                style={{ color:"#4B5563" }}
-                onMouseEnter={e=>(e.currentTarget.style.color="#6366F1")}
-                onMouseLeave={e=>(e.currentTarget.style.color="#4B5563")}>
+                style={{ color:"#94A3B8" }}
+                onMouseEnter={e=>(e.currentTarget.style.color="#1E3A5F")}
+                onMouseLeave={e=>(e.currentTarget.style.color="#94A3B8")}>
                 {l}
               </button>
             ))}
@@ -50,16 +49,16 @@ export default function Footer() {
                 aria-label={s.label}
                 whileHover={{ scale:1.12, y:-3 }} whileTap={{ scale:.95 }}
                 className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200"
-                style={{ background:"rgba(255,255,255,0.05)", border:"1px solid rgba(255,255,255,0.08)", color:"#64748B" }}
+                style={{ background:"rgba(30,58,95,0.06)", border:"1px solid rgba(30,58,95,0.1)", color:"#94A3B8" }}
                 onMouseEnter={e=>{
                   const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.color="#C9A962"; el.style.borderColor="rgba(255,255,255,0.4)";
-                  el.style.background="rgba(255,255,255,0.1)";
+                  el.style.color="#1E3A5F"; el.style.borderColor="rgba(201,162,39,0.4)";
+                  el.style.background="rgba(201,162,39,0.08)";
                 }}
                 onMouseLeave={e=>{
                   const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.color="#64748B"; el.style.borderColor="rgba(255,255,255,0.08)";
-                  el.style.background="rgba(255,255,255,0.05)";
+                  el.style.color="#94A3B8"; el.style.borderColor="rgba(30,58,95,0.1)";
+                  el.style.background="rgba(30,58,95,0.06)";
                 }}>
                 {s.icon}
               </motion.a>
@@ -67,15 +66,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Gradient divider */}
         <div className="h-px mb-7"
-          style={{ background:"linear-gradient(90deg, transparent, rgba(99,102,241,0.35) 30%, rgba(129,140,248,0.25) 70%, transparent)" }} />
+          style={{ background:"linear-gradient(90deg, transparent, rgba(201,162,39,0.4) 30%, rgba(30,58,95,0.2) 70%, transparent)" }} />
 
-        {/* Bottom */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-xs" style={{ color:"#374151" }}>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-xs" style={{ color:"#94A3B8" }}>
           <span>© {new Date().getFullYear()} M Aqib. All rights reserved.</span>
           <span>
-            Built with <span className="g-text font-bold">Next.js</span> &amp; <span style={{ color:"#818CF8" }}>Framer Motion</span>
+            Built with <span className="g-text font-bold">Next.js</span> &amp; <span style={{ color:"#1E3A5F" }}>Framer Motion</span>
           </span>
         </div>
       </div>

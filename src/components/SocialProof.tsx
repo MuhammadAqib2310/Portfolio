@@ -13,81 +13,59 @@ const clients = [
 ];
 
 const stats = [
-  { value: "50+",  label: "Projects" },
+  { value: "20+",  label: "Projects" },
   { value: "5★",   label: "Rating" },
-  { value: "99%",  label: "Satisfaction" },
+  { value: "100%", label: "Satisfaction" },
   { value: "24h",  label: "Response" },
 ];
 
-/* duplicate for seamless loop */
 const row = [...clients, ...clients];
 
 export default function SocialProof() {
   return (
     <div style={{
-      background: "rgba(255,255,255,0.02)",
-      borderTop: "1px solid rgba(255,255,255,0.05)",
-      borderBottom: "1px solid rgba(255,255,255,0.05)",
+      background: "rgba(30,58,95,0.03)",
+      borderTop: "1px solid rgba(201,162,39,0.15)",
+      borderBottom: "1px solid rgba(201,162,39,0.15)",
       padding: "1rem 0",
       overflow: "hidden",
       position: "relative",
     }}>
-      {/* left fade */}
       <div style={{
         position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2,
-        background: "linear-gradient(90deg, #08080C, transparent)",
-        pointerEvents: "none",
+        background: "linear-gradient(90deg, #FAFAF7, transparent)", pointerEvents: "none",
       }} />
-      {/* right fade */}
       <div style={{
         position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2,
-        background: "linear-gradient(-90deg, #08080C, transparent)",
-        pointerEvents: "none",
+        background: "linear-gradient(-90deg, #FAFAF7, transparent)", pointerEvents: "none",
       }} />
 
       <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
-
-        {/* Label */}
-        <div style={{
-          flexShrink: 0, paddingLeft: "2rem",
-          fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.2em",
-          textTransform: "uppercase", color: "#55555F", whiteSpace: "nowrap",
-        }}>
+        <div style={{ flexShrink: 0, paddingLeft: "2rem", fontSize: "0.65rem", fontWeight: 700,
+          letterSpacing: "0.2em", textTransform: "uppercase", color: "#94A3B8", whiteSpace: "nowrap" }}>
           Trusted by clients from
         </div>
 
-        {/* Scrolling flags */}
         <div style={{ overflow: "hidden", flex: 1 }}>
           <div className="anim-marquee" style={{ display: "flex", gap: "1.5rem", width: "max-content" }}>
             {row.map((c, i) => (
-              <div key={i} style={{
-                display: "flex", alignItems: "center", gap: "0.4rem",
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.4rem",
                 padding: "0.3rem 0.875rem", borderRadius: "999px",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.06)",
-                whiteSpace: "nowrap",
-              }}>
+                background: "rgba(30,58,95,0.04)", border: "1px solid rgba(30,58,95,0.08)", whiteSpace: "nowrap" }}>
                 <span style={{ fontSize: "1rem" }}>{c.flag}</span>
-                <span style={{ fontSize: "0.72rem", fontWeight: 600, color: "#9A9AA5" }}>{c.country}</span>
+                <span style={{ fontSize: "0.72rem", fontWeight: 600, color: "#475569" }}>{c.country}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Stats */}
-        <div style={{
-          display: "flex", gap: "1.5rem", flexShrink: 0, paddingRight: "2rem",
-        }} className="hidden sm:flex">
+        <div style={{ display: "flex", gap: "1.5rem", flexShrink: 0, paddingRight: "2rem" }} className="hidden sm:flex">
           {stats.map(s => (
             <div key={s.label} style={{ textAlign: "center" }}>
-              <div style={{
-                fontSize: "0.85rem", fontWeight: 900,
-                background: "linear-gradient(135deg, #FFFFFF, #818CF8)",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-              }}>{s.value}</div>
-              <div style={{ fontSize: "0.58rem", color: "#55555F", fontWeight: 600, letterSpacing: "0.1em" }}>
-                {s.label}
-              </div>
+              <div style={{ fontSize: "0.85rem", fontWeight: 900,
+                background: "linear-gradient(135deg, #1E3A5F, #C9A227)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{s.value}</div>
+              <div style={{ fontSize: "0.58rem", color: "#94A3B8", fontWeight: 600, letterSpacing: "0.1em" }}>{s.label}</div>
             </div>
           ))}
         </div>

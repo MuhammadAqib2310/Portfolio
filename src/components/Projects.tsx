@@ -8,14 +8,14 @@ const cats = ["All", "AI", "SaaS", "AI Agent"];
 
 /* Per-project accent colors */
 const projectAccents = [
-  { from: "#6366F1", to: "#818CF8", glow: "rgba(99,102,241,0.5)"   },
-  { from: "#818CF8", to: "#9A9AA5", glow: "rgba(129,140,248,0.5)"  },
-  { from: "#9A9AA5", to: "#A855F7", glow: "rgba(79,70,229,0.5)"  },
+  { from: "#00D4FF", to: "#38BDF8", glow: "rgba(0,212,255,0.5)"   },
+  { from: "#38BDF8", to: "#0EA5E9", glow: "rgba(56,189,248,0.5)"  },
+  { from: "#0EA5E9", to: "#818CF8", glow: "rgba(14,165,233,0.5)"  },
   { from: "#F59E0B", to: "#EF4444", glow: "rgba(245,158,11,0.5)"  },
-  { from: "#22C55E", to: "#818CF8", glow: "rgba(34,197,94,0.5)"   },
+  { from: "#22C55E", to: "#38BDF8", glow: "rgba(34,197,94,0.5)"   },
   { from: "#EF4444", to: "#F59E0B", glow: "rgba(239,68,68,0.5)"   },
-  { from: "#8B5CF6", to: "#818CF8", glow: "rgba(139,92,246,0.5)"  },
-  { from: "#06B6D4", to: "#9A9AA5", glow: "rgba(6,182,212,0.5)"   },
+  { from: "#8B5CF6", to: "#38BDF8", glow: "rgba(139,92,246,0.5)"  },
+  { from: "#00D4FF", to: "#0EA5E9", glow: "rgba(0,212,255,0.5)"   },
 ];
 
 const emojis     = ["🌤️","📊","🔐","🤖","📞","💼","🎙️","🚀"];
@@ -275,9 +275,9 @@ export default function Projects() {
       id="projects"
       ref={ref}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0F0F14 0%, #0C0C11 100%)" }}
+      style={{ background: "linear-gradient(180deg, #041022 0%, #020B18 100%)" }}
     >
-      <PremiumBG variant="grid" accent="#6366F1" cyan="#818CF8" />
+      <PremiumBG variant="grid" accent="#00D4FF" cyan="#38BDF8" />
 
       {/* deep glow */}
       <div className="absolute pointer-events-none"
@@ -299,12 +299,12 @@ export default function Projects() {
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "0.5rem",
             padding: "0.35rem 1rem", borderRadius: "999px", marginBottom: "1rem",
-            background: "rgba(129,140,248,0.1)", border: "1px solid rgba(129,140,248,0.25)",
+            background: "rgba(0,212,255,0.08)", border: "1px solid rgba(0,212,255,0.2)",
             fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.2em",
-            color: "#818CF8", textTransform: "uppercase",
+            color: "#38BDF8", textTransform: "uppercase",
           }}>
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#818CF8",
-              boxShadow: "0 0 8px #818CF8", display: "inline-block" }} />
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#00D4FF",
+              boxShadow: "0 0 8px #00D4FF", display: "inline-block" }} />
             Portfolio
           </div>
 
@@ -337,11 +337,11 @@ export default function Projects() {
                 fontSize: "0.78rem", fontWeight: 700,
                 display: "flex", alignItems: "center", gap: "0.4rem",
                 background: active === c
-                  ? "linear-gradient(135deg, #6366F1, #818CF8)"
+                  ? "linear-gradient(135deg, #00D4FF, #0EA5E9)"
                   : "rgba(255,255,255,0.04)",
                 color: active === c ? "#fff" : "#64748B",
                 border: active === c ? "none" : "1px solid rgba(255,255,255,0.08)",
-                boxShadow: active === c ? "0 4px 20px rgba(255,255,255,0.4)" : "none",
+                boxShadow: active === c ? "0 4px 20px rgba(0,212,255,0.35)" : "none",
                 transition: "all 0.25s",
                 cursor: "none",
               }}
@@ -350,7 +350,7 @@ export default function Projects() {
               {c}
               {active === c && (
                 <span style={{
-                  background: "rgba(99,102,241,0.25)",
+                  background: "rgba(0,212,255,0.2)",
                   borderRadius: "999px",
                   padding: "0.05rem 0.4rem",
                   fontSize: "0.62rem",
@@ -385,15 +385,15 @@ export default function Projects() {
             Want to see more work or discuss a custom project?
           </p>
           <motion.button
-            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(99,102,241,0.45)" }}
+            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(0,212,255,0.4)" }}
             whileTap={{ scale: 0.97 }}
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             style={{
               padding: "0.875rem 2.5rem",
               borderRadius: "999px",
-              background: "linear-gradient(135deg, #6366F1, #818CF8)",
+              background: "linear-gradient(135deg, #00D4FF, #0EA5E9)",
               color: "#fff", fontWeight: 800, fontSize: "0.875rem",
-              boxShadow: "0 4px 28px rgba(99,102,241,0.35)",
+              boxShadow: "0 4px 28px rgba(0,212,255,0.3)",
               border: "none", cursor: "none",
             }}
           >

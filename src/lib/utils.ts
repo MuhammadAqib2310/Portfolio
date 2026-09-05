@@ -16,7 +16,7 @@ export const projects = [
     tech: ["Next.js", "OpenAI", "Python", "FastAPI", "PostgreSQL"],
     demo: "https://weather-web-ruby-psi.vercel.app/",
     github: "https://github.com/MuhammadAqib2310/Portfolio",
-    metrics: { performance: "98", users: "50K+", uptime: "99.9%" },
+    metrics: { score: "98/100", type: "AI + Web", status: "Live ✓" },
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const projects = [
     tech: ["React", "TypeScript", "Node.js", "Redis", "MongoDB"],
     demo: "https://braingrid.vercel.app/dashboard",
     github: "https://github.com/MuhammadAqib2310/Portfolio",
-    metrics: { performance: "96", users: "10K+", uptime: "99.8%" },
+    metrics: { score: "96/100", type: "SaaS", status: "Live ✓" },
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ export const projects = [
     tech: ["Python", "TensorFlow", "Next.js", "AWS", "Blockchain"],
     demo: "https://github.com/MuhammadAqib2310/Portfolio",
     github: "https://github.com/MuhammadAqib2310/Portfolio",
-    metrics: { performance: "99", users: "5K+", uptime: "100%" },
+    metrics: { score: "99/100", type: "AI Security", status: "Built ✓" },
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ export const projects = [
     tech: ["LangChain", "OpenAI", "FastAPI", "React", "Celery"],
     demo: "https://nexora-ai-ten-mu.vercel.app/",
     github: "https://github.com/MuhammadAqib2310/Portfolio",
-    metrics: { performance: "97", users: "2K+", uptime: "99.9%" },
+    metrics: { score: "97/100", type: "AI Agent", status: "Live ✓" },
   },
   {
     id: 5,
@@ -64,7 +64,7 @@ export const projects = [
     tech: ["OpenAI", "Twilio", "Next.js", "Prisma", "PostgreSQL"],
     demo: "https://github.com/MuhammadAqib2310/Portfolio",
     github: "https://github.com/MuhammadAqib2310/Portfolio",
-    metrics: { performance: "95", users: "1K+", uptime: "99.7%" },
+    metrics: { score: "95/100", type: "Voice AI", status: "Built ✓" },
   },
   {
     id: 6,
@@ -76,7 +76,7 @@ export const projects = [
     tech: ["Next.js", "TypeScript", "OpenAI", "Supabase", "Stripe"],
     demo: "https://github.com/MuhammadAqib2310/Portfolio",
     github: "https://github.com/MuhammadAqib2310/Portfolio",
-    metrics: { performance: "94", users: "3K+", uptime: "99.5%" },
+    metrics: { score: "94/100", type: "SaaS + AI", status: "Built ✓" },
   },
   {
     id: 7,
@@ -88,7 +88,7 @@ export const projects = [
     tech: ["ElevenLabs", "Whisper", "FastAPI", "WebRTC", "Redis"],
     demo: "https://github.com/MuhammadAqib2310/Portfolio",
     github: "https://github.com/MuhammadAqib2310/Portfolio",
-    metrics: { performance: "98", users: "800+", uptime: "99.9%" },
+    metrics: { score: "98/100", type: "Voice AI", status: "Built ✓" },
   },
   {
     id: 8,
@@ -100,7 +100,7 @@ export const projects = [
     tech: ["Next.js", "TypeScript", "Prisma", "Stripe", "AWS"],
     demo: "https://github.com/MuhammadAqib2310/Portfolio",
     github: "https://github.com/MuhammadAqib2310/Portfolio",
-    metrics: { performance: "96", users: "4K+", uptime: "99.8%" },
+    metrics: { score: "96/100", type: "SaaS", status: "Built ✓" },
   },
 ];
 
@@ -128,33 +128,5 @@ export const techStack = [
   { name: "Supabase", level: 90 },
 ];
 
-export const testimonials = [
-  {
-    name: "Sarah Chen",
-    role: "CTO, TechVentures",
-    avatar: "SC",
-    text: "Aqib delivered an AI agent system that reduced our operational costs by 60%. The quality of code and attention to detail is exceptional. Truly world-class work.",
-    rating: 5,
-  },
-  {
-    name: "Marcus Williams",
-    role: "Founder, NexaScale",
-    avatar: "MW",
-    text: "The SaaS platform Aqib built for us is handling 10K+ users flawlessly. His understanding of AI and full-stack architecture is unmatched in the industry.",
-    rating: 5,
-  },
-  {
-    name: "Aisha Patel",
-    role: "VP Engineering, DataFlow",
-    avatar: "AP",
-    text: "Delivered our voice AI agent in 3 weeks with 99.9% uptime. The system handles thousands of concurrent calls with human-like quality. Absolutely brilliant.",
-    rating: 5,
-  },
-  {
-    name: "James Rodriguez",
-    role: "CEO, CloudNine AI",
-    avatar: "JR",
-    text: "Aqib transformed our entire workflow with AI automation. What used to take our team 40 hours per week now runs autonomously. Game-changing work.",
-    rating: 5,
-  },
-];
+// kept for backward compat — Testimonials section not shown
+export const testimonials: { name: string; role: string; avatar: string; text: string; rating: number }[] = [];

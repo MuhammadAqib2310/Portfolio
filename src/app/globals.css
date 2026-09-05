@@ -1,35 +1,35 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════
-   Design System — Clean White + Indigo
-   Indigo accent · Pure White base · Soft Shadows
+   Design System — Professional Gold + Deep Blue + White
+   Gold accent · Deep Blue · Warm White base
    ═══════════════════════════════════════════════════ */
 :root {
-  /* ── Base — Pure White / Soft Gray ── */
-  --bg-primary:    #FFFFFF;
-  --bg-secondary:  #F8F9FF;
-  --bg-tertiary:   #F1F3FF;
-  --bg-card:       #F8F9FF;
+  /* ── Base — Warm White ── */
+  --bg-primary:    #FAFAF7;
+  --bg-secondary:  #F4F3EE;
+  --bg-tertiary:   #EEECEA;
+  --bg-card:       #FFFFFF;
 
-  /* ── Single Accent Family — Indigo ── */
-  --accent-main:   #6366F1;
-  --accent-cyan:   #818CF8;
-  --accent-violet: #7C3AED;
-  --accent-green:  #10B981;
+  /* ── Accent — Deep Blue + Gold ── */
+  --accent-main:   #1E3A5F;
+  --accent-cyan:   #2563EB;
+  --accent-violet: #1D4ED8;
+  --accent-green:  #059669;
 
-  /* ── Gold — ONLY micro-highlights ── */
-  --gold:          #F59E0B;
-  --gold-subtle:   rgba(245,158,11,0.15);
+  /* ── Gold ── */
+  --gold:          #C9A227;
+  --gold-subtle:   rgba(201,162,39,0.15);
 
-  /* ── Borders / Glass ── */
-  --border-glass:  rgba(99,102,241,0.08);
-  --border-hover:  rgba(99,102,241,0.2);
-  --border-subtle: rgba(99,102,241,0.15);
-  --border-glow:   rgba(99,102,241,0.3);
+  /* ── Borders ── */
+  --border-glass:  rgba(30,58,95,0.08);
+  --border-hover:  rgba(30,58,95,0.2);
+  --border-subtle: rgba(201,162,39,0.2);
+  --border-glow:   rgba(201,162,39,0.35);
 
   /* ── Cards ── */
-  --card-bg:       #F8F9FF;
-  --card-border:   rgba(99,102,241,0.1);
+  --card-bg:       #FFFFFF;
+  --card-border:   rgba(30,58,95,0.08);
 
   /* ── Text ── */
   --text-primary:  #0F172A;
@@ -37,12 +37,12 @@
   --text-tertiary: #94A3B8;
 
   /* ── Gradients ── */
-  --gradient-text: linear-gradient(135deg, #0F172A 0%, #6366F1 100%);
-  --gradient-glow: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+  --gradient-text: linear-gradient(135deg, #1E3A5F 0%, #C9A227 100%);
+  --gradient-glow: radial-gradient(circle, rgba(201,162,39,0.1) 0%, transparent 70%);
 
   /* ── Legacy aliases ── */
-  --accent:        #6366F1;
-  --cyan:          #818CF8;
+  --accent:        #1E3A5F;
+  --cyan:          #2563EB;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -63,7 +63,7 @@ html {
 body {
   font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
   background: var(--bg-primary);
-  background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99,102,241,0.06) 0%, transparent 60%);
+  background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,162,39,0.06) 0%, transparent 60%);
   color: var(--text-primary);
   overflow-x: hidden;
   cursor: none;
@@ -107,13 +107,13 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 1024px) { .section-pad { padding-top: 9rem;   padding-bottom: 9rem;   } }
 
 /* ═══════════════════════════════════════════════════
-   Cursor — Indigo
+   Cursor — Gold
    ═══════════════════════════════════════════════════ */
 .cursor {
   position: fixed;
   width: 11px;
   height: 11px;
-  background: #6366F1;
+  background: #C9A227;
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   width: 34px;
   height: 34px;
-  border: 2px solid rgba(99,102,241,0.4);
+  border: 2px solid rgba(201,162,39,0.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
@@ -135,33 +135,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ═══════════════════════════════════════════════════
-   Scrollbar — Indigo
+   Scrollbar — Gold
    ═══════════════════════════════════════════════════ */
 ::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: #F1F3FF; }
-::-webkit-scrollbar-thumb { background: #6366F1; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #818CF8; }
+::-webkit-scrollbar-track { background: #F4F3EE; }
+::-webkit-scrollbar-thumb { background: #C9A227; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #1E3A5F; }
 
 /* ═══════════════════════════════════════════════════
    Gradient Text
    ═══════════════════════════════════════════════════ */
-/* Dark → Indigo (primary headings) */
+/* Blue → Gold (primary headings) */
 .gradient-text, .g-text {
-  background: linear-gradient(135deg, #0F172A 0%, #6366F1 100%);
+  background: linear-gradient(135deg, #1E3A5F 0%, #C9A227 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Indigo → Violet */
+/* Gold → Deep Blue */
 .gradient-text-2, .g-text-2 {
-  background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
+  background: linear-gradient(135deg, #C9A227 0%, #1E3A5F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Subtle dark → slate */
+/* Dark navy → slate */
 .g-text-3 {
   background: linear-gradient(135deg, #0F172A 0%, #475569 100%);
   -webkit-background-clip: text;
@@ -170,16 +170,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ═══════════════════════════════════════════════════
-   Card — Light Glass
+   Card
    ═══════════════════════════════════════════════════ */
 .card {
-  background: #F8F9FF;
-  border: 1px solid rgba(99,102,241,0.1);
+  background: #FFFFFF;
+  border: 1px solid rgba(30,58,95,0.08);
   border-radius: 1.5rem;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
+  box-shadow: 0 2px 12px rgba(30,58,95,0.06);
 }
 
 .card::before {
@@ -187,21 +188,20 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(99,102,241,0.04) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(201,162,39,0.04) 0%, transparent 60%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.35s;
 }
 
-/* Indigo border on hover */
 .card:hover {
-  border-color: rgba(99,102,241,0.3);
+  border-color: rgba(201,162,39,0.35);
   box-shadow:
-    0 8px 40px rgba(99,102,241,0.12),
-    0 2px 12px rgba(99,102,241,0.08),
-    0 0 0 1px rgba(99,102,241,0.12);
+    0 8px 40px rgba(201,162,39,0.12),
+    0 2px 12px rgba(30,58,95,0.08),
+    0 0 0 1px rgba(201,162,39,0.15);
   transform: translateY(-4px);
-  background: #FFFFFF;
+  background: #FFFDF7;
 }
 
 .card:hover::before {
@@ -232,7 +232,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background: rgba(99,102,241,0.2);
+  background: rgba(201,162,39,0.2);
   color: #0F172A;
 }
 

@@ -342,7 +342,7 @@ function GridLines({ accent }: { accent: string }) {
       {/* Center radial fade mask */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "radial-gradient(ellipse 70% 70% at 50% 50%, transparent 30%, rgba(22,32,50,0.85) 80%)",
+        background: "radial-gradient(ellipse 70% 70% at 50% 50%, transparent 30%, rgba(244,243,238,0.85) 80%)",
       }} />
     </div>
   );

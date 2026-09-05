@@ -14,15 +14,11 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
-      // Active section tracking
       const sections = navLinks.map(l => document.getElementById(l.toLowerCase()));
       const scrollY = window.scrollY + 120;
       for (let i = sections.length - 1; i >= 0; i--) {
         const sec = sections[i];
-        if (sec && sec.offsetTop <= scrollY) {
-          setActive(navLinks[i]);
-          break;
-        }
+        if (sec && sec.offsetTop <= scrollY) { setActive(navLinks[i]); break; }
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -43,13 +39,10 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Scroll progress bar */}
+      {/* Scroll progress bar — Gold */}
       <motion.div
         className="fixed top-0 left-0 h-[2px] z-[1001] origin-left w-full"
-        style={{
-          background: "linear-gradient(90deg, #6366F1 0%, #818CF8 100%)",
-          scaleX,
-        }}
+        style={{ background: "linear-gradient(90deg, #C9A227 0%, #1E3A5F 100%)", scaleX }}
       />
 
       <motion.nav
@@ -63,53 +56,37 @@ export default function Navbar() {
           className="flex items-center justify-between rounded-2xl transition-all duration-500"
           style={{
             padding: "0.875rem 1.75rem",
-            background: scrolled
-              ? "rgba(13,10,14,0.97)"
-              : "rgba(255,255,255,0.05)",
+            background: scrolled ? "rgba(250,250,247,0.97)" : "rgba(255,255,255,0.7)",
             backdropFilter: "blur(32px)",
             WebkitBackdropFilter: "blur(32px)",
-            border: scrolled
-              ? "1px solid rgba(99,102,241,0.25)"
-              : "1px solid rgba(255,255,255,0.1)",
+            border: scrolled ? "1px solid rgba(201,162,39,0.25)" : "1px solid rgba(30,58,95,0.1)",
             boxShadow: scrolled
-              ? "0 8px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)"
-              : "0 4px 24px rgba(0,0,0,0.3)",
+              ? "0 8px 48px rgba(30,58,95,0.1), inset 0 1px 0 rgba(255,255,255,0.8)"
+              : "0 4px 24px rgba(30,58,95,0.06)",
           }}
         >
-
-          {/* ── Logo ── */}
-          <button
-            onClick={() => scrollTo("hero")}
-            className="flex items-center gap-3 select-none"
-          >
+          {/* Logo */}
+          <button onClick={() => scrollTo("hero")} className="flex items-center gap-3 select-none">
             <div
               className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm text-white flex-shrink-0"
               style={{
-                background: "linear-gradient(135deg, #6366F1 0%, #818CF8 100%)",
-                boxShadow: "0 4px 16px rgba(99,102,241,0.45)",
-                letterSpacing: "0",
+                background: "linear-gradient(135deg, #1E3A5F 0%, #2563EB 100%)",
+                boxShadow: "0 4px 16px rgba(30,58,95,0.3)",
               }}
             >
               MA
             </div>
             <div className="flex flex-col leading-none">
-              <span
-                className="font-extrabold text-white"
-                style={{
-                  fontSize: "1.2rem",
-                  fontFamily: "var(--font-space-grotesk), sans-serif",
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                M<span style={{ color: "#C9A962" }}>.</span>Aqib
+              <span className="font-extrabold" style={{ fontSize: "1.2rem", fontFamily: "var(--font-space-grotesk), sans-serif", letterSpacing: "-0.03em", color: "#0F172A" }}>
+                M<span style={{ color: "#C9A227" }}>.</span>Aqib
               </span>
-              <span style={{ fontSize: "0.6rem", color: "#64748B", letterSpacing: "0.12em", fontWeight: 600 }}>
+              <span style={{ fontSize: "0.6rem", color: "#94A3B8", letterSpacing: "0.12em", fontWeight: 600 }}>
                 AI ENGINEER
               </span>
             </div>
           </button>
 
-          {/* ── Desktop Nav Links ── */}
+          {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center" style={{ gap: "0.25rem" }}>
             {navLinks.map(link => {
               const isActive = active === link;
@@ -118,24 +95,15 @@ export default function Navbar() {
                   key={link}
                   onClick={() => scrollTo(link)}
                   className="relative rounded-xl font-semibold transition-all duration-200"
-                  style={{
-                    padding: "0.5rem 1.1rem",
-                    fontSize: "0.875rem",
-                    color: isActive ? "#fff" : "#B4B8D4",
-                    letterSpacing: "0.01em",
-                  }}
-                  onMouseEnter={e => {
-                    if (!isActive) e.currentTarget.style.color = "#fff";
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.color = isActive ? "#fff" : "#B4B8D4";
-                  }}
+                  style={{ padding: "0.5rem 1.1rem", fontSize: "0.875rem", color: isActive ? "#1E3A5F" : "#475569", letterSpacing: "0.01em" }}
+                  onMouseEnter={e => { if (!isActive) e.currentTarget.style.color = "#1E3A5F"; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = isActive ? "#1E3A5F" : "#475569"; }}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="nav-active"
                       className="absolute inset-0 rounded-xl"
-                      style={{ background: "rgba(99,102,241,0.18)", border: "1px solid rgba(99,102,241,0.25)" }}
+                      style={{ background: "rgba(201,162,39,0.1)", border: "1px solid rgba(201,162,39,0.3)" }}
                       transition={{ type: "spring", bounce: 0.2, duration: 0.45 }}
                     />
                   )}
@@ -145,18 +113,14 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* ── CTA + Hamburger ── */}
+          {/* CTA + Hamburger */}
           <div className="flex items-center gap-3">
             <motion.button
               onClick={() => scrollTo("contact")}
-              whileHover={{ scale: 1.04, boxShadow: "0 0 32px rgba(255,255,255,0.55)" }}
+              whileHover={{ scale: 1.04, boxShadow: "0 0 32px rgba(201,162,39,0.4)" }}
               whileTap={{ scale: 0.97 }}
               className="hidden md:flex items-center gap-2 font-bold text-white text-sm rounded-xl"
-              style={{
-                padding: "0.6rem 1.4rem",
-                background: "linear-gradient(135deg, #6366F1 0%, #818CF8 100%)",
-                boxShadow: "0 4px 20px rgba(99,102,241,0.35)",
-              }}
+              style={{ padding: "0.6rem 1.4rem", background: "linear-gradient(135deg, #1E3A5F 0%, #2563EB 100%)", boxShadow: "0 4px 20px rgba(30,58,95,0.25)" }}
             >
               Hire Me
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -164,34 +128,23 @@ export default function Navbar() {
               </svg>
             </motion.button>
 
-            {/* Hamburger */}
             <button
               aria-label="Menu"
               onClick={() => setOpen(v => !v)}
               className="md:hidden w-10 h-10 rounded-xl flex flex-col justify-center items-center gap-[5px] transition-all"
-              style={{
-                background: open ? "rgba(99,102,241,0.2)" : "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.1)",
-              }}
+              style={{ background: open ? "rgba(201,162,39,0.1)" : "rgba(30,58,95,0.05)", border: "1px solid rgba(30,58,95,0.1)" }}
             >
               {[0, 1, 2].map(i => (
-                <span
-                  key={i}
-                  className="block w-5 h-[2px] rounded-full transition-all duration-300"
-                  style={{
-                    background: "#B4B8D4",
-                    transform:
-                      open && i === 0 ? "rotate(45deg) translateY(7px)" :
-                      open && i === 2 ? "rotate(-45deg) translateY(-7px)" : "",
-                    opacity: open && i === 1 ? 0 : 1,
-                  }}
-                />
+                <span key={i} className="block w-5 h-[2px] rounded-full transition-all duration-300"
+                  style={{ background: "#1E3A5F",
+                    transform: open && i === 0 ? "rotate(45deg) translateY(7px)" : open && i === 2 ? "rotate(-45deg) translateY(-7px)" : "",
+                    opacity: open && i === 1 ? 0 : 1 }} />
               ))}
             </button>
           </div>
         </div>
 
-        {/* ── Mobile Dropdown ── */}
+        {/* Mobile Dropdown */}
         <AnimatePresence>
           {open && (
             <motion.div
@@ -200,12 +153,7 @@ export default function Navbar() {
               exit={{ opacity: 0, y: -10, scale: 0.97 }}
               transition={{ duration: 0.2 }}
               className="mt-2 rounded-2xl overflow-hidden"
-              style={{
-                background: "rgba(10,10,18,0.98)",
-                border: "1px solid rgba(99,102,241,0.2)",
-                backdropFilter: "blur(32px)",
-                boxShadow: "0 16px 64px rgba(0,0,0,0.4)",
-              }}
+              style={{ background: "rgba(250,250,247,0.98)", border: "1px solid rgba(201,162,39,0.2)", backdropFilter: "blur(32px)", boxShadow: "0 16px 64px rgba(30,58,95,0.12)" }}
             >
               {navLinks.map((link, i) => (
                 <motion.button
@@ -215,21 +163,9 @@ export default function Navbar() {
                   transition={{ delay: i * 0.05 }}
                   onClick={() => scrollTo(link)}
                   className="w-full text-left flex items-center justify-between transition-colors border-b"
-                  style={{
-                    padding: "1rem 1.5rem",
-                    color: "#B4B8D4",
-                    fontSize: "0.9rem",
-                    fontWeight: 600,
-                    borderColor: "rgba(255,255,255,0.06)",
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.color = "#fff";
-                    e.currentTarget.style.background = "rgba(255,255,255,0.08)";
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.color = "#B4B8D4";
-                    e.currentTarget.style.background = "transparent";
-                  }}
+                  style={{ padding: "1rem 1.5rem", color: "#475569", fontSize: "0.9rem", fontWeight: 600, borderColor: "rgba(30,58,95,0.06)" }}
+                  onMouseEnter={e => { e.currentTarget.style.color = "#1E3A5F"; e.currentTarget.style.background = "rgba(201,162,39,0.05)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; }}
                 >
                   {link}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ opacity: 0.4 }}>
@@ -238,11 +174,8 @@ export default function Navbar() {
                 </motion.button>
               ))}
               <div style={{ padding: "0.875rem" }}>
-                <button
-                  onClick={() => scrollTo("contact")}
-                  className="w-full py-3 rounded-xl text-sm font-bold text-white"
-                  style={{ background: "linear-gradient(135deg, #6366F1, #818CF8)" }}
-                >
+                <button onClick={() => scrollTo("contact")} className="w-full py-3 rounded-xl text-sm font-bold text-white"
+                  style={{ background: "linear-gradient(135deg, #1E3A5F, #2563EB)" }}>
                   Hire Me →
                 </button>
               </div>

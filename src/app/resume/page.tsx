@@ -164,10 +164,10 @@ export default function ResumePage() {
             color: "#6366F1", marginBottom: "1rem" }}>Key Achievements</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px,1fr))", gap: "0.875rem" }}>
             {[
-              { v:"50+",  l:"Projects Delivered" },
-              { v:"5+",   l:"Years Experience" },
-              { v:"99%",  l:"Client Satisfaction" },
-              { v:"10+",  l:"Countries Served" },
+              { v:"20+",  l:"Projects Delivered" },
+              { v:"2+",   l:"Years Experience" },
+              { v:"100%", l:"Client Satisfaction" },
+              { v:"8+",   l:"Countries Served" },
             ].map(s => (
               <div key={s.l} style={{ textAlign: "center", padding: "1rem", borderRadius: "0.875rem",
                 background: "rgba(99,102,241,0.06)", border: "1px solid rgba(99,102,241,0.15)" }}>
