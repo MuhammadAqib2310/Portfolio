@@ -3,114 +3,226 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const skills = [
-  { name: "AI/ML Engineering",    pct: 95, color: "#1E3A5F" },
-  { name: "Full Stack Dev",        pct: 92, color: "#2563EB" },
-  { name: "LLM Integration",       pct: 95, color: "#C9A227" },
-  { name: "SaaS Architecture",     pct: 88, color: "#92740D" },
-  { name: "Workflow Automation",   pct: 90, color: "#059669" },
-  { name: "Cloud & DevOps",        pct: 84, color: "#DC2626" },
+  { name: "AI/ML Engineering",   pct: 95, color: "#1E3A5F", icon: "🧠" },
+  { name: "Full Stack Dev",       pct: 92, color: "#2563EB", icon: "💻" },
+  { name: "LLM Integration",      pct: 95, color: "#C9A227", icon: "🤖" },
+  { name: "SaaS Architecture",    pct: 88, color: "#059669", icon: "🏗️" },
+  { name: "Workflow Automation",  pct: 90, color: "#7C3AED", icon: "⚙️" },
+  { name: "Cloud & DevOps",       pct: 84, color: "#DC2626", icon: "☁️" },
 ];
 
 const highlights = [
-  { icon:"🎯", title:"Problem Solver",  sub:"First-principles thinking" },
-  { icon:"🚀", title:"Ships Fast",       sub:"MVP to production in weeks" },
-  { icon:"🧠", title:"AI Native",        sub:"LLMs, Agents, Automation" },
-  { icon:"⚡", title:"Performance",      sub:"99%+ uptime, sub-100ms" },
+  { icon: "🎯", title: "Problem Solver",  sub: "First-principles thinking",   color: "#1E3A5F" },
+  { icon: "🚀", title: "Ships Fast",      sub: "MVP to production in weeks",  color: "#C9A227" },
+  { icon: "🧠", title: "AI Native",       sub: "LLMs, Agents, Automation",    color: "#2563EB" },
+  { icon: "⚡", title: "Performance",     sub: "99%+ uptime, sub-100ms",      color: "#059669" },
 ];
 
-const ease = [0.22,1,0.36,1] as [number,number,number,number];
-const fadeUp   = (delay = 0) => ({ hidden:{ opacity:0, y:32 }, show:{ opacity:1, y:0, transition:{ duration:.65, delay, ease } } });
-const fadeLeft = (delay = 0) => ({ hidden:{ opacity:0, x:-36 }, show:{ opacity:1, x:0, transition:{ duration:.65, delay, ease } } });
-const fadeRight= (delay = 0) => ({ hidden:{ opacity:0, x:36 },  show:{ opacity:1, x:0, transition:{ duration:.65, delay, ease } } });
+const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 export default function About() {
   const ref    = useRef(null);
-  const inView = useInView(ref, { once:true, margin:"-80px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" ref={ref} className="section-pad relative overflow-hidden"
-      style={{ background:"linear-gradient(180deg, #FAFAF7 0%, #F4F3EE 100%)" }}>
+    <section
+      id="about"
+      ref={ref}
+      className="section-pad relative overflow-hidden"
+      style={{ background: "linear-gradient(180deg, #FAFAF7 0%, #F4F3EE 100%)" }}
+    >
       {/* BG glows */}
       <div className="absolute pointer-events-none rounded-full"
-        style={{ width:500, height:500, top:"-10%", right:"-10%",
-          background:"radial-gradient(circle,rgba(201,162,39,0.08),transparent 65%)", filter:"blur(80px)" }} />
+        style={{ width: 600, height: 600, top: "-15%", right: "-12%",
+          background: "radial-gradient(circle, rgba(201,162,39,0.09), transparent 65%)", filter: "blur(90px)" }} />
       <div className="absolute pointer-events-none rounded-full"
-        style={{ width:400, height:400, bottom:0, left:"-8%",
-          background:"radial-gradient(circle,rgba(30,58,95,0.06),transparent 65%)", filter:"blur(70px)" }} />
+        style={{ width: 500, height: 500, bottom: "-10%", left: "-10%",
+          background: "radial-gradient(circle, rgba(30,58,95,0.07), transparent 65%)", filter: "blur(80px)" }} />
 
       <div className="wrap">
-        <motion.div variants={fadeUp(0)} initial="hidden" animate={inView?"show":{}} className="text-center mb-14">
-          <span className="sec-label" style={{ color: "#C9A227" }}>About Me</span>
-          <h2 className="font-bold" style={{ fontSize:"clamp(2rem,5vw,3rem)", color:"#0F172A" }}>
-            Crafting <span className="g-text">Intelligent</span> Solutions
+
+        {/* ── Heading ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.65, ease }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 mb-4"
+            style={{ padding: "0.35rem 1.1rem", borderRadius: "999px",
+              background: "rgba(201,162,39,0.1)", border: "1px solid rgba(201,162,39,0.25)",
+              fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.18em",
+              textTransform: "uppercase", color: "#92740D" }}>
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C9A227",
+              display: "inline-block", animation: "pulse-glow 2s ease-in-out infinite" }} />
+            About Me
+          </div>
+          <h2 style={{ fontSize: "clamp(2.2rem, 5vw, 3.25rem)", color: "#0F172A", lineHeight: 1.15 }}>
+            Crafting{" "}
+            <span className="g-text">Intelligent</span>{" "}
+            Solutions
           </h2>
+          <p className="mt-4 mx-auto" style={{ fontSize: "1rem", color: "#64748B", maxWidth: 520, lineHeight: 1.8 }}>
+            Where cutting-edge AI meets elegant engineering — building systems that scale and deliver real business value.
+          </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-start">
-          {/* Left */}
-          <motion.div variants={fadeLeft(0.1)} initial="hidden" animate={inView?"show":{}}>
-            <p className="text-base sm:text-lg leading-relaxed mb-5" style={{ color:"#475569" }}>
-              I&apos;m <strong style={{ color:"#0F172A" }}>M Aqib</strong>, an AI Engineer & Full Stack Developer
-              passionate about building intelligent systems that solve real business problems.
-            </p>
-            <p className="text-sm sm:text-base leading-relaxed mb-10" style={{ color:"#475569" }}>
-              From autonomous AI agents and LLM-powered workflows to full-stack SaaS platforms —
-              I turn complex ideas into clean, production-ready solutions.
-              Currently open to freelance projects and long-term collaborations worldwide.
-            </p>
+        <div className="grid lg:grid-cols-2 gap-14 xl:gap-20 items-start">
 
-            <div className="grid grid-cols-2 gap-3 mb-10">
-              {highlights.map(({ icon, title, sub }, i) => (
-                <motion.div key={title}
-                  initial={{ opacity:0, scale:.92 }}
-                  animate={inView ? { opacity:1, scale:1 } : {}}
-                  transition={{ delay:.3 + i*.07, duration:.5 }}
-                  whileHover={{ y:-4, borderColor:"rgba(201,162,39,0.35)" }}
-                  className="card p-4 cursor-default">
-                  <div className="text-2xl mb-2">{icon}</div>
-                  <div className="text-sm font-bold mb-0.5" style={{ color:"#0F172A" }}>{title}</div>
-                  <div className="text-xs" style={{ color:"#94A3B8" }}>{sub}</div>
+          {/* ── Left ── */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.65, delay: 0.1, ease }}
+          >
+            {/* Bio text */}
+            <div className="mb-10 p-6 rounded-2xl" style={{ background: "#FFFFFF", border: "1px solid rgba(30,58,95,0.08)", boxShadow: "0 4px 24px rgba(30,58,95,0.06)" }}>
+              <p className="text-base leading-relaxed mb-4" style={{ color: "#334155" }}>
+                I&apos;m{" "}
+                <strong style={{ color: "#0F172A", fontWeight: 700 }}>Muhammad Aqib</strong>
+                , an AI Engineer &amp; Full Stack Developer passionate about building
+                intelligent systems that solve real business problems.
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: "#475569" }}>
+                From autonomous AI agents and LLM-powered workflows to full-stack SaaS platforms —
+                I turn complex ideas into clean, production-ready solutions.
+                Currently open to freelance projects and long-term collaborations worldwide.
+              </p>
+            </div>
+
+            {/* Highlight cards */}
+            <div className="grid grid-cols-2 gap-4 mb-10">
+              {highlights.map(({ icon, title, sub, color }, i) => (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.3 + i * 0.08, duration: 0.5, ease }}
+                  whileHover={{ y: -5, boxShadow: `0 12px 32px ${color}18` }}
+                  className="relative overflow-hidden cursor-default rounded-2xl"
+                  style={{ padding: "1.25rem", background: "#FFFFFF",
+                    border: `1px solid ${color}18`,
+                    boxShadow: "0 2px 12px rgba(30,58,95,0.05)",
+                    transition: "all 0.3s cubic-bezier(0.22,1,0.36,1)" }}
+                >
+                  {/* Top color strip */}
+                  <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px",
+                    background: `linear-gradient(90deg, ${color}, transparent)` }} />
+                  {/* Icon circle */}
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg mb-3"
+                    style={{ background: `${color}12`, border: `1px solid ${color}22` }}>
+                    {icon}
+                  </div>
+                  <div className="font-bold text-sm mb-1" style={{ color: "#0F172A" }}>{title}</div>
+                  <div className="text-xs" style={{ color: "#94A3B8" }}>{sub}</div>
                 </motion.div>
               ))}
             </div>
 
-            <motion.a href="/resume.pdf" download
-              whileHover={{ scale:1.03, boxShadow:"0 0 32px rgba(30,58,95,0.3)" }}
-              whileTap={{ scale:.98 }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-bold text-sm text-white"
-              style={{ background:"linear-gradient(135deg,#1E3A5F,#2563EB)" }}>
-              ↓ Download Resume
+            {/* CTA */}
+            <motion.a
+              href="/resume.pdf"
+              download
+              whileHover={{ scale: 1.03, boxShadow: "0 8px 32px rgba(30,58,95,0.3)" }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-3 font-bold text-sm text-white rounded-2xl"
+              style={{ padding: "0.9rem 2rem",
+                background: "linear-gradient(135deg, #1E3A5F 0%, #2563EB 100%)",
+                boxShadow: "0 4px 20px rgba(30,58,95,0.25)" }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download Resume
             </motion.a>
           </motion.div>
 
-          {/* Right — skill bars */}
-          <motion.div variants={fadeRight(0.2)} initial="hidden" animate={inView?"show":{}}>
-            <div className="p-7 rounded-3xl" style={{ background:"rgba(30,58,95,0.04)", border:"1px solid rgba(30,58,95,0.08)" }}>
-              <h3 className="text-base font-bold mb-8 flex items-center gap-2" style={{ color:"#0F172A" }}>
-                <span className="w-1 h-6 rounded-full" style={{ background:"linear-gradient(#C9A227,#1E3A5F)" }} />
-                Core Competencies
-              </h3>
-              <div className="space-y-6">
-                {skills.map((s, i) => (
-                  <div key={s.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-sm font-medium" style={{ color:"#475569" }}>{s.name}</span>
-                      <motion.span
-                        initial={{ opacity:0 }} animate={inView?{ opacity:1 }:{}} transition={{ delay:.5+i*.08 }}
-                        className="text-xs font-bold" style={{ color: s.color }}>
-                        {s.pct}%
-                      </motion.span>
-                    </div>
-                    <div className="h-1.5 rounded-full overflow-hidden" style={{ background:"rgba(30,58,95,0.08)" }}>
-                      <motion.div
-                        initial={{ width:0 }}
-                        animate={inView?{ width:`${s.pct}%` }:{ width:0 }}
-                        transition={{ duration:1.2, delay:.45+i*.1, ease:[.22,1,.36,1] }}
-                        className="h-full rounded-full"
-                        style={{ background:`linear-gradient(90deg, ${s.color}, ${s.color}88)` }} />
+          {/* ── Right — Skill bars ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.65, delay: 0.2, ease }}
+          >
+            <div className="rounded-3xl overflow-hidden"
+              style={{ background: "#FFFFFF", border: "1px solid rgba(30,58,95,0.08)",
+                boxShadow: "0 8px 40px rgba(30,58,95,0.08)" }}>
+
+              {/* Card header */}
+              <div style={{ padding: "1.5rem 1.75rem", borderBottom: "1px solid rgba(30,58,95,0.07)",
+                background: "linear-gradient(135deg, rgba(201,162,39,0.05), rgba(30,58,95,0.03))" }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-1 h-7 rounded-full" style={{ background: "linear-gradient(180deg, #C9A227, #1E3A5F)" }} />
+                  <div>
+                    <h3 className="font-bold text-base" style={{ color: "#0F172A" }}>Core Competencies</h3>
+                    <p className="text-xs mt-0.5" style={{ color: "#94A3B8" }}>Technical expertise & proficiency levels</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Skills */}
+              <div style={{ padding: "1.5rem 1.75rem" }}>
+                <div className="space-y-5">
+                  {skills.map((s, i) => (
+                    <motion.div
+                      key={s.name}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={inView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ delay: 0.4 + i * 0.08, duration: 0.5, ease }}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                          <span style={{ fontSize: "1rem" }}>{s.icon}</span>
+                          <span className="text-sm font-semibold" style={{ color: "#334155" }}>{s.name}</span>
+                        </div>
+                        <motion.span
+                          initial={{ opacity: 0 }}
+                          animate={inView ? { opacity: 1 } : {}}
+                          transition={{ delay: 0.6 + i * 0.08 }}
+                          className="text-xs font-black"
+                          style={{ color: s.color }}
+                        >
+                          {s.pct}%
+                        </motion.span>
+                      </div>
+
+                      {/* Track */}
+                      <div className="relative h-2.5 rounded-full overflow-hidden"
+                        style={{ background: `${s.color}12` }}>
+                        {/* Fill */}
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={inView ? { width: `${s.pct}%` } : { width: 0 }}
+                          transition={{ duration: 1.3, delay: 0.45 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                          className="absolute top-0 left-0 h-full rounded-full"
+                          style={{ background: `linear-gradient(90deg, ${s.color}CC, ${s.color})` }}
+                        />
+                        {/* Shimmer */}
+                        <motion.div
+                          initial={{ left: "-20%" }}
+                          animate={inView ? { left: ["−20%", "120%"] } : {}}
+                          transition={{ duration: 1.5, delay: 0.8 + i * 0.1, ease: "easeInOut" }}
+                          className="absolute top-0 h-full w-12 rounded-full"
+                          style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)" }}
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Footer note */}
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(30,58,95,0.07)" }}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs" style={{ color: "#94A3B8" }}>Based on 2+ years of hands-on experience</span>
+                    <div className="flex items-center gap-1.5">
+                      <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#059669",
+                        boxShadow: "0 0 6px #059669", display: "inline-block",
+                        animation: "pulse-glow 2s ease-in-out infinite" }} />
+                      <span className="text-xs font-bold" style={{ color: "#059669" }}>Active</span>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </motion.div>
