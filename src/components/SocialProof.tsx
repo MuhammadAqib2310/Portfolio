@@ -16,7 +16,7 @@ const stats = [
   { value: "20+",  label: "Projects" },
   { value: "5★",   label: "Rating" },
   { value: "100%", label: "Satisfaction" },
-  { value: "24h",  label: "Response" },
+  { value: "3+",   label: "Yrs Exp" },
 ];
 
 const row = [...clients, ...clients];

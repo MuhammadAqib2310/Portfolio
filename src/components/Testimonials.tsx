@@ -85,9 +85,9 @@ export default function Testimonials() {
           className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 mt-14"
           style={{ paddingTop: "3rem", borderTop: "1px solid rgba(30,58,95,0.07)" }}>
           {[
-            { value: "50+",  label: "Projects Completed" },
+            { value: "20+",  label: "Projects Completed" },
             { value: "99%",  label: "Client Satisfaction" },
-            { value: "40+",  label: "Happy Clients" },
+            { value: "3+",   label: "Years Experience" },
             { value: "5★",   label: "Average Rating" },
           ].map(({ value, label }) => (
             <div key={label} className="text-center">

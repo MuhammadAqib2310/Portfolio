@@ -4,36 +4,36 @@ import { useRef } from "react";
 
 const experiences = [
   {
-    role: "AI Engineer & Full Stack Developer",
+    role: "Full Stack & AI Automation Engineer",
     company: "Freelance — Remote",
-    period: "2023 – Present",
-    duration: "2+ yrs",
-    desc: "Building AI agents, SaaS platforms, and automation systems for clients globally. Delivered 20+ projects across AI, web, and automation with 100% client satisfaction.",
-    tags: ["AI Agents", "LangChain", "Next.js", "Python", "OpenAI"],
+    period: "2022 – Present",
+    duration: "3+ yrs",
+    desc: "Building production-ready SaaS platforms and AI-powered applications for clients globally. Delivered projects including AI-driven CRM, lead-generation SaaS, and automation dashboards for clients in real estate, HR, and business sectors.",
+    tags: ["React", "Next.js", "Python", "FastAPI", "OpenAI", "PostgreSQL"],
     color: "#1E3A5F",
     icon: "🤖",
     current: true,
   },
   {
-    role: "Full Stack Developer",
-    company: "Freelance Projects",
-    period: "2022 – 2023",
+    role: "AI Lead Generation SaaS — Developer",
+    company: "Independent Project",
+    period: "2025 – 2026",
     duration: "1 yr",
-    desc: "Developed full-stack web applications and REST APIs for small businesses and startups. Focused on React, Node.js, and PostgreSQL based solutions.",
-    tags: ["React", "Node.js", "PostgreSQL", "REST API", "Tailwind"],
+    desc: "Built a full-stack, AI-powered B2B lead-generation platform using Python (FastAPI) and Next.js, featuring JWT authentication, PostgreSQL/SQLAlchemy backend, OpenAI-driven lead scoring, and Stripe-integrated subscription billing.",
+    tags: ["Next.js", "FastAPI", "Python", "PostgreSQL", "OpenAI", "Stripe"],
     color: "#C9A227",
     icon: "⚡",
     current: false,
   },
   {
-    role: "Self-Taught Developer",
-    company: "Learning & Building",
-    period: "2021 – 2022",
-    duration: "1 yr",
-    desc: "Started coding journey — learned Python, JavaScript, React, and web fundamentals. Built personal projects and contributed to open source to sharpen skills.",
-    tags: ["Python", "JavaScript", "React", "HTML/CSS", "Git"],
+    role: "Qanoon Bridge — Legal-Tech SaaS",
+    company: "Independent Project",
+    period: "2022 – 2026",
+    duration: "4 yrs",
+    desc: "Built a multi-tenant, AI-assisted legal platform connecting citizens with verified lawyers across Pakistan, using Next.js, React, TypeScript, and Express.js with PostgreSQL.",
+    tags: ["Next.js", "React", "TypeScript", "Express.js", "PostgreSQL"],
     color: "#2563EB",
-    icon: "🚀",
+    icon: "⚖️",
     current: false,
   },
 ];
@@ -53,18 +53,14 @@ export default function Experience() {
           background: "radial-gradient(circle, rgba(30,58,95,0.06), transparent 65%)", filter: "blur(70px)" }} />
 
       <div className="wrap">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65 }}
-          className="text-center mb-16"
-        >
+        <motion.div initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.65 }} className="text-center mb-16">
           <span className="sec-label" style={{ color: "#C9A227" }}>Career</span>
           <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", color: "#0F172A" }}>
             Work <span className="g-text">Experience</span>
           </h2>
           <p className="text-sm mt-3 mx-auto" style={{ color: "#475569", maxWidth: 400 }}>
-            2+ years building AI-powered products and scalable web applications
+            3+ years building AI-powered products and scalable web applications
           </p>
         </motion.div>
 

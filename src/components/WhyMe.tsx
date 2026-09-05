@@ -16,7 +16,7 @@ const stats = [
   { end: 20,  suffix: "+", label: "Projects Shipped" },
   { end: 2,   suffix: "+", label: "Years Exp." },
   { end: 100, suffix: "%", label: "Satisfaction" },
-  { end: 100, suffix: "%", label: "Client Retention" },
+  { end: 8,   suffix: "+", label: "Countries Served" },
 ];
 
 export default function WhyMe() {
@@ -96,7 +96,7 @@ export default function WhyMe() {
                 Let&apos;s build something incredible together
               </h3>
               <p className="text-sm" style={{ color: "#475569" }}>
-                Currently accepting new projects. Response within 24 hours guaranteed.
+                Currently accepting new projects. BS CS student at MNS University Multan. Response within 24 hours.
               </p>
             </div>
             <div className="flex items-center gap-3 flex-shrink-0">

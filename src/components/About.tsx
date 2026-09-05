@@ -3,12 +3,12 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const skills = [
-  { name: "AI/ML Engineering",   pct: 95, color: "#1E3A5F", icon: "🧠" },
-  { name: "Full Stack Dev",       pct: 92, color: "#2563EB", icon: "💻" },
-  { name: "LLM Integration",      pct: 95, color: "#C9A227", icon: "🤖" },
-  { name: "SaaS Architecture",    pct: 88, color: "#059669", icon: "🏗️" },
-  { name: "Workflow Automation",  pct: 90, color: "#7C3AED", icon: "⚙️" },
-  { name: "Cloud & DevOps",       pct: 84, color: "#DC2626", icon: "☁️" },
+  { name: "React.js & Next.js",   pct: 92, color: "#1E3A5F", icon: "⚛️" },
+  { name: "Python & FastAPI",      pct: 90, color: "#C9A227", icon: "🐍" },
+  { name: "Node.js & Express",     pct: 88, color: "#2563EB", icon: "🟢" },
+  { name: "AI Integration",        pct: 92, color: "#059669", icon: "🤖" },
+  { name: "PostgreSQL & MongoDB",  pct: 85, color: "#7C3AED", icon: "🗄️" },
+  { name: "TypeScript / JS",       pct: 90, color: "#DC2626", icon: "📘" },
 ];
 
 const highlights = [
@@ -80,13 +80,15 @@ export default function About() {
               <p className="text-base leading-relaxed mb-4" style={{ color: "#334155" }}>
                 I&apos;m{" "}
                 <strong style={{ color: "#0F172A", fontWeight: 700 }}>Muhammad Aqib</strong>
-                , an AI Engineer &amp; Full Stack Developer passionate about building
-                intelligent systems that solve real business problems.
+                , a Full Stack &amp; AI Engineer skilled in React, Next.js, Node.js, Python, and Java,
+                with hands-on experience building production-ready SaaS platforms and AI-powered applications.
               </p>
               <p className="text-sm leading-relaxed" style={{ color: "#475569" }}>
-                From autonomous AI agents and LLM-powered workflows to full-stack SaaS platforms —
-                I turn complex ideas into clean, production-ready solutions.
-                Currently open to freelance projects and long-term collaborations worldwide.
+                Proficient in integrating AI tools like Claude and Gemini APIs and designing scalable
+                backend systems with PostgreSQL. Delivered projects including AI-driven CRM, lead-generation SaaS,
+                and automation dashboards for real estate, HR, and business clients.
+                Currently pursuing a <strong style={{ color: "#1E3A5F" }}>BS in Computer Science</strong> at{" "}
+                <strong style={{ color: "#C9A227" }}>MNS University of Agriculture Multan</strong> (2022–2026).
               </p>
             </div>
 

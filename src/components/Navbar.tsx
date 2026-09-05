@@ -81,7 +81,7 @@ export default function Navbar() {
                 M<span style={{ color: "#C9A227" }}>.</span>Aqib
               </span>
               <span style={{ fontSize: "0.6rem", color: "#94A3B8", letterSpacing: "0.12em", fontWeight: 600 }}>
-                AI ENGINEER
+                FULL STACK & AI ENGINEER
               </span>
             </div>
           </button>

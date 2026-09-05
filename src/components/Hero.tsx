@@ -10,7 +10,7 @@ import TextScramble from "@/components/TextScramble";
 const ParticleField = dynamic(() => import("@/components/ParticleField"), { ssr: false });
 const NeuralNetwork = dynamic(() => import("@/components/NeuralNetwork"), { ssr: false });
 
-const roles = ["AI Engineer", "Full Stack Developer", "AI Agent Builder", "SaaS Architect"];
+const roles = ["Full Stack Engineer", "AI Automation Engineer", "SaaS Developer", "AI Agent Builder"];
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const stagger = {
@@ -126,7 +126,7 @@ export default function Hero() {
             <motion.div variants={item} className="flex justify-center lg:justify-start gap-10 mb-10">
               {[
                 { end: 20, suffix: "+", label: "Projects Done" },
-                { end: 2,  suffix: "+", label: "Years Exp." },
+                { end: 3,  suffix: "+", label: "Years Exp." },
                 { end: 100, suffix: "%", label: "Satisfaction" },
               ].map(({ end, suffix, label }) => (
                 <div key={label} className="text-center lg:text-left">
