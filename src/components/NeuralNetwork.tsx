@@ -36,8 +36,8 @@ interface Pulse {
   size: number;
 }
 
-const NODE_COLORS  = ["#6366F1","#818CF8","#4F46E5","#A5B4FC","#C9A962"];
-const PULSE_COLORS = ["#818CF8","#A5B4FC","#C9A962","#6366F1"];
+const NODE_COLORS  = ["#1E3A5F","#2563EB","#C9A227","#92740D","#1D4ED8"];
+const PULSE_COLORS = ["#2563EB","#1E3A5F","#C9A227","#3B82F6"];
 
 export default function NeuralNetwork() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -141,9 +141,9 @@ export default function NeuralNetwork() {
         if (!a || !b) return;
 
         const grad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
-        grad.addColorStop(0, `rgba(99,102,241,${e.alpha})`);
-        grad.addColorStop(0.5, `rgba(129,140,248,${e.alpha * 1.4})`);
-        grad.addColorStop(1, `rgba(79,70,229,${e.alpha})`);
+        grad.addColorStop(0, `rgba(30,58,95,${e.alpha})`);
+        grad.addColorStop(0.5, `rgba(37,99,235,${e.alpha * 1.4})`);
+        grad.addColorStop(1, `rgba(29,78,216,${e.alpha})`);
 
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
@@ -213,11 +213,10 @@ export default function NeuralNetwork() {
         ctx.globalAlpha = n.alpha + boost * 0.3;
         ctx.fill();
 
-        /* gold ring on mouse proximity */
         if (boost > 0.1) {
           ctx.beginPath();
           ctx.arc(n.x, n.y, n.radius + 3, 0, Math.PI * 2);
-          ctx.strokeStyle = "#C9A962";
+          ctx.strokeStyle = "#C9A227";
           ctx.lineWidth   = 0.8;
           ctx.globalAlpha = boost * 0.7;
           ctx.stroke();

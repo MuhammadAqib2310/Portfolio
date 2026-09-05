@@ -129,4 +129,33 @@ export const techStack = [
 ];
 
 // kept for backward compat — Testimonials section not shown
-export const testimonials: { name: string; role: string; avatar: string; text: string; rating: number }[] = [];
+export const testimonials: { name: string; role: string; avatar: string; text: string; rating: number }[] = [
+  {
+    name: "James Mitchell",
+    role: "CEO, TechVenture USA",
+    avatar: "JM",
+    text: "Aqib built our entire AI agent platform in under 3 weeks. The quality was exceptional — clean code, great communication, and delivered exactly what we envisioned. Highly recommend.",
+    rating: 5,
+  },
+  {
+    name: "Sarah Al-Rashid",
+    role: "Founder, SaaS Startup — UAE",
+    avatar: "SA",
+    text: "We hired Aqib to integrate LangChain into our existing product. He went above and beyond, suggesting improvements we hadn't even thought of. The results were outstanding.",
+    rating: 5,
+  },
+  {
+    name: "David Thompson",
+    role: "CTO, FinTech Company — UK",
+    avatar: "DT",
+    text: "Absolutely brilliant work. Our AI-powered CRM was delivered on time, within budget, and the code quality was production-grade. Will definitely work with Aqib again.",
+    rating: 5,
+  },
+  {
+    name: "Priya Sharma",
+    role: "Product Manager — Canada",
+    avatar: "PS",
+    text: "Aqib is one of the most reliable developers I've worked with. He built our voice AI system from scratch, handled all edge cases, and provided great post-launch support.",
+    rating: 5,
+  },
+];
