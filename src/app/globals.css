@@ -1,48 +1,48 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════
-   Design System — Premium Indigo / Silicon Valley
-   Single accent · Glassmorphism · Gold micro-highlights
+   Design System — Premium Cyan / Deep Navy
+   Electric Cyan accent · Deep Navy base · Glassmorphism
    ═══════════════════════════════════════════════════ */
 :root {
-  /* ── Base ── */
-  --bg-primary:    #08080C;
-  --bg-secondary:  #0F0F14;
-  --bg-tertiary:   #0C0C11;
-  --bg-card:       #131318;
+  /* ── Base — Soft Dark (not pure black) ── */
+  --bg-primary:    #16161D;
+  --bg-secondary:  #1D1D26;
+  --bg-tertiary:   #1A1A22;
+  --bg-card:       #22222C;
 
-  /* ── Single Accent Family — Deep Indigo ── */
-  --accent-main:   #6366F1;
-  --accent-cyan:   #818CF8;
-  --accent-violet: #4F46E5;
+  /* ── Single Accent Family — Electric Cyan ── */
+  --accent-main:   #00D4FF;
+  --accent-cyan:   #38BDF8;
+  --accent-violet: #0EA5E9;
   --accent-green:  #22C55E;
 
   /* ── Gold — ONLY micro-highlights ── */
-  --gold:          #C9A962;
-  --gold-subtle:   rgba(201,169,98,0.2);
+  --gold:          #F0C060;
+  --gold-subtle:   rgba(240,192,96,0.2);
 
   /* ── Borders / Glass ── */
   --border-glass:  rgba(255,255,255,0.06);
   --border-hover:  rgba(255,255,255,0.12);
-  --border-subtle: rgba(99,102,241,0.15);
-  --border-glow:   rgba(99,102,241,0.3);
+  --border-subtle: rgba(0,212,255,0.15);
+  --border-glow:   rgba(0,212,255,0.3);
 
   /* ── Cards ── */
-  --card-bg:       #131318;
+  --card-bg:       #22222C;
   --card-border:   rgba(255,255,255,0.06);
 
   /* ── Text ── */
-  --text-primary:  #F4F4F5;
-  --text-secondary:#9A9AA5;
-  --text-tertiary: #55555F;
+  --text-primary:  #F0F6FF;
+  --text-secondary:#8BA4C0;
+  --text-tertiary: #3D5470;
 
   /* ── Gradients ── */
-  --gradient-text: linear-gradient(135deg, #FFFFFF 0%, #818CF8 100%);
-  --gradient-glow: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+  --gradient-text: linear-gradient(135deg, #FFFFFF 0%, #38BDF8 100%);
+  --gradient-glow: radial-gradient(circle, rgba(0,212,255,0.15) 0%, transparent 70%);
 
   /* ── Legacy aliases ── */
-  --accent:        #6366F1;
-  --cyan:          #818CF8;
+  --accent:        #00D4FF;
+  --cyan:          #38BDF8;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -63,6 +63,7 @@ html {
 body {
   font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
   background: var(--bg-primary);
+  background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,212,255,0.08) 0%, transparent 60%);
   color: var(--text-primary);
   overflow-x: hidden;
   cursor: none;
@@ -106,13 +107,13 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 1024px) { .section-pad { padding-top: 9rem;   padding-bottom: 9rem;   } }
 
 /* ═══════════════════════════════════════════════════
-   Cursor — Indigo
+   Cursor — Cyan
    ═══════════════════════════════════════════════════ */
 .cursor {
   position: fixed;
   width: 11px;
   height: 11px;
-  background: #6366F1;
+  background: #00D4FF;
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
@@ -125,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   width: 34px;
   height: 34px;
-  border: 2px solid rgba(99,102,241,0.4);
+  border: 2px solid rgba(0,212,255,0.4);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
@@ -134,27 +135,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ═══════════════════════════════════════════════════
-   Scrollbar — Indigo
+   Scrollbar — Cyan
    ═══════════════════════════════════════════════════ */
 ::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: #08080C; }
-::-webkit-scrollbar-thumb { background: #6366F1; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #818CF8; }
+::-webkit-scrollbar-track { background: #16161D; }
+::-webkit-scrollbar-thumb { background: #00D4FF; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
 
 /* ═══════════════════════════════════════════════════
    Gradient Text
    ═══════════════════════════════════════════════════ */
-/* White → Indigo (primary headings) */
+/* White → Cyan (primary headings) */
 .gradient-text, .g-text {
-  background: linear-gradient(135deg, #FFFFFF 0%, #818CF8 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #38BDF8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Indigo → soft violet */
+/* Cyan → Sky Blue */
 .gradient-text-2, .g-text-2 {
-  background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
+  background: linear-gradient(135deg, #00D4FF 0%, #38BDF8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -162,7 +163,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Subtle white → off-white */
 .g-text-3 {
-  background: linear-gradient(135deg, #F4F4F5 0%, #9A9AA5 100%);
+  background: linear-gradient(135deg, #F0F6FF 0%, #8BA4C0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -172,7 +173,7 @@ h1, h2, h3, h4, h5, h6 {
    Card — Dark Glass
    ═══════════════════════════════════════════════════ */
 .card {
-  background: #131318;
+  background: #22222C;
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 1.5rem;
   backdrop-filter: blur(12px);
@@ -186,21 +187,21 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(99,102,241,0.04) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, transparent 60%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.35s;
 }
 
-/* Gold border on hover — micro-highlight only */
+/* Cyan border on hover */
 .card:hover {
-  border-color: rgba(201,169,98,0.25);
+  border-color: rgba(0,212,255,0.3);
   box-shadow:
-    0 8px 40px rgba(99,102,241,0.12),
-    0 2px 12px rgba(99,102,241,0.08),
-    0 0 0 1px rgba(201,169,98,0.12);
+    0 8px 40px rgba(0,212,255,0.12),
+    0 2px 12px rgba(0,212,255,0.08),
+    0 0 0 1px rgba(0,212,255,0.12);
   transform: translateY(-4px);
-  background: #16161C;
+  background: #292933;
 }
 
 .card:hover::before {
@@ -231,7 +232,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background: rgba(99,102,241,0.3);
+  background: rgba(0,212,255,0.25);
   color: #fff;
 }
 
