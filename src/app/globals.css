@@ -93,9 +93,10 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 1240px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
+@media (min-width: 480px)  { .wrap { padding-left: 1.5rem; padding-right: 1.5rem; } }
 @media (min-width: 640px)  { .wrap { padding-left: 2.5rem; padding-right: 2.5rem; } }
 @media (min-width: 1024px) { .wrap { padding-left: 4.5rem; padding-right: 4.5rem; } }
 

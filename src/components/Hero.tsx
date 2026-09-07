@@ -141,10 +141,10 @@ export default function Hero() {
             </motion.div>
 
             {/* CTAs */}
-            <motion.div variants={item} className="flex flex-wrap justify-center lg:justify-start gap-3">
+            <motion.div variants={item} className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3">
               <MagneticButton
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                className="font-bold text-white text-sm rounded-2xl"
+                className="font-bold text-white text-sm rounded-2xl w-full sm:w-auto justify-center"
                 style={{ padding: "0.85rem 2rem",
                   background: "linear-gradient(135deg, #1E3A5F, #2563EB)",
                   boxShadow: "0 4px 28px rgba(30,58,95,0.3)" }}>
@@ -152,13 +152,13 @@ export default function Hero() {
               </MagneticButton>
               <MagneticButton
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="font-bold text-sm rounded-2xl"
+                className="font-bold text-sm rounded-2xl w-full sm:w-auto justify-center"
                 style={{ padding: "0.85rem 2rem",
                   background: "rgba(30,58,95,0.06)", border: "1px solid rgba(30,58,95,0.15)", color: "#1E3A5F" }}>
                 Let&apos;s Talk
               </MagneticButton>
               <MagneticButton href="/resume.pdf" download
-                className="font-bold text-sm rounded-2xl flex items-center gap-2"
+                className="font-bold text-sm rounded-2xl flex items-center gap-2 w-full sm:w-auto justify-center"
                 style={{ padding: "0.85rem 2rem",
                   border: "1px solid rgba(201,162,39,0.4)", color: "#92740D",
                   background: "rgba(201,162,39,0.08)" }}>
@@ -172,8 +172,8 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.55, ease }}
-            className="flex-shrink-0 relative"
-            style={{ padding: "0 40px", marginTop: "1rem" }}>
+            className="flex-shrink-0 relative flex justify-center"
+            style={{ padding: "0 20px", marginTop: "2rem", marginBottom: "2rem" }}>
 
             {/* Glow */}
             <div className="absolute inset-0 pointer-events-none rounded-full"
@@ -193,7 +193,7 @@ export default function Hero() {
 
             {/* Photo */}
             <div className="relative rounded-full overflow-hidden"
-              style={{ width: "clamp(180px, 28vw, 300px)", height: "clamp(180px, 28vw, 300px)",
+              style={{ width: "clamp(160px, 55vw, 280px)", height: "clamp(160px, 55vw, 280px)",
                 border: "3px solid rgba(201,162,39,0.35)",
                 boxShadow: "0 0 0 1px rgba(30,58,95,0.1), inset 0 0 40px rgba(201,162,39,0.05)" }}>
               {imgError ? (
@@ -203,25 +203,25 @@ export default function Hero() {
                   MA
                 </div>
               ) : (
-                <Image src="/avatar.jpg" alt="M Aqib — AI Engineer & Full Stack Developer"
+                <Image src="/avatar.jpg" alt="M Aqib — Full Stack & AI Engineer"
                   fill className="object-cover object-top" priority onError={() => setImgError(true)} />
               )}
             </div>
 
-            {/* Badge left */}
+            {/* Badge left — hidden on small screens */}
             <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
               className="absolute whitespace-nowrap font-bold text-xs hidden sm:block"
-              style={{ left: -8, top: "26%", padding: "0.5rem 0.75rem", borderRadius: "0.875rem",
+              style={{ left: -4, top: "26%", padding: "0.45rem 0.7rem", borderRadius: "0.875rem",
                 background: "rgba(201,162,39,0.12)", border: "1px solid rgba(201,162,39,0.35)",
                 color: "#92740D", backdropFilter: "blur(16px)", zIndex: 10,
                 boxShadow: "0 4px 20px rgba(201,162,39,0.15)" }}>
               🤖 AI Specialist
             </motion.div>
 
-            {/* Badge right */}
+            {/* Badge right — hidden on small screens */}
             <motion.div animate={{ y: [8, -8, 8] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               className="absolute whitespace-nowrap font-bold text-xs hidden sm:block"
-              style={{ right: -8, bottom: "26%", padding: "0.5rem 0.75rem", borderRadius: "0.875rem",
+              style={{ right: -4, bottom: "26%", padding: "0.45rem 0.7rem", borderRadius: "0.875rem",
                 background: "rgba(30,58,95,0.08)", border: "1px solid rgba(30,58,95,0.2)",
                 color: "#1E3A5F", backdropFilter: "blur(16px)", zIndex: 10,
                 boxShadow: "0 4px 20px rgba(30,58,95,0.1)" }}>
@@ -231,7 +231,7 @@ export default function Hero() {
             {/* Open to work */}
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.5 }}
               className="absolute whitespace-nowrap font-bold text-xs"
-              style={{ bottom: "-22px", left: "50%", transform: "translateX(-50%)",
+              style={{ bottom: "-28px", left: "50%", transform: "translateX(-50%)",
                 padding: "0.4rem 0.875rem", borderRadius: "999px",
                 background: "rgba(5,150,105,0.1)", border: "1px solid rgba(5,150,105,0.3)",
                 color: "#059669", backdropFilter: "blur(16px)", zIndex: 10 }}>
