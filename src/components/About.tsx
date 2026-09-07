@@ -77,19 +77,34 @@ export default function About() {
           >
             {/* Bio text */}
             <div className="mb-10 p-6 rounded-2xl" style={{ background: "#FFFFFF", border: "1px solid rgba(30,58,95,0.08)", boxShadow: "0 4px 24px rgba(30,58,95,0.06)" }}>
-              <p className="text-base leading-relaxed mb-4" style={{ color: "#334155" }}>
-                I&apos;m{" "}
-                <strong style={{ color: "#0F172A", fontWeight: 700 }}>Muhammad Aqib</strong>
-                , a Full Stack &amp; AI Engineer skilled in React, Next.js, Node.js, Python, and Java,
-                with hands-on experience building production-ready SaaS platforms and AI-powered applications.
-              </p>
-              <p className="text-sm leading-relaxed" style={{ color: "#475569" }}>
-                Proficient in integrating AI tools like Claude and Gemini APIs and designing scalable
-                backend systems with PostgreSQL. Delivered projects including AI-driven CRM, lead-generation SaaS,
-                and automation dashboards for real estate, HR, and business clients.
-                Currently pursuing a <strong style={{ color: "#1E3A5F" }}>BS in Computer Science</strong> at{" "}
-                <strong style={{ color: "#C9A227" }}>MNS University of Agriculture Multan</strong> (2022–2026).
-              </p>
+
+              {/* Highlight line */}
+              <div className="flex items-center gap-3 mb-4 pb-4" style={{ borderBottom: "1px solid rgba(30,58,95,0.07)" }}>
+                <div style={{ width: 4, height: 40, borderRadius: 4, background: "linear-gradient(180deg, #C9A227, #1E3A5F)", flexShrink: 0 }} />
+                <div>
+                  <p style={{ fontSize: "1rem", fontWeight: 800, color: "#0F172A", lineHeight: 1.3 }}>
+                    Muhammad Aqib
+                  </p>
+                  <p style={{ fontSize: "0.8rem", color: "#C9A227", fontWeight: 600 }}>
+                    Full Stack &amp; AI Automation Engineer · Multan, Pakistan
+                  </p>
+                </div>
+              </div>
+
+              {/* Key points */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+                {[
+                  { icon: "🎓", text: "BS Computer Science — MNS University of Agriculture Multan (2022–2026)" },
+                  { icon: "⚡", text: "Skilled in React, Next.js, Node.js, Python & Java — building production-ready SaaS & AI apps" },
+                  { icon: "🤖", text: "Integrates Claude, Gemini & OpenAI APIs into scalable backend systems" },
+                  { icon: "🚀", text: "Delivered AI-driven CRM, lead-generation SaaS & automation dashboards for global clients" },
+                ].map(({ icon, text }) => (
+                  <div key={text} style={{ display: "flex", alignItems: "flex-start", gap: "0.625rem" }}>
+                    <span style={{ fontSize: "0.9rem", flexShrink: 0, marginTop: "0.1rem" }}>{icon}</span>
+                    <p style={{ fontSize: "0.84rem", color: "#475569", lineHeight: 1.65, margin: 0 }}>{text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Highlight cards */}
