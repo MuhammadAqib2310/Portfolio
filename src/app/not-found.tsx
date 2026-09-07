@@ -40,7 +40,7 @@ export default function NotFound() {
         if (d.y < 0 || d.y > canvas.height) d.vy *= -1;
         ctx.beginPath();
         ctx.arc(d.x, d.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = "#6366F1";
+        ctx.fillStyle = "#1E3A5F";
         ctx.globalAlpha = 0.4 + Math.sin(t) * 0.15;
         ctx.fill();
       });
@@ -69,7 +69,7 @@ export default function NotFound() {
 
   return (
     <div style={{
-      minHeight: "100vh", background: "#08080C",
+      minHeight: "100vh", background: "#FAFAF7",
       display: "flex", alignItems: "center", justifyContent: "center",
       position: "relative", overflow: "hidden", fontFamily: "var(--font-inter), Inter, sans-serif",
     }}>
@@ -78,10 +78,9 @@ export default function NotFound() {
 
       {/* Glow orbs */}
       <div style={{ position: "absolute", width: 500, height: 500, top: "10%", left: "20%",
-        background: "radial-gradient(circle, rgba(99,102,241,0.12), transparent 70%)", filter: "blur(80px)", borderRadius: "50%",
-        animation: "pulse-glow 4s ease-in-out infinite" }} />
+        background: "radial-gradient(circle, rgba(201,162,39,0.1), transparent 70%)", filter: "blur(80px)", borderRadius: "50%" }} />
       <div style={{ position: "absolute", width: 400, height: 400, bottom: "10%", right: "15%",
-        background: "radial-gradient(circle, rgba(129,140,248,0.08), transparent 70%)", filter: "blur(70px)", borderRadius: "50%" }} />
+        background: "radial-gradient(circle, rgba(30,58,95,0.07), transparent 70%)", filter: "blur(70px)", borderRadius: "50%" }} />
 
       {/* Content */}
       <div style={{ position: "relative", zIndex: 10, textAlign: "center", padding: "2rem" }}>

@@ -83,14 +83,14 @@ export default function Cursor() {
   const dotSize   = state === "click" ? 6  : state === "hover" ? 8  : 10;
   const ringSize  = state === "click" ? 28 : state === "hover" ? 48 : 34;
   const ringBorder = state === "hover"
-    ? "2px solid rgba(255,255,255,0.9)"
+    ? "2px solid rgba(30,58,95,0.8)"
     : state === "text"
-    ? "2px solid rgba(129,140,248,0.7)"
-    : "1.5px solid rgba(99,102,241,0.5)";
-  const dotColor = state === "hover"  ? "#818CF8"
-    : state === "text"   ? "#818CF8"
-    : state === "click"  ? "#fff"
-    : "#6366F1";
+    ? "2px solid rgba(201,162,39,0.7)"
+    : "1.5px solid rgba(201,162,39,0.5)";
+  const dotColor = state === "hover"  ? "#1E3A5F"
+    : state === "text"   ? "#C9A227"
+    : state === "click"  ? "#1E3A5F"
+    : "#C9A227";
 
   return (
     <>
@@ -107,7 +107,7 @@ export default function Cursor() {
           background: dotColor,
           pointerEvents: "none",
           zIndex:    99999,
-          mixBlendMode: "screen",
+          mixBlendMode: "multiply",
           opacity:   visible ? 1 : 0,
           transition: "width 0.2s, height 0.2s, background 0.2s, opacity 0.3s",
           willChange: "transform",
@@ -129,7 +129,7 @@ export default function Cursor() {
           zIndex:    99998,
           opacity:   visible ? (state === "hover" ? 1 : 0.75) : 0,
           transition: "width 0.25s cubic-bezier(0.22,1,0.36,1), height 0.25s cubic-bezier(0.22,1,0.36,1), border 0.2s, opacity 0.3s",
-          background: state === "hover" ? "rgba(255,255,255,0.06)" : "transparent",
+          background: state === "hover" ? "rgba(30,58,95,0.06)" : "transparent",
           willChange: "transform",
           backdropFilter: state === "hover" ? "blur(2px)" : "none",
         }}
@@ -169,7 +169,7 @@ export default function Cursor() {
             transform: `translate(${pos.current.x}px, ${pos.current.y}px) translate(-50%, -50%)`,
             width:     2,
             height:    20,
-            background: "#818CF8",
+            background: "#C9A227",
             borderRadius: 1,
             pointerEvents: "none",
             zIndex:    99999,

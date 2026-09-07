@@ -50,20 +50,20 @@ export default function FloatingWhatsApp() {
                 style={{
                   padding: "0.625rem 1rem",
                   borderRadius: "0.875rem",
-                  background: "#131318",
+                  background: "#FFFFFF",
                   border: "1px solid rgba(37,211,102,0.3)",
-                  color: "#F4F4F5",
+                  color: "#0F172A",
                   fontSize: "0.8rem",
                   fontWeight: 600,
                   whiteSpace: "nowrap",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+                  boxShadow: "0 8px 32px rgba(30,58,95,0.12)",
                 }}
               >
                 💬 Chat on WhatsApp
                 <div style={{
                   position: "absolute", right: "1.25rem", bottom: "-6px",
                   width: 12, height: 6,
-                  background: "#131318",
+                  background: "#FFFFFF",
                   clipPath: "polygon(0 0, 100% 0, 50% 100%)",
                   border: "1px solid rgba(37,211,102,0.3)",
                 }} />

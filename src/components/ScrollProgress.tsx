@@ -55,8 +55,8 @@ export default function ScrollProgress() {
         style={{
           position: "fixed", top: 0, left: 0, right: 0,
           height: "2px", zIndex: 99990, originX: 0, scaleX,
-          background: "linear-gradient(90deg, #6366F1 0%, #818CF8 50%, #C9A962 100%)",
-          boxShadow: "0 0 8px rgba(99,102,241,0.6)",
+          background: "linear-gradient(90deg, #C9A227 0%, #1E3A5F 50%, #2563EB 100%)",
+          boxShadow: "0 0 8px rgba(201,162,39,0.4)",
         }}
       />
 
@@ -85,8 +85,8 @@ export default function ScrollProgress() {
                 width: isActive ? 8 : 4,
                 height: isActive ? 8 : 4,
                 borderRadius: "50%",
-                background: isActive ? "#6366F1" : "rgba(255,255,255,0.2)",
-                boxShadow: isActive ? "0 0 8px rgba(99,102,241,0.8)" : "none",
+                background: isActive ? "#1E3A5F" : "rgba(30,58,95,0.2)",
+                boxShadow: isActive ? "0 0 8px rgba(30,58,95,0.5)" : "none",
                 border: "none", cursor: "none",
                 transition: "all 0.3s cubic-bezier(0.22,1,0.36,1)",
                 padding: 0,
@@ -101,12 +101,12 @@ export default function ScrollProgress() {
           style={{
             marginTop: "0.375rem",
             fontSize: "0.6rem", fontWeight: 800,
-            color: "#55555F", letterSpacing: "0.08em",
+            color: "#94A3B8", letterSpacing: "0.08em",
             background: "none", border: "none", cursor: "none",
             transition: "color 0.2s",
           }}
-          onMouseEnter={e => (e.currentTarget.style.color = "#818CF8")}
-          onMouseLeave={e => (e.currentTarget.style.color = "#55555F")}
+          onMouseEnter={e => (e.currentTarget.style.color = "#1E3A5F")}
+          onMouseLeave={e => (e.currentTarget.style.color = "#94A3B8")}
         >
           {scrollPct}%
         </button>
