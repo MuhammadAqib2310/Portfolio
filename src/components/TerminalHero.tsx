@@ -89,9 +89,9 @@ function SceneCanvas() {
     /* ── orbs ── */
     interface Orb { x: number; y: number; r: number; phase: number; speed: number; color: string }
     const orbs: Orb[] = [
-      { x: 0.2,  y: 0.25, r: 220, phase: 0,    speed: 0.0004, color: "rgba(201,162,39,0.07)"  },
-      { x: 0.75, y: 0.6,  r: 280, phase: 2.1,  speed: 0.0003, color: "rgba(37,99,235,0.07)"   },
-      { x: 0.5,  y: 0.85, r: 160, phase: 4.2,  speed: 0.0005, color: "rgba(16,185,129,0.045)" },
+      { x: 0.2,  y: 0.25, r: 240, phase: 0,    speed: 0.0004, color: "rgba(201,162,39,0.18)"  },
+      { x: 0.78, y: 0.6,  r: 300, phase: 2.1,  speed: 0.0003, color: "rgba(30,58,95,0.1)"     },
+      { x: 0.5,  y: 0.85, r: 180, phase: 4.2,  speed: 0.0005, color: "rgba(201,162,39,0.12)"  },
     ];
 
     let t = 0;
@@ -101,26 +101,26 @@ function SceneCanvas() {
       const w = W, h = H;
       ctx.clearRect(0, 0, w, h);
 
-      /* background gradient */
+      /* background — warm white like portfolio */
       const bg = ctx.createLinearGradient(0, 0, w, h);
-      bg.addColorStop(0,   "#0D0D0D");
-      bg.addColorStop(0.5, "#0A0F1A");
-      bg.addColorStop(1,   "#080D14");
+      bg.addColorStop(0,   "#FAFAF7");
+      bg.addColorStop(0.5, "#F4F3EE");
+      bg.addColorStop(1,   "#FAFAF7");
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, w, h);
 
-      /* grid */
-      ctx.strokeStyle = "rgba(255,255,255,0.025)";
-      ctx.lineWidth = 0.5;
+      /* dot grid — same as hero section */
+      ctx.fillStyle = "rgba(30,58,95,0.07)";
       const gs = 48;
       for (let x = 0; x < w; x += gs) {
-        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-      }
-      for (let y = 0; y < h; y += gs) {
-        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+        for (let y = 0; y < h; y += gs) {
+          ctx.beginPath();
+          ctx.arc(x, y, 1, 0, Math.PI * 2);
+          ctx.fill();
+        }
       }
 
-      /* orbs */
+      /* orbs — gold + blue like portfolio glows */
       orbs.forEach(o => {
         const ox = o.x * w + Math.sin(t * o.speed + o.phase) * 60;
         const oy = o.y * h + Math.cos(t * o.speed + o.phase * 1.3) * 40;
@@ -131,23 +131,22 @@ function SceneCanvas() {
         ctx.fillRect(0, 0, w, h);
       });
 
-      /* code rain */
+      /* code rain — dark on light */
       cols.forEach(col => {
         col.y += col.speed;
-        if (col.y > h + 200) { col.y = -200; col.opacity = Math.random() * 0.18 + 0.04; }
+        if (col.y > h + 200) { col.y = -200; col.opacity = Math.random() * 0.13 + 0.03; }
         col.chars.forEach((ch, i) => {
-          const alpha = i === col.chars.length - 1 ? col.opacity * 3 : col.opacity * (1 - i / col.chars.length);
+          const alpha = i === col.chars.length - 1 ? col.opacity * 4 : col.opacity * (1 - i / col.chars.length);
           ctx.font = `${11}px ui-monospace,monospace`;
           ctx.fillStyle = i === col.chars.length - 1
-            ? `rgba(201,162,39,${Math.min(alpha * 2, 0.5)})`
-            : `rgba(96,165,250,${alpha})`;
+            ? `rgba(201,162,39,${Math.min(alpha, 0.55)})`
+            : `rgba(30,58,95,${alpha})`;
           ctx.fillText(ch, col.x * (w / 1000), col.y + i * 16);
-          /* randomly change char */
           if (Math.random() < 0.01) col.chars[i] = CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
         });
       });
 
-      /* update + draw nodes */
+      /* nodes — gold dots */
       nodes.forEach(n => {
         n.x += n.vx; n.y += n.vy;
         n.pulse += 0.025;
@@ -160,7 +159,7 @@ function SceneCanvas() {
         ctx.fill();
       });
 
-      /* node connections */
+      /* node connections — gold lines */
       const nx = nodes.map(n => ({ ...n, px: n.x * (w / 1000), py: n.y * (h / 1000) }));
       for (let i = 0; i < nx.length; i++) {
         for (let j = i + 1; j < nx.length; j++) {
@@ -168,30 +167,26 @@ function SceneCanvas() {
           const dy = nx[i].py - nx[j].py;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 160) {
-            const alpha = (1 - dist / 160) * 0.12;
+            const alpha = (1 - dist / 160) * 0.15;
             ctx.beginPath();
             ctx.moveTo(nx[i].px, nx[i].py);
             ctx.lineTo(nx[j].px, nx[j].py);
             ctx.strokeStyle = `rgba(201,162,39,${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.lineWidth = 0.7;
             ctx.stroke();
           }
         }
       }
 
-      /* floating code snippets */
+      /* floating code snippets — dark text */
       floating.forEach(s => {
         s.y += s.vy;
         if (s.y < -40) { s.y = h + 40; s.x = Math.random() * (w - 100) + 50; }
         ctx.font = `${s.size}px ui-monospace,monospace`;
-        ctx.fillStyle = s.color.replace(")", `,${s.opacity})`).replace("rgb", "rgba");
-        // safe color replacement
-        if (s.color.startsWith("#")) {
-          const hex = s.color.replace("#", "");
-          const r = parseInt(hex.substring(0, 2), 16);
-          const g = parseInt(hex.substring(2, 4), 16);
-          const b = parseInt(hex.substring(4, 6), 16);
-          ctx.fillStyle = `rgba(${r},${g},${b},${s.opacity})`;
+        if (s.color === "#C9A227") {
+          ctx.fillStyle = `rgba(201,162,39,${s.opacity * 1.4})`;
+        } else {
+          ctx.fillStyle = `rgba(30,58,95,${s.opacity * 1.2})`;
         }
         ctx.fillText(s.text, s.x, s.y);
       });
@@ -222,15 +217,15 @@ function SceneCanvas() {
 type LT = "cmd" | "ok" | "gold" | "dim" | "hint" | "output" | "error" | "section" | "kv";
 
 const C: Record<LT, string> = {
-  cmd:     "#C9A227",
-  ok:      "#34D399",
-  gold:    "#FBBF24",
-  dim:     "#4B5563",
-  hint:    "#6B7280",
-  output:  "#D1D5DB",
-  error:   "#F87171",
-  section: "#60A5FA",
-  kv:      "#9CA3AF",
+  cmd:     "#92740D",
+  ok:      "#059669",
+  gold:    "#C9A227",
+  dim:     "#CBD5E1",
+  hint:    "#94A3B8",
+  output:  "#334155",
+  error:   "#DC2626",
+  section: "#1E3A5F",
+  kv:      "#64748B",
 };
 
 interface OL { text: string; type: LT }
@@ -463,7 +458,7 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
       animate={{ opacity: glitching ? 0 : 1 }}
       transition={{ duration: glitching ? 0.4 : 0.55 }}
       className="fixed inset-0 z-[99990] flex flex-col"
-      style={{ background: "#0D0D0D", fontFamily: "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace" }}
+      style={{ background: "#FAFAF7", fontFamily: "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace" }}
       onClick={() => { inputRef.current?.focus(); setFocused(true); }}
     >
       {/* glitch strips */}
@@ -480,7 +475,7 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
 
       {/* ══ TITLEBAR ══ */}
       <div className="relative flex-shrink-0 flex items-center px-4"
-        style={{ height:"2.75rem", zIndex:20, background:"#161616", borderBottom:"1px solid rgba(255,255,255,0.08)", gap:"0.75rem" }}>
+        style={{ height:"2.75rem", zIndex:20, background:"#F4F3EE", borderBottom:"1px solid rgba(30,58,95,0.1)", gap:"0.75rem" }}>
         <div className="flex items-center gap-1.5 flex-shrink-0">
           <button onClick={triggerExit}
             className="w-3 h-3 rounded-full relative flex items-center justify-center group"
@@ -491,15 +486,15 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
           <div className="w-3 h-3 rounded-full" style={{ background:"#28C840" }}/>
         </div>
         <div className="flex items-center gap-1.5 h-full px-4 text-xs"
-          style={{ background:"#0D0D0D", borderLeft:"1px solid rgba(255,255,255,0.08)", borderRight:"1px solid rgba(255,255,255,0.08)", borderTop:"2px solid #C9A227", color:"rgba(255,255,255,0.6)", marginTop:"2px" }}>
+          style={{ background:"#FAFAF7", borderLeft:"1px solid rgba(30,58,95,0.08)", borderRight:"1px solid rgba(30,58,95,0.08)", borderTop:"2px solid #C9A227", color:"#475569", marginTop:"2px" }}>
           <span style={{ color:"#C9A227", fontSize:"0.65rem" }}>❯</span> bash
         </div>
         <div className="ml-auto flex items-center gap-4">
-          <span className="hidden sm:flex items-center gap-1.5 text-xs" style={{ color:"#374151" }}>
+          <span className="hidden sm:flex items-center gap-1.5 text-xs" style={{ color:"#94A3B8" }}>
             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background:"#10B981" }}/>
             open to work
           </span>
-          <span className="text-xs tabular-nums" style={{ color:"#374151" }}>{clock}</span>
+          <span className="text-xs tabular-nums" style={{ color:"#94A3B8" }}>{clock}</span>
         </div>
       </div>
 
@@ -511,7 +506,7 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
           initial={{ opacity:0, x:-12 }} animate={{ opacity:1, x:0 }}
           transition={{ delay:0.2, duration:0.5, ease:[0.22,1,0.36,1] }}
           className="hidden lg:flex flex-col flex-shrink-0"
-          style={{ width:"215px", background:"rgba(17,17,17,0.95)", borderRight:"1px solid rgba(255,255,255,0.06)", padding:"1.5rem 1rem 1.25rem", overflowY:"auto", scrollbarWidth:"none", backdropFilter:"blur(8px)" }}
+          style={{ width:"215px", background:"rgba(244,243,238,0.97)", borderRight:"1px solid rgba(30,58,95,0.08)", padding:"1.5rem 1rem 1.25rem", overflowY:"auto", scrollbarWidth:"none", backdropFilter:"blur(8px)" }}
         >
           {/* avatar */}
           <div className="flex flex-col items-center text-center mb-5">
@@ -522,46 +517,46 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
                 MA
               </div>
               <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full border-[2.5px]"
-                style={{ borderColor:"rgba(17,17,17,0.95)", background:"#10B981" }}>
+                style={{ borderColor:"rgba(244,243,238,0.97)", background:"#10B981" }}>
                 <div className="w-full h-full rounded-full animate-pulse" style={{ background:"#6EE7B7", opacity:0.7 }}/>
               </div>
             </div>
-            <p className="text-sm font-bold" style={{ color:"#F1F5F9" }}>Muhammad Aqib</p>
+            <p className="text-sm font-bold" style={{ color:"#0F172A" }}>Muhammad Aqib</p>
             <p className="text-xs mt-1 font-medium" style={{ color:"#C9A227" }}>AI & Full Stack Eng.</p>
-            <p className="text-xs mt-1" style={{ color:"#4B5563" }}>📍 Pakistan</p>
+            <p className="text-xs mt-1" style={{ color:"#94A3B8" }}>📍 Pakistan</p>
           </div>
 
           {/* stats */}
           <div className="grid grid-cols-3 gap-1 mb-5">
             {stats.map(s => (
               <div key={s.l} className="flex flex-col items-center rounded-xl py-2"
-                style={{ background:"rgba(255,255,255,0.03)", border:"1px solid rgba(255,255,255,0.05)" }}>
+                style={{ background:"rgba(30,58,95,0.04)", border:"1px solid rgba(30,58,95,0.08)" }}>
                 <span className="text-sm font-black" style={{ color:"#C9A227" }}>{s.v}</span>
-                <span className="text-[0.57rem] mt-1 text-center" style={{ color:"#4B5563" }}>{s.l}</span>
+                <span className="text-[0.57rem] mt-1 text-center" style={{ color:"#94A3B8" }}>{s.l}</span>
               </div>
             ))}
           </div>
 
-          <div style={{ height:"1px", background:"rgba(255,255,255,0.05)", marginBottom:"1rem" }}/>
+          <div style={{ height:"1px", background:"rgba(30,58,95,0.08)", marginBottom:"1rem" }}/>
 
-          <p className="text-[0.6rem] font-bold mb-2" style={{ color:"#374151", letterSpacing:"0.18em" }}>COMMANDS</p>
+          <p className="text-[0.6rem] font-bold mb-2" style={{ color:"#94A3B8", letterSpacing:"0.18em" }}>COMMANDS</p>
           <div className="flex flex-col gap-0.5 mb-5">
             {sideCmd.map(cmd => (
               <button key={cmd}
                 onClick={e => { e.stopPropagation(); runCommand(cmd); inputRef.current?.focus(); setFocused(true); }}
                 className="w-full text-left text-xs rounded-lg px-3 py-2 transition-all duration-150 flex items-center gap-2"
-                style={{ color:"#6B7280", border:"1px solid transparent" }}
-                onMouseEnter={e => { const b=e.currentTarget as HTMLButtonElement; b.style.color="#E2E8F0"; b.style.background="rgba(201,162,39,0.07)"; b.style.borderColor="rgba(201,162,39,0.18)"; }}
-                onMouseLeave={e => { const b=e.currentTarget as HTMLButtonElement; b.style.color="#6B7280"; b.style.background="transparent"; b.style.borderColor="transparent"; }}
+                style={{ color:"#64748B", border:"1px solid transparent" }}
+                onMouseEnter={e => { const b=e.currentTarget as HTMLButtonElement; b.style.color="#1E3A5F"; b.style.background="rgba(201,162,39,0.1)"; b.style.borderColor="rgba(201,162,39,0.3)"; }}
+                onMouseLeave={e => { const b=e.currentTarget as HTMLButtonElement; b.style.color="#64748B"; b.style.background="transparent"; b.style.borderColor="transparent"; }}
               >
                 <span style={{ color:"#C9A227", fontWeight:700, flexShrink:0 }}>$</span> {cmd}
               </button>
             ))}
           </div>
 
-          <div style={{ height:"1px", background:"rgba(255,255,255,0.05)", marginBottom:"1rem" }}/>
+          <div style={{ height:"1px", background:"rgba(30,58,95,0.08)", marginBottom:"1rem" }}/>
 
-          <p className="text-[0.6rem] font-bold mb-2" style={{ color:"#374151", letterSpacing:"0.18em" }}>LINKS</p>
+          <p className="text-[0.6rem] font-bold mb-2" style={{ color:"#94A3B8", letterSpacing:"0.18em" }}>LINKS</p>
           <div className="flex flex-col gap-1 mb-5">
             {[
               { label:"GitHub",   href:"https://github.com/MuhammadAqib2310",                 ico:"GH" },
@@ -570,13 +565,13 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
             ].map(l => (
               <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2 text-xs rounded-lg px-3 py-1.5 transition-all duration-150"
-                style={{ color:"#6B7280", textDecoration:"none", border:"1px solid transparent" }}
-                onMouseEnter={e => { const a=e.currentTarget as HTMLAnchorElement; a.style.color="#93C5FD"; a.style.background="rgba(37,99,235,0.07)"; a.style.borderColor="rgba(37,99,235,0.18)"; }}
-                onMouseLeave={e => { const a=e.currentTarget as HTMLAnchorElement; a.style.color="#6B7280"; a.style.background="transparent"; a.style.borderColor="transparent"; }}
+                style={{ color:"#64748B", textDecoration:"none", border:"1px solid transparent" }}
+                onMouseEnter={e => { const a=e.currentTarget as HTMLAnchorElement; a.style.color="#1E3A5F"; a.style.background="rgba(30,58,95,0.06)"; a.style.borderColor="rgba(30,58,95,0.15)"; }}
+                onMouseLeave={e => { const a=e.currentTarget as HTMLAnchorElement; a.style.color="#64748B"; a.style.background="transparent"; a.style.borderColor="transparent"; }}
                 onClick={e => e.stopPropagation()}
               >
                 <span className="w-5 h-5 rounded-md flex items-center justify-center text-[0.6rem] font-black flex-shrink-0"
-                  style={{ background:"rgba(255,255,255,0.05)", color:"#4B5563" }}>{l.ico}</span>
+                  style={{ background:"rgba(30,58,95,0.06)", color:"#94A3B8" }}>{l.ico}</span>
                 {l.label}
               </a>
             ))}
@@ -599,19 +594,19 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
 
         {/* ── CENTER: TERMINAL ── */}
         <div className="flex flex-col overflow-hidden"
-          style={{ width:"100%", maxWidth:"600px", flex:"0 0 auto", borderRight:"1px solid rgba(255,255,255,0.06)", minWidth:0 }}
+          style={{ width:"100%", maxWidth:"600px", flex:"0 0 auto", borderRight:"1px solid rgba(30,58,95,0.08)", minWidth:0 }}
           onClick={e => e.stopPropagation()}
         >
           {/* mobile top bar */}
           <div className="lg:hidden flex items-center justify-between flex-shrink-0 px-4 py-2.5"
-            style={{ background:"#111111", borderBottom:"1px solid rgba(255,255,255,0.06)" }}>
+            style={{ background:"#F4F3EE", borderBottom:"1px solid rgba(30,58,95,0.08)" }}>
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-xl flex items-center justify-center font-black text-xs flex-shrink-0"
                 style={{ background:"linear-gradient(135deg,#1E3A5F,#2563EB)", color:"#fff", boxShadow:"0 0 0 1.5px rgba(201,162,39,0.4)" }}>
                 MA
               </div>
               <div>
-                <p className="text-xs font-bold" style={{ color:"#F1F5F9" }}>Muhammad Aqib</p>
+                <p className="text-xs font-bold" style={{ color:"#0F172A" }}>Muhammad Aqib</p>
                 <p className="text-[0.62rem]" style={{ color:"#C9A227" }}>AI & Full Stack Engineer</p>
               </div>
             </div>
@@ -624,7 +619,7 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
 
           {/* output */}
           <div ref={outputRef} className="flex-1 overflow-y-auto"
-            style={{ padding:"1.25rem 1.5rem 0.5rem", scrollbarWidth:"thin", scrollbarColor:"#1F2937 transparent" }}>
+            style={{ padding:"1.25rem 1.5rem 0.5rem", scrollbarWidth:"thin", scrollbarColor:"#CBD5E1 transparent", background:"#FAFAF7" }}>
             {lines.map(line => (
               <motion.div key={line.id}
                 initial={{ opacity:0, y:2 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.1 }}
@@ -645,30 +640,31 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
 
           {/* input */}
           <div className="flex-shrink-0 px-4 py-3"
-            style={{ borderTop:"1px solid rgba(255,255,255,0.06)", background:"#0D0D0D" }}>
+            style={{ borderTop:"1px solid rgba(30,58,95,0.08)", background:"#F4F3EE" }}>
             {booted && !glitching && (
               <div className="flex items-center rounded-xl cursor-text"
                 style={{
                   padding:"0.6rem 0.9rem",
-                  background: focused ? "rgba(201,162,39,0.05)" : "rgba(255,255,255,0.03)",
-                  border: focused ? "1px solid rgba(201,162,39,0.4)" : "1px solid rgba(255,255,255,0.08)",
+                  background: focused ? "rgba(201,162,39,0.08)" : "#FFFFFF",
+                  border: focused ? "1px solid rgba(201,162,39,0.5)" : "1px solid rgba(30,58,95,0.12)",
                   transition:"all 0.15s ease",
                   gap:"0.25rem",
+                  boxShadow: focused ? "0 0 0 3px rgba(201,162,39,0.1)" : "0 1px 4px rgba(30,58,95,0.06)",
                 }}
                 onClick={() => { inputRef.current?.focus(); setFocused(true); }}
               >
                 <span style={{ color:"#C9A227", fontWeight:700, flexShrink:0, fontSize:"0.82rem" }}>aqib</span>
-                <span style={{ color:"#374151", flexShrink:0, fontSize:"0.82rem" }}>@</span>
-                <span style={{ color:"#34D399", fontWeight:600, flexShrink:0, fontSize:"0.82rem" }}>portfolio</span>
-                <span style={{ color:"#374151", flexShrink:0, fontSize:"0.82rem", margin:"0 4px" }}>:~$</span>
-                <span style={{ color:"#F1F5F9", flex:1, whiteSpace:"pre-wrap", wordBreak:"break-word", fontSize:"0.82rem", minWidth:0 }}>{input}</span>
+                <span style={{ color:"#CBD5E1", flexShrink:0, fontSize:"0.82rem" }}>@</span>
+                <span style={{ color:"#1E3A5F", fontWeight:600, flexShrink:0, fontSize:"0.82rem" }}>portfolio</span>
+                <span style={{ color:"#CBD5E1", flexShrink:0, fontSize:"0.82rem", margin:"0 4px" }}>:~$</span>
+                <span style={{ color:"#0F172A", flex:1, whiteSpace:"pre-wrap", wordBreak:"break-word", fontSize:"0.82rem", minWidth:0 }}>{input}</span>
                 <span style={{ display:"inline-block", width:"0.5ch", height:"1.1em",
                   background: blink && focused ? "#C9A227" : "transparent",
                   verticalAlign:"text-bottom", flexShrink:0, borderRadius:"1px", transition:"background 0.06s" }}/>
               </div>
             )}
             {booted && (
-              <p className="mt-2 text-xs" style={{ color:"#374151", paddingLeft:"0.25rem" }}>
+              <p className="mt-2 text-xs" style={{ color:"#94A3B8", paddingLeft:"0.25rem" }}>
                 <span className="hidden lg:inline">↑/↓ history  ·  Tab autocomplete  ·  </span>
                 type <span style={{ color:"#C9A227" }}>help</span> for commands
               </p>
@@ -680,7 +676,7 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
             {booted && (
               <motion.div initial={{ opacity:0,y:6 }} animate={{ opacity:1,y:0 }} exit={{ opacity:0 }}
                 className="lg:hidden flex-shrink-0"
-                style={{ background:"#111111", borderTop:"1px solid rgba(255,255,255,0.06)", padding:"0.6rem 1rem" }}>
+                style={{ background:"#F4F3EE", borderTop:"1px solid rgba(30,58,95,0.08)", padding:"0.6rem 1rem" }}>
                 <div className="flex items-center gap-2 overflow-x-auto" style={{ scrollbarWidth:"none" }}>
                   {mobilePills.map(cmd => (
                     <button key={cmd}
