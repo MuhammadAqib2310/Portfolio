@@ -2,24 +2,15 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-/* ═══════════════════════════════════════════════════
-   Terminal Hero — Interactive CLI Portfolio Experience
-   Features:
-   - Auto-typewriter boot sequence
-   - Live interactive commands (whoami, skills, projects, contact, help, clear)
-   - Glitch dissolve transition → normal hero
-   - Fully keyboard accessible
-═══════════════════════════════════════════════════ */
-
 const BOOT_LINES = [
   { text: "Initializing portfolio v3.0.0...", delay: 0,    color: "#6EE7B7" },
   { text: "Loading modules: React · Next.js · TypeScript", delay: 320,  color: "#93C5FD" },
   { text: "Loading modules: Python · FastAPI · LangChain", delay: 620,  color: "#93C5FD" },
-  { text: "Connecting to AI services... ✓", delay: 940,  color: "#6EE7B7" },
-  { text: "Status: Available for hire ✓", delay: 1200, color: "#C9A227" },
-  { text: "", delay: 1450, color: "" },
-  { text: "Type 'help' to see available commands.", delay: 1550, color: "#94A3B8" },
-  { text: "", delay: 1700, color: "" },
+  { text: "Connecting to AI services... ✓",               delay: 940,  color: "#6EE7B7" },
+  { text: "Status: Available for hire ✓",                 delay: 1200, color: "#C9A227" },
+  { text: "",                                              delay: 1450, color: "" },
+  { text: "Type 'help' to see available commands.",        delay: 1550, color: "#94A3B8" },
+  { text: "",                                              delay: 1700, color: "" },
 ];
 
 const COMMANDS: Record<string, { output: string[]; color?: string }> = {
@@ -73,7 +64,7 @@ const COMMANDS: Record<string, { output: string[]; color?: string }> = {
       "💼  LinkedIn →  linkedin.com/in/muhammad-aqib-715397408",
       "🐙  GitHub   →  github.com/MuhammadAqib2310",
       "",
-      "   → scroll to #contact or type 'hire' to reach out",
+      "   → type 'hire' to reach out directly",
     ],
     color: "#6EE7B7",
   },
@@ -98,7 +89,7 @@ const COMMANDS: Record<string, { output: string[]; color?: string }> = {
       "  clear       →  Clear terminal",
       "  exit        →  Switch to visual mode",
       "",
-      "Tip: press ↑/↓ to cycle command history",
+      "Tip: press ↑ / ↓ to cycle command history",
     ],
     color: "#94A3B8",
   },
@@ -124,32 +115,31 @@ interface Props {
 }
 
 export default function TerminalHero({ onExit }: Props) {
-  const [lines, setLines] = useState<TerminalLine[]>([]);
-  const [input, setInput] = useState("");
-  const [booted, setBooted] = useState(false);
+  const [lines,     setLines]     = useState<TerminalLine[]>([]);
+  const [input,     setInput]     = useState("");
+  const [booted,    setBooted]    = useState(false);
   const [glitching, setGlitching] = useState(false);
-  const [history, setHistory] = useState<string[]>([]);
-  const [histIdx, setHistIdx] = useState(-1);
-  const [cursorOn, setCursorOn] = useState(true);
+  const [history,   setHistory]   = useState<string[]>([]);
+  const [histIdx,   setHistIdx]   = useState(-1);
+  const [cursorOn,  setCursorOn]  = useState(true);
 
   const bottomRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef  = useRef<HTMLInputElement>(null);
 
-  /* ── cursor blink ── */
+  /* cursor blink */
   useEffect(() => {
     const t = setInterval(() => setCursorOn(v => !v), 530);
     return () => clearInterval(t);
   }, []);
 
-  /* ── boot sequence ── */
+  /* boot sequence */
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
 
-    // Header lines
     const header: TerminalLine[] = [
-      { id: uid(), type: "boot", text: "╔══════════════════════════════════════════════╗", color: "#1E3A5F" },
+      { id: uid(), type: "boot", text: "╔══════════════════════════════════════════════╗", color: "#334155" },
       { id: uid(), type: "boot", text: "║   M.Aqib Terminal  ·  AI & Full Stack Eng.  ║", color: "#C9A227" },
-      { id: uid(), type: "boot", text: "╚══════════════════════════════════════════════╝", color: "#1E3A5F" },
+      { id: uid(), type: "boot", text: "╚══════════════════════════════════════════════╝", color: "#334155" },
       { id: uid(), type: "boot", text: "", color: "" },
     ];
     setLines(header);
@@ -164,27 +154,25 @@ export default function TerminalHero({ onExit }: Props) {
     const done = setTimeout(() => {
       setBooted(true);
       setTimeout(() => inputRef.current?.focus(), 100);
-    }, 1800);
+    }, 1900);
     timers.push(done);
 
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  /* ── auto scroll ── */
+  /* auto scroll */
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [lines]);
 
-  /* ── run command ── */
+  /* run command */
   const runCommand = useCallback((raw: string) => {
     const cmd = raw.trim().toLowerCase();
     if (!cmd) return;
 
-    // add to history
     setHistory(h => [cmd, ...h.slice(0, 19)]);
     setHistIdx(-1);
 
-    // echo input line
     setLines(prev => [
       ...prev,
       { id: uid(), type: "input", text: `$ ${raw.trim()}`, color: "#E2E8F0" },
@@ -201,10 +189,7 @@ export default function TerminalHero({ onExit }: Props) {
         { id: uid(), type: "output", text: "Switching to visual mode...", color: "#C9A227" },
         { id: uid(), type: "output", text: "", color: "" },
       ]);
-      setTimeout(() => {
-        setGlitching(true);
-        setTimeout(onExit, 900);
-      }, 500);
+      setTimeout(() => { setGlitching(true); setTimeout(onExit, 800); }, 400);
       return;
     }
 
@@ -214,9 +199,7 @@ export default function TerminalHero({ onExit }: Props) {
         ...(COMMANDS.hire.output.map(t => ({ id: uid(), type: "output" as const, text: t, color: COMMANDS.hire.color }))),
         { id: uid(), type: "output", text: "", color: "" },
       ]);
-      setTimeout(() => {
-        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-      }, 800);
+      setTimeout(() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }), 800);
       return;
     }
 
@@ -230,13 +213,13 @@ export default function TerminalHero({ onExit }: Props) {
     } else {
       setLines(prev => [
         ...prev,
-        { id: uid(), type: "error", text: `command not found: ${cmd}  (type 'help' for available commands)`, color: "#F87171" },
+        { id: uid(), type: "error", text: `command not found: ${cmd}  (type 'help' for commands)`, color: "#F87171" },
         { id: uid(), type: "output", text: "", color: "" },
       ]);
     }
   }, [onExit]);
 
-  /* ── keyboard handler ── */
+  /* keyboard */
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       runCommand(input);
@@ -255,245 +238,194 @@ export default function TerminalHero({ onExit }: Props) {
   };
 
   return (
+    /* ── FULL SCREEN fixed overlay — above everything including navbar ── */
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: glitching ? 0 : 1 }}
-      transition={{ duration: glitching ? 0.6 : 0.5 }}
-      className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
+      transition={{ duration: glitching ? 0.5 : 0.6 }}
+      className="fixed inset-0 z-[99990] flex flex-col"
       style={{
-        background: "#0A0F1A",
+        background: "#080D18",
         fontFamily: "'Courier New', 'Fira Code', monospace",
       }}
       onClick={() => inputRef.current?.focus()}
     >
-      {/* ── CRT scanlines overlay ── */}
+      {/* CRT scanlines */}
       <div
         className="absolute inset-0 pointer-events-none z-10"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px)",
-          animation: glitching ? "glitch-scanlines 0.1s infinite" : "none",
+            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px)",
         }}
       />
 
-      {/* ── Ambient glow ── */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          inset: 0,
-          background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(30,58,95,0.25) 0%, transparent 70%)",
-        }}
-      />
+      {/* Ambient glow top */}
+      <div className="absolute pointer-events-none" style={{
+        top: 0, left: 0, right: 0, height: "40%",
+        background: "radial-gradient(ellipse 70% 60% at 50% 0%, rgba(30,58,95,0.35) 0%, transparent 70%)",
+      }} />
 
-      {/* ── Glitch overlay ── */}
+      {/* Glitch strips on exit */}
       <AnimatePresence>
-        {glitching && (
-          <>
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 0 }}
-                animate={{
-                  opacity: [0, 0.9, 0, 0.7, 0],
-                  x: [0, (i % 2 === 0 ? 1 : -1) * (Math.random() * 20 + 5)],
-                  scaleX: [1, 1.02, 0.98, 1],
-                }}
-                transition={{ duration: 0.15, delay: i * 0.08, repeat: 3 }}
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: i % 3 === 0 ? "rgba(201,162,39,0.15)" : i % 3 === 1 ? "rgba(30,58,95,0.2)" : "rgba(99,102,241,0.1)",
-                  mixBlendMode: "screen",
-                  clipPath: `inset(${Math.random() * 80}% 0 ${Math.random() * 10}% 0)`,
-                }}
-              />
-            ))}
-          </>
-        )}
+        {glitching && [...Array(5)].map((_, i) => (
+          <motion.div key={i}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.8, 0, 0.6, 0], x: [(i % 2 === 0 ? 8 : -8), 0] }}
+            transition={{ duration: 0.12, delay: i * 0.07, repeat: 3 }}
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: i % 2 === 0 ? "rgba(201,162,39,0.12)" : "rgba(30,58,95,0.18)",
+              mixBlendMode: "screen",
+              clipPath: `inset(${15 + i * 14}% 0 ${5 + i * 8}% 0)`,
+              zIndex: 20,
+            }}
+          />
+        ))}
       </AnimatePresence>
 
-      {/* ── Terminal window ── */}
-      <div
-        className="relative z-20 w-full"
-        style={{ maxWidth: "min(860px, 95vw)", margin: "0 auto", padding: "5rem 1rem 2rem" }}
+      {/* ── Window chrome bar ── */}
+      <div className="relative z-20 flex-shrink-0 flex items-center gap-2 px-5"
+        style={{
+          height: "2.75rem",
+          background: "rgba(255,255,255,0.03)",
+          borderBottom: "1px solid rgba(255,255,255,0.07)",
+        }}
       >
-        {/* Window chrome */}
-        <div
-          className="rounded-t-2xl flex items-center gap-2 px-4"
-          style={{
-            height: "2.5rem",
-            background: "rgba(255,255,255,0.05)",
-            borderBottom: "1px solid rgba(255,255,255,0.08)",
-            backdropFilter: "blur(12px)",
-          }}
-        >
-          <span className="w-3 h-3 rounded-full" style={{ background: "#F87171" }} />
-          <span className="w-3 h-3 rounded-full" style={{ background: "#FBBF24" }} />
-          <span className="w-3 h-3 rounded-full" style={{ background: "#34D399" }} />
-          <span
-            className="ml-auto text-xs font-semibold"
-            style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}
+        <span className="w-3 h-3 rounded-full" style={{ background: "#F87171" }} />
+        <span className="w-3 h-3 rounded-full" style={{ background: "#FBBF24" }} />
+        <span className="w-3 h-3 rounded-full" style={{ background: "#34D399" }} />
+        <span className="ml-auto text-xs font-semibold"
+          style={{ color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}>
+          m.aqib — portfolio terminal
+        </span>
+      </div>
+
+      {/* ── Terminal output area ── */}
+      <div
+        className="relative z-20 flex-1 overflow-y-auto px-6 py-5"
+        style={{ maxWidth: "900px", width: "100%", margin: "0 auto", alignSelf: "center" }}
+      >
+        {lines.map((line) => (
+          <motion.div
+            key={line.id}
+            initial={{ opacity: 0, x: -4 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.15 }}
+            style={{
+              color: line.color || "#94A3B8",
+              fontSize: "clamp(0.78rem, 1.9vw, 0.95rem)",
+              lineHeight: 1.8,
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
+              fontWeight: line.type === "input" ? 700 : 400,
+            }}
           >
-            m.aqib — terminal
-          </span>
-        </div>
+            {line.text || "\u00A0"}
+          </motion.div>
+        ))}
 
-        {/* Terminal body */}
-        <div
-          className="rounded-b-2xl overflow-y-auto"
-          style={{
-            minHeight: "clamp(380px, 60vh, 520px)",
-            maxHeight: "clamp(380px, 60vh, 520px)",
-            background: "rgba(10,15,26,0.97)",
-            border: "1px solid rgba(201,162,39,0.15)",
-            borderTop: "none",
-            padding: "1.25rem 1.5rem",
-            backdropFilter: "blur(16px)",
-          }}
-        >
-          {/* Output lines */}
-          {lines.map((line) => (
-            <motion.div
-              key={line.id}
-              initial={{ opacity: 0, x: line.type === "input" ? 0 : -4 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.18 }}
-              style={{
-                color: line.color || "#CBD5E1",
-                fontSize: "clamp(0.72rem, 1.8vw, 0.875rem)",
-                lineHeight: 1.75,
-                whiteSpace: "pre-wrap",
-                wordBreak: "break-word",
-                fontWeight: line.type === "input" ? 700 : 400,
-                letterSpacing: line.type === "boot" ? "0.02em" : "0",
-              }}
-            >
-              {line.text || "\u00A0"}
-            </motion.div>
-          ))}
+        {/* Live input line */}
+        {booted && !glitching && (
+          <div className="flex items-center gap-2 mt-1"
+            style={{ fontSize: "clamp(0.78rem, 1.9vw, 0.95rem)" }}>
+            <span style={{ color: "#C9A227", fontWeight: 700, flexShrink: 0 }}>aqib@portfolio</span>
+            <span style={{ color: "#6EE7B7", flexShrink: 0 }}>:~$</span>
+            <span style={{ color: "#E2E8F0", flex: 1, whiteSpace: "pre" }}>{input}</span>
+            <span style={{
+              display: "inline-block", width: "0.55ch", height: "1.1em",
+              background: cursorOn ? "#C9A227" : "transparent",
+              verticalAlign: "text-bottom", flexShrink: 0,
+              transition: "background 0.08s",
+            }} />
+          </div>
+        )}
+        <div ref={bottomRef} />
+      </div>
 
-          {/* Input line */}
-          {booted && !glitching && (
-            <div
-              className="flex items-center gap-2 mt-1"
-              style={{ fontSize: "clamp(0.72rem, 1.8vw, 0.875rem)" }}
-            >
-              <span style={{ color: "#C9A227", fontWeight: 700, flexShrink: 0 }}>
-                aqib@portfolio
-              </span>
-              <span style={{ color: "#6EE7B7", flexShrink: 0 }}>:~$</span>
-              <span
-                style={{ color: "#E2E8F0", flex: 1, whiteSpace: "pre" }}
-              >
-                {input}
-              </span>
-              <span
-                style={{
-                  display: "inline-block",
-                  width: "0.6ch",
-                  height: "1.1em",
-                  background: cursorOn ? "#C9A227" : "transparent",
-                  verticalAlign: "text-bottom",
-                  transition: "background 0.1s",
-                  flexShrink: 0,
-                }}
-              />
-            </div>
-          )}
-          <div ref={bottomRef} />
-        </div>
+      {/* ── Hidden real input ── */}
+      <input
+        ref={inputRef}
+        value={input}
+        onChange={e => setInput(e.target.value)}
+        onKeyDown={onKeyDown}
+        className="fixed opacity-0 pointer-events-none"
+        style={{ width: 1, height: 1, top: -100, left: -100 }}
+        aria-label="Terminal input"
+        autoComplete="off"
+        spellCheck={false}
+      />
 
-        {/* Hidden real input */}
-        <input
-          ref={inputRef}
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          onKeyDown={onKeyDown}
-          className="absolute opacity-0 pointer-events-none w-0 h-0"
-          aria-label="Terminal input"
-          autoComplete="off"
-          spellCheck={false}
-        />
-
+      {/* ── Bottom bar: quick pills + switch button ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: booted ? 1 : 0, y: booted ? 0 : 12 }}
+        transition={{ delay: 0.2 }}
+        className="relative z-20 flex-shrink-0 flex flex-wrap items-center justify-between gap-3 px-5 py-3"
+        style={{
+          borderTop: "1px solid rgba(255,255,255,0.07)",
+          background: "rgba(255,255,255,0.02)",
+        }}
+      >
         {/* Quick command pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: booted ? 1 : 0, y: booted ? 0 : 10 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-wrap gap-2 mt-4 justify-center"
-        >
+        <div className="flex flex-wrap gap-2">
           {["whoami", "skills", "projects", "contact", "hire"].map((cmd) => (
             <button
               key={cmd}
               onClick={() => { runCommand(cmd); inputRef.current?.focus(); }}
-              className="text-xs font-bold rounded-lg transition-all duration-200"
+              className="text-xs font-bold rounded-lg transition-all duration-150"
               style={{
-                padding: "0.35rem 0.9rem",
+                padding: "0.3rem 0.85rem",
                 background: "rgba(201,162,39,0.08)",
-                border: "1px solid rgba(201,162,39,0.25)",
+                border: "1px solid rgba(201,162,39,0.22)",
                 color: "#C9A227",
-                letterSpacing: "0.05em",
                 fontFamily: "'Courier New', monospace",
+                letterSpacing: "0.04em",
               }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLButtonElement).style.background = "rgba(201,162,39,0.18)";
-                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(201,162,39,0.5)";
               }}
               onMouseLeave={e => {
                 (e.currentTarget as HTMLButtonElement).style.background = "rgba(201,162,39,0.08)";
-                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(201,162,39,0.25)";
               }}
             >
               {cmd}
             </button>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Switch to visual mode button */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: booted ? 1 : 0 }}
-          transition={{ delay: 0.6 }}
-          className="flex justify-center mt-5"
+        {/* Switch button */}
+        <button
+          onClick={() => { setGlitching(true); setTimeout(onExit, 800); }}
+          className="flex items-center gap-2 text-xs font-semibold transition-all duration-200 ml-auto"
+          style={{
+            padding: "0.4rem 1.1rem",
+            borderRadius: "999px",
+            background: "rgba(30,58,95,0.3)",
+            border: "1px solid rgba(99,142,220,0.3)",
+            color: "rgba(147,197,253,0.85)",
+            fontFamily: "var(--font-inter, sans-serif)",
+            letterSpacing: "0.06em",
+          }}
+          onMouseEnter={e => {
+            (e.currentTarget as HTMLButtonElement).style.background = "rgba(30,58,95,0.5)";
+          }}
+          onMouseLeave={e => {
+            (e.currentTarget as HTMLButtonElement).style.background = "rgba(30,58,95,0.3)";
+          }}
         >
-          <button
-            onClick={() => {
-              setGlitching(true);
-              setTimeout(onExit, 900);
-            }}
-            className="flex items-center gap-2 text-xs font-semibold transition-all duration-200"
-            style={{
-              padding: "0.5rem 1.25rem",
-              borderRadius: "999px",
-              background: "rgba(30,58,95,0.3)",
-              border: "1px solid rgba(30,58,95,0.5)",
-              color: "rgba(147,197,253,0.8)",
-              letterSpacing: "0.08em",
-              fontFamily: "var(--font-inter, sans-serif)",
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.background = "rgba(30,58,95,0.5)";
-              (e.currentTarget as HTMLButtonElement).style.color = "#93C5FD";
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.background = "rgba(30,58,95,0.3)";
-              (e.currentTarget as HTMLButtonElement).style.color = "rgba(147,197,253,0.8)";
-            }}
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.2"/>
-              <path d="M4 5l2.5 2L4 9M7.5 9h2.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
-            Switch to Visual Mode
-          </button>
-        </motion.div>
-      </div>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <rect x="0.5" y="0.5" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.1"/>
+            <path d="M3.5 5l2 1.5-2 1.5M6.5 8H9" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
+          </svg>
+          Switch to Visual Mode
+        </button>
+      </motion.div>
 
       <style>{`
-        @keyframes glitch-scanlines {
-          0%   { transform: translateY(0); }
-          50%  { transform: translateY(2px); }
-          100% { transform: translateY(0); }
+        @keyframes glitch-h {
+          0%,100% { transform: translateX(0); }
+          25%      { transform: translateX(4px); }
+          75%      { transform: translateX(-4px); }
         }
       `}</style>
     </motion.div>

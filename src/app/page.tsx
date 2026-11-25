@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -22,6 +23,9 @@ const FloatingWhatsApp = dynamic(() => import("@/components/FloatingWhatsApp"), 
 const ScrollProgress   = dynamic(() => import("@/components/ScrollProgress"),   { ssr: false });
 
 export default function Home() {
+  /* isTerminal = true while terminal hero is active → hide navbar */
+  const [isTerminal, setIsTerminal] = useState(true);
+
   return (
     <>
       <SmoothScroll />
@@ -29,9 +33,14 @@ export default function Home() {
       <Cursor />
       <FloatingWhatsApp />
       <ScrollProgress />
-      <Navbar />
+
+      {/* Navbar hidden during terminal mode so it doesn't overlap */}
+      <div style={{ visibility: isTerminal ? "hidden" : "visible", pointerEvents: isTerminal ? "none" : "auto" }}>
+        <Navbar />
+      </div>
+
       <main>
-        <Hero />
+        <Hero onTerminalChange={setIsTerminal} />
         <SocialProof />
         <About />
         <TechStack />

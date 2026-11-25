@@ -23,7 +23,7 @@ const item = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.75, ease } },
 };
 
-export default function Hero() {
+export default function Hero({ onTerminalChange }: { onTerminalChange?: (v: boolean) => void }) {
   const roleRef     = useRef<HTMLSpanElement>(null);
   const indexRef    = useRef(0);
   const charRef     = useRef(0);
@@ -36,6 +36,7 @@ export default function Hero() {
 
   const handleExitTerminal = () => {
     setMode("visual");
+    onTerminalChange?.(false);
     /* slight delay so AnimatePresence exit can run before reveal */
     setTimeout(() => setRevealed(true), 120);
   };
@@ -70,16 +71,9 @@ export default function Hero() {
   return (
     <>
       {/* ══════════════════════ TERMINAL MODE ══════════════════════ */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {mode === "terminal" && (
-          <motion.div
-            key="terminal-wrapper"
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            style={{ position: "relative", zIndex: 1 }}
-          >
-            <TerminalHero onExit={handleExitTerminal} />
-          </motion.div>
+          <TerminalHero key="terminal" onExit={handleExitTerminal} />
         )}
       </AnimatePresence>
 
@@ -129,7 +123,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
-              onClick={() => { setRevealed(false); setTimeout(() => setMode("terminal"), 300); }}
+              onClick={() => { setRevealed(false); setTimeout(() => { setMode("terminal"); onTerminalChange?.(true); }, 300); }}
               className="absolute top-24 right-6 z-50 flex items-center gap-2 text-xs font-bold transition-all duration-200"
               style={{
                 padding: "0.4rem 1rem", borderRadius: "999px",
