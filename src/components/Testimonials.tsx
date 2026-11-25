@@ -13,7 +13,7 @@ const stats = [
 const platforms = [
   { name: "Upwork",   icon: "💼", color: "#14a800", desc: "Top Rated Profile" },
   { name: "GitHub",   icon: "🐙", color: "#1E3A5F", desc: "Open Source Projects", href: "https://github.com/MuhammadAqib2310" },
-  { name: "LinkedIn", icon: "💼", color: "#0A66C2", desc: "Professional Network", href: "https://linkedin.com/in/muhammad-aqib-dev" },
+  { name: "LinkedIn", icon: "💼", color: "#0A66C2", desc: "Professional Network", href: "https://linkedin.com/in/muhammad-aqib-715397408" },
   { name: "WhatsApp", icon: "💬", color: "#25D366", desc: "Direct Contact", href: `https://wa.me/923375013984` },
 ];
 

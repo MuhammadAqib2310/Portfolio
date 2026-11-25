@@ -24,6 +24,46 @@ const experiences = [
     featured: true,
   },
   {
+    role: "SEO Intern",
+    company: "GAO Tech",
+    type: "Internship",
+    period: "2026",
+    duration: "2026",
+    desc: "Researched B2B SEO strategies and backlink opportunities, documenting actionable findings in structured reports. Implemented on-page SEO optimizations and Google Search Console tracking on a production Next.js portfolio.",
+    achievements: [
+      "B2B SEO strategy research & reporting",
+      "Backlink opportunity identification",
+      "On-page SEO optimizations implemented",
+      "Google Search Console tracking setup",
+    ],
+    tags: ["SEO", "Next.js", "Google Search Console", "B2B", "On-Page SEO"],
+    color: "#059669",
+    accent: "#047857",
+    icon: "📈",
+    current: false,
+    featured: false,
+  },
+  {
+    role: "IT Intern",
+    company: "News Channel",
+    type: "Internship",
+    period: "2026",
+    duration: "2026",
+    desc: "Supported the broadcast IT team with day-to-day systems and technical operations. Assisted with system maintenance, network support and hardware troubleshooting.",
+    achievements: [
+      "Broadcast IT systems support",
+      "System maintenance & monitoring",
+      "Network support & troubleshooting",
+      "Hardware issue diagnosis & resolution",
+    ],
+    tags: ["IT Support", "Networking", "Hardware", "System Maintenance"],
+    color: "#7C3AED",
+    accent: "#6D28D9",
+    icon: "🖥️",
+    current: false,
+    featured: false,
+  },
+  {
     role: "AI Lead Generation SaaS",
     company: "Independent Project",
     type: "Product Build",
@@ -281,10 +321,10 @@ export default function Experience() {
                 <span style={{ fontSize: "1.1rem" }}>🎓</span>
                 <div>
                   <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#334155" }}>
-                    BS Computer Science
+                    BS Computer Science (BSCS) | 73%
                   </div>
                   <div style={{ fontSize: "0.65rem", color: "#94A3B8", marginTop: "0.1rem" }}>
-                    MNS University Multan · 2022–2026
+                    MNS University of Agriculture Multan · 2022–2026
                   </div>
                 </div>
               </div>

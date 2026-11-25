@@ -117,12 +117,13 @@ const jsonLd = {
     "Top-rated AI Engineer & Full Stack Developer specializing in AI Agents, SaaS Platforms, and Workflow Automation.",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Multan",
+    addressLocality: "Kot Addu",
+    addressRegion: "Punjab",
     addressCountry: "PK",
   },
   sameAs: [
     "https://github.com/MuhammadAqib2310",
-    "https://linkedin.com/in/muhammad-aqib-dev",
+    "https://linkedin.com/in/muhammad-aqib-715397408",
   ],
   knowsAbout: [
     "Artificial Intelligence",

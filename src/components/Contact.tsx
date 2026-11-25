@@ -8,7 +8,7 @@ const WHATSAPP_NUMBER = "923375013984";
 const contactCards = [
   { icon: "💬", label: "WhatsApp",  value: "+92 337 501 3984",      sub: "Usually replies in minutes",   href: `https://wa.me/923375013984?text=Hi%20Aqib!%20I%20visited%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project.`, color: "#25D366", glow: "rgba(37,211,102,0.15)", badge: "Fastest" },
   { icon: "📧", label: "Email",     value: "aqibm8123@gmail.com",   sub: "Response within 24 hours",     href: "mailto:aqibm8123@gmail.com?subject=Project%20Inquiry&body=Hi%20Aqib,%20I%20visited%20your%20portfolio%20and%20I'd%20like%20to%20discuss%20a%20project.", color: "#1E3A5F", glow: "rgba(30,58,95,0.12)", badge: null },
-  { icon: "💼", label: "LinkedIn",  value: "muhammad-aqib-dev",     sub: "Connect professionally",       href: "https://linkedin.com/in/muhammad-aqib-dev", color: "#0A66C2", glow: "rgba(10,102,194,0.12)", badge: null },
+  { icon: "💼", label: "LinkedIn",  value: "muhammad-aqib-dev",     sub: "Connect professionally",       href: "https://linkedin.com/in/muhammad-aqib-715397408", color: "#0A66C2", glow: "rgba(10,102,194,0.12)", badge: null },
   { icon: "🐙", label: "GitHub",    value: "MuhammadAqib2310",      sub: "Check out my code",            href: "https://github.com/MuhammadAqib2310", color: "#C9A227", glow: "rgba(201,162,39,0.12)", badge: null },
 ];
 
@@ -183,7 +183,7 @@ export default function Contact() {
             </div>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-              {["📍 Multan, Pakistan", "🕐 PKT (UTC+5)", "🌍 Works Globally"].map(chip => (
+              {["📍 Kot Addu, Punjab, PK", "🕐 PKT (UTC+5)", "🌍 Works Globally"].map(chip => (
                 <span key={chip} style={{ padding: "0.35rem 0.875rem", borderRadius: "999px",
                   background: "rgba(30,58,95,0.04)", border: "1px solid rgba(30,58,95,0.08)",
                   fontSize: "0.72rem", color: "#475569", fontWeight: 600 }}>

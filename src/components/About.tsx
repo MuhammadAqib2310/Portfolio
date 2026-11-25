@@ -86,7 +86,7 @@ export default function About() {
                     Muhammad Aqib
                   </p>
                   <p style={{ fontSize: "0.8rem", color: "#C9A227", fontWeight: 600 }}>
-                    Full Stack &amp; AI Automation Engineer · Multan, Pakistan
+                    Full Stack &amp; AI Automation Engineer · Kot Addu, Punjab, Pakistan
                   </p>
                 </div>
               </div>
@@ -97,6 +97,7 @@ export default function About() {
                   { icon: "🎓", text: "BS Computer Science — MNS University of Agriculture Multan (2022–2026)" },
                   { icon: "⚡", text: "Skilled in React, Next.js, Node.js, Python & Java — building production-ready SaaS & AI apps" },
                   { icon: "🤖", text: "Integrates Claude, Gemini & OpenAI APIs into scalable backend systems" },
+                  { icon: "📡", text: "IT Intern at News Channel & SEO Intern at GAO Tech (2026)" },
                   { icon: "🚀", text: "Delivered AI-driven CRM, lead-generation SaaS & automation dashboards for global clients" },
                 ].map(({ icon, text }) => (
                   <div key={text} style={{ display: "flex", alignItems: "flex-start", gap: "0.625rem" }}>
@@ -231,7 +232,7 @@ export default function About() {
                 {/* Footer note */}
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(30,58,95,0.07)" }}>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs" style={{ color: "#94A3B8" }}>Based on 2+ years of hands-on experience</span>
+                    <span className="text-xs" style={{ color: "#94A3B8" }}>Based on 3+ years of hands-on experience</span>
                     <div className="flex items-center gap-1.5">
                       <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#059669",
                         boxShadow: "0 0 6px #059669", display: "inline-block",
