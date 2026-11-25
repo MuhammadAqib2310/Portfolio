@@ -3,158 +3,142 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* ═══════════════════════════════════════════════════════
-   Terminal Hero — Fully Responsive
-   Mobile: full-width, tap-to-run chips, big input
-   Desktop: sidebar + terminal split
+   Terminal Hero — Clean, Readable, Great UX
 ═══════════════════════════════════════════════════════ */
 
-type LT = "cmd"|"ok"|"gold"|"dim"|"hint"|"output"|"error"|"section"|"kv";
+type LT = "cmd" | "ok" | "gold" | "dim" | "hint" | "output" | "error" | "section" | "kv";
 
-const C: Record<LT,string> = {
+const C: Record<LT, string> = {
   cmd:     "#C9A227",
   ok:      "#34D399",
   gold:    "#FBBF24",
-  dim:     "#374151",
-  hint:    "#4B5563",
+  dim:     "#4B5563",
+  hint:    "#6B7280",
   output:  "#D1D5DB",
   error:   "#F87171",
   section: "#60A5FA",
-  kv:      "#6B7280",
+  kv:      "#9CA3AF",
 };
 
 interface OL { text: string; type: LT }
 
-/* Mobile-safe commands — no wide box-drawing, short lines */
 const CMDS: Record<string, OL[]> = {
   whoami: [
-    { text: "",                                    type:"dim"    },
-    { text: "  Muhammad Aqib",                     type:"gold"   },
-    { text: "  Full Stack & AI Engineer",          type:"output" },
-    { text: "",                                    type:"dim"    },
-    { text: "  📍 Kot Addu, Pakistan",             type:"kv"     },
-    { text: "  🌐 Available worldwide",            type:"kv"     },
-    { text: "  📧 aqibm8123@gmail.com",            type:"kv"     },
-    { text: "  💼 3+ years experience",            type:"kv"     },
-    { text: "",                                    type:"dim"    },
+    { text: "", type: "dim" },
+    { text: "  Name        Muhammad Aqib", type: "output" },
+    { text: "  Role        Full Stack & AI Engineer", type: "gold" },
+    { text: "  Location    Kot Addu, Pakistan", type: "kv" },
+    { text: "  Remote      Available worldwide", type: "kv" },
+    { text: "  Email       aqibm8123@gmail.com", type: "kv" },
+    { text: "  Experience  3+ years", type: "kv" },
+    { text: "  Status      Open to work ✓", type: "ok" },
+    { text: "", type: "dim" },
   ],
   skills: [
-    { text: "",                                    type:"dim"     },
-    { text: "  ◈ Frontend",                        type:"section" },
-    { text: "  React · Next.js · TypeScript",      type:"output"  },
-    { text: "  Tailwind CSS · Framer Motion",      type:"output"  },
-    { text: "",                                    type:"dim"     },
-    { text: "  ◈ Backend",                         type:"section" },
-    { text: "  Node.js · Python · FastAPI",        type:"output"  },
-    { text: "  PostgreSQL · Redis · REST",         type:"output"  },
-    { text: "",                                    type:"dim"     },
-    { text: "  ◈ AI / ML",                         type:"section" },
-    { text: "  LangChain · OpenAI · Claude",       type:"output"  },
-    { text: "  Gemini · RAG · Vector DB",          type:"output"  },
-    { text: "",                                    type:"dim"     },
-    { text: "  ◈ DevOps",                          type:"section" },
-    { text: "  Docker · Vercel · AWS · CI/CD",     type:"output"  },
-    { text: "",                                    type:"dim"     },
+    { text: "", type: "dim" },
+    { text: "  // Frontend", type: "section" },
+    { text: "  React  Next.js  TypeScript  Tailwind CSS", type: "output" },
+    { text: "", type: "dim" },
+    { text: "  // Backend", type: "section" },
+    { text: "  Node.js  Python  FastAPI  PostgreSQL  Redis", type: "output" },
+    { text: "", type: "dim" },
+    { text: "  // AI & Machine Learning", type: "section" },
+    { text: "  LangChain  OpenAI  Claude  Gemini  RAG", type: "output" },
+    { text: "", type: "dim" },
+    { text: "  // DevOps & Cloud", type: "section" },
+    { text: "  Docker  Vercel  AWS  CI/CD  GitHub Actions", type: "output" },
+    { text: "", type: "dim" },
   ],
   projects: [
-    { text: "",                                    type:"dim"    },
-    { text: "  ◈ Featured Work",                   type:"section"},
-    { text: "",                                    type:"dim"    },
-    { text: "  01  SaaS AI Platform",              type:"gold"   },
-    { text: "  Next.js · LangChain · Stripe",      type:"kv"     },
-    { text: "",                                    type:"dim"    },
-    { text: "  02  Workflow Automation",           type:"gold"   },
-    { text: "  Python · FastAPI · n8n",            type:"kv"     },
-    { text: "",                                    type:"dim"    },
-    { text: "  03  E-Commerce Suite",              type:"gold"   },
-    { text: "  React · Node.js · PostgreSQL",      type:"kv"     },
-    { text: "",                                    type:"dim"    },
-    { text: "  04  AI Chatbot Builder",            type:"gold"   },
-    { text: "  OpenAI · Vector DB · RAG",          type:"kv"     },
-    { text: "",                                    type:"dim"    },
-    { text: "  → type exit → scroll to projects", type:"hint"   },
-    { text: "",                                    type:"dim"    },
+    { text: "", type: "dim" },
+    { text: "  // Featured Projects", type: "section" },
+    { text: "", type: "dim" },
+    { text: "  [01]  SaaS AI Platform", type: "gold" },
+    { text: "        Next.js · LangChain · Stripe · PostgreSQL", type: "kv" },
+    { text: "", type: "dim" },
+    { text: "  [02]  Workflow Automation Engine", type: "gold" },
+    { text: "        Python · FastAPI · n8n · Redis", type: "kv" },
+    { text: "", type: "dim" },
+    { text: "  [03]  E-Commerce Suite", type: "gold" },
+    { text: "        React · Node.js · PostgreSQL · Stripe", type: "kv" },
+    { text: "", type: "dim" },
+    { text: "  [04]  AI Chatbot Builder", type: "gold" },
+    { text: "        OpenAI · Vector DB · RAG · WebSockets", type: "kv" },
+    { text: "", type: "dim" },
+    { text: "  → type exit  then scroll to #projects", type: "hint" },
+    { text: "", type: "dim" },
   ],
   experience: [
-    { text: "",                                    type:"dim"    },
-    { text: "  ◈ Work History",                    type:"section"},
-    { text: "",                                    type:"dim"    },
-    { text: "  2024 – present",                    type:"gold"   },
-    { text: "  Freelance AI Engineer",             type:"output" },
-    { text: "  Global clients · SaaS & AI",        type:"kv"     },
-    { text: "",                                    type:"dim"    },
-    { text: "  2023 – 2024",                       type:"gold"   },
-    { text: "  Full Stack Developer",              type:"output" },
-    { text: "  SaaS · React ecosystem",            type:"kv"     },
-    { text: "",                                    type:"dim"    },
-    { text: "  2022 – 2023",                       type:"gold"   },
-    { text: "  Frontend Developer",                type:"output" },
-    { text: "  React · Next.js · TypeScript",      type:"kv"     },
-    { text: "",                                    type:"dim"    },
-    { text: "  🎓 MNS University, Multan",         type:"output" },
-    { text: "",                                    type:"dim"    },
+    { text: "", type: "dim" },
+    { text: "  // Work History", type: "section" },
+    { text: "", type: "dim" },
+    { text: "  2024 – present  Freelance AI Engineer", type: "gold" },
+    { text: "  Global clients · SaaS platforms · AI agents", type: "kv" },
+    { text: "", type: "dim" },
+    { text: "  2023 – 2024    Full Stack Developer", type: "gold" },
+    { text: "  SaaS products · React ecosystem", type: "kv" },
+    { text: "", type: "dim" },
+    { text: "  2022 – 2023    Frontend Developer", type: "gold" },
+    { text: "  React · Next.js · TypeScript", type: "kv" },
+    { text: "", type: "dim" },
+    { text: "  🎓  MNS University of Engineering, Multan", type: "output" },
+    { text: "", type: "dim" },
   ],
   contact: [
-    { text: "",                                    type:"dim"    },
-    { text: "  ◈ Get in Touch",                    type:"section"},
-    { text: "",                                    type:"dim"    },
-    { text: "  email",                             type:"section"},
-    { text: "  aqibm8123@gmail.com",               type:"output" },
-    { text: "",                                    type:"dim"    },
-    { text: "  whatsapp",                          type:"section"},
-    { text: "  +92 337 5013984",                   type:"output" },
-    { text: "",                                    type:"dim"    },
-    { text: "  linkedin",                          type:"section"},
-    { text: "  muhammad-aqib-715397408",           type:"output" },
-    { text: "",                                    type:"dim"    },
-    { text: "  github",                            type:"section"},
-    { text: "  MuhammadAqib2310",                  type:"output" },
-    { text: "",                                    type:"dim"    },
-    { text: "  → type hire to reach out",          type:"hint"   },
-    { text: "",                                    type:"dim"    },
+    { text: "", type: "dim" },
+    { text: "  // Contact Info", type: "section" },
+    { text: "", type: "dim" },
+    { text: "  Email      aqibm8123@gmail.com", type: "output" },
+    { text: "  WhatsApp   +92 337 5013984", type: "output" },
+    { text: "  LinkedIn   muhammad-aqib-715397408", type: "output" },
+    { text: "  GitHub     MuhammadAqib2310", type: "output" },
+    { text: "", type: "dim" },
+    { text: "  → type hire  to reach out now", type: "hint" },
+    { text: "", type: "dim" },
   ],
   hire: [
-    { text: "",                                    type:"dim"   },
-    { text: "  connecting...",                     type:"gold"  },
-    { text: "  ✓ opening contact section",         type:"ok"    },
-    { text: "",                                    type:"dim"   },
+    { text: "", type: "dim" },
+    { text: "  Connecting...", type: "gold" },
+    { text: "  ✓ Opening contact section", type: "ok" },
+    { text: "", type: "dim" },
   ],
   help: [
-    { text: "",                                    type:"dim"    },
-    { text: "  ◈ Commands",                        type:"section"},
-    { text: "",                                    type:"dim"    },
-    { text: "  whoami      about me",              type:"output" },
-    { text: "  skills      tech stack",            type:"output" },
-    { text: "  projects    my work",               type:"output" },
-    { text: "  experience  work history",          type:"output" },
-    { text: "  contact     reach out",             type:"output" },
-    { text: "  hire        work with me",          type:"output" },
-    { text: "  clear       clear screen",          type:"output" },
-    { text: "  exit        visual mode",           type:"output" },
-    { text: "",                                    type:"dim"    },
-    { text: "  ↑/↓  history  |  Tab  complete",   type:"hint"   },
-    { text: "",                                    type:"dim"    },
+    { text: "", type: "dim" },
+    { text: "  // Available Commands", type: "section" },
+    { text: "", type: "dim" },
+    { text: "  whoami       About me", type: "output" },
+    { text: "  skills       Tech stack", type: "output" },
+    { text: "  projects     My work", type: "output" },
+    { text: "  experience   Work history", type: "output" },
+    { text: "  contact      Contact info", type: "output" },
+    { text: "  hire         Work with me", type: "output" },
+    { text: "  clear        Clear screen", type: "output" },
+    { text: "  exit         Visual mode", type: "output" },
+    { text: "", type: "dim" },
+    { text: "  Tip: ↑/↓ history  |  Tab autocomplete", type: "hint" },
+    { text: "", type: "dim" },
   ],
   clear: [],
   exit: [
-    { text: "",                                    type:"dim"   },
-    { text: "  switching to visual mode...",       type:"gold"  },
-    { text: "",                                    type:"dim"   },
+    { text: "", type: "dim" },
+    { text: "  Switching to visual mode...", type: "gold" },
+    { text: "", type: "dim" },
   ],
 };
 
 const BOOT: { text: string; delay: number; type: LT }[] = [
-  { text: "  $ portfolio --init",              delay: 0,    type:"cmd"  },
-  { text: "",                                  delay: 150,  type:"dim"  },
-  { text: "  ✓ Next.js 15 · React 19",         delay: 320,  type:"ok"   },
-  { text: "  ✓ Python · FastAPI · LangChain",  delay: 520,  type:"ok"   },
-  { text: "  ✓ AI services connected",         delay: 720,  type:"ok"   },
-  { text: "  ✓ open to work",                  delay: 900,  type:"gold" },
-  { text: "",                                  delay: 1050, type:"dim"  },
-  { text: "  type help for all commands",      delay: 1150, type:"hint" },
-  { text: "",                                  delay: 1280, type:"dim"  },
+  { text: "  $ portfolio --init", delay: 0, type: "cmd" },
+  { text: "", delay: 120, type: "dim" },
+  { text: "  ✓  Next.js 15  ·  React 19  ·  TypeScript", delay: 300, type: "ok" },
+  { text: "  ✓  Python  ·  FastAPI  ·  LangChain", delay: 500, type: "ok" },
+  { text: "  ✓  AI services connected", delay: 700, type: "ok" },
+  { text: "  ✓  Status: open to work", delay: 880, type: "gold" },
+  { text: "", delay: 1020, type: "dim" },
+  { text: "  Type  help  to see all commands.", delay: 1120, type: "hint" },
+  { text: "", delay: 1240, type: "dim" },
 ];
 
-const COMPLETIONS = ["whoami","skills","projects","experience","contact","hire","help","clear","exit"];
+const COMPLETIONS = ["whoami", "skills", "projects", "experience", "contact", "hire", "help", "clear", "exit"];
 
 interface TL { id: number; type: LT; text: string }
 let _id = 0;
@@ -170,18 +154,9 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
   const [blink,     setBlink]     = useState(true);
   const [clock,     setClock]     = useState("");
   const [focused,   setFocused]   = useState(false);
-  const [isMobile,  setIsMobile]  = useState(false);
 
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const outputRef = useRef<HTMLDivElement>(null);
   const inputRef  = useRef<HTMLInputElement>(null);
-
-  /* detect mobile */
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 1024);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
 
   /* clock */
   useEffect(() => {
@@ -193,43 +168,41 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
 
   /* cursor blink */
   useEffect(() => {
-    const t = setInterval(() => setBlink(v => !v), 500);
+    const t = setInterval(() => setBlink(v => !v), 520);
     return () => clearInterval(t);
   }, []);
 
-  /* boot sequence */
+  /* boot */
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
 
-    /* header — mobile shows short, desktop shows full */
     setLines([
-      { id: uid(), type: "dim",  text: "" },
-      { id: uid(), type: "gold", text: "  M.AQIB — PORTFOLIO" },
-      { id: uid(), type: "kv",   text: "  AI Engineer · Full Stack Developer" },
-      { id: uid(), type: "dim",  text: "" },
+      { id: uid(), type: "dim",    text: "" },
+      { id: uid(), type: "gold",   text: "  M.Aqib — Portfolio Terminal" },
+      { id: uid(), type: "kv",     text: "  AI Engineer  ·  Full Stack Developer  ·  Pakistan" },
+      { id: uid(), type: "dim",    text: "" },
     ]);
 
     BOOT.forEach(({ text, delay, type }) => {
       const t = setTimeout(() => {
         setLines(prev => [...prev, { id: uid(), type, text }]);
-      }, delay + 200);
+      }, delay + 300);
       timers.push(t);
     });
 
     const done = setTimeout(() => {
       setBooted(true);
-      /* don't auto-focus on mobile — keyboard popup is annoying */
-      if (window.innerWidth >= 1024) {
-        setTimeout(() => { inputRef.current?.focus(); setFocused(true); }, 80);
-      }
+      setTimeout(() => { inputRef.current?.focus(); setFocused(true); }, 60);
     }, 1800);
     timers.push(done);
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  /* scroll to bottom */
+  /* scroll output to bottom */
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (outputRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight;
+    }
   }, [lines]);
 
   const triggerExit = useCallback(() => {
@@ -247,15 +220,14 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
     if (cmd === "clear") { setLines([]); return; }
     if (cmd === "exit") {
       setLines(prev => [...prev,
-        { id: uid(), type: "gold", text: "  switching to visual mode..." },
+        { id: uid(), type: "gold", text: "  Switching to visual mode..." },
         { id: uid(), type: "dim",  text: "" },
       ]);
       setTimeout(triggerExit, 450);
       return;
     }
     if (cmd === "hire") {
-      const out = CMDS.hire;
-      setLines(prev => [...prev, ...out.map(l => ({ id: uid(), type: l.type, text: l.text }))]);
+      setLines(prev => [...prev, ...CMDS.hire.map(l => ({ id: uid(), type: l.type, text: l.text }))]);
       setTimeout(() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }), 700);
       return;
     }
@@ -264,8 +236,8 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
       setLines(prev => [...prev, ...result.map(l => ({ id: uid(), type: l.type, text: l.text }))]);
     } else {
       setLines(prev => [...prev,
-        { id: uid(), type: "error", text: `  bash: ${cmd}: not found` },
-        { id: uid(), type: "hint",  text: `  type help for commands` },
+        { id: uid(), type: "error", text: `  bash: ${cmd}: command not found` },
+        { id: uid(), type: "hint",  text: `  Type  help  to see available commands` },
         { id: uid(), type: "dim",   text: "" },
       ]);
     }
@@ -288,26 +260,23 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
     }
   };
 
-  const stats   = [{ l: "Projects", v: "20+" }, { l: "Exp.", v: "3yr+" }, { l: "Clients", v: "15+" }];
   const sideCmd = ["whoami", "skills", "projects", "experience", "contact", "hire"];
   const mobilePills = ["whoami", "skills", "projects", "contact", "hire"];
-
-  /* font sizes */
-  const fs = isMobile ? "0.82rem" : "clamp(0.72rem,1.4vw,0.85rem)";
+  const stats = [{ l: "Projects", v: "20+" }, { l: "Exp.", v: "3yr+" }, { l: "Clients", v: "15+" }];
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: glitching ? 0 : 1 }}
-      transition={{ duration: glitching ? 0.4 : 0.5 }}
+      transition={{ duration: glitching ? 0.4 : 0.55 }}
       className="fixed inset-0 z-[99990] flex flex-col"
-      style={{ background: "#0D0D0D", fontFamily: "'JetBrains Mono','Fira Code','Courier New',monospace" }}
-      onClick={() => { if (!isMobile) { inputRef.current?.focus(); setFocused(true); } }}
+      style={{ background: "#0D0D0D", fontFamily: "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" }}
+      onClick={() => { inputRef.current?.focus(); setFocused(true); }}
     >
-      {/* subtle gold glow top */}
+      {/* top glow */}
       <div className="absolute pointer-events-none" style={{
-        top: 0, left: 0, right: 0, height: "280px", zIndex: 1,
-        background: "radial-gradient(ellipse 70% 50% at 50% -5%, rgba(201,162,39,0.1) 0%, transparent 70%)",
+        top: 0, left: 0, right: 0, height: "300px", zIndex: 1,
+        background: "radial-gradient(ellipse 60% 40% at 50% -5%, rgba(201,162,39,0.09) 0%, transparent 70%)",
       }} />
 
       {/* glitch strips */}
@@ -327,133 +296,136 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
       </AnimatePresence>
 
       {/* ══ TITLEBAR ══ */}
-      <div className="relative flex-shrink-0 flex items-center px-4 gap-3" style={{
-        height: "2.5rem", zIndex: 20,
-        background: "rgba(255,255,255,0.025)",
-        borderBottom: "1px solid rgba(255,255,255,0.07)",
-      }}>
+      <div className="relative flex-shrink-0 flex items-center px-4"
+        style={{ height: "2.75rem", zIndex: 20, background: "#161616", borderBottom: "1px solid rgba(255,255,255,0.08)", gap: "0.75rem" }}>
+
         {/* traffic lights */}
         <div className="flex items-center gap-1.5 flex-shrink-0">
           <button onClick={triggerExit}
             className="w-3 h-3 rounded-full relative flex items-center justify-center group"
             style={{ background: "#FF5F57" }}>
-            <span className="absolute text-[7px] font-black opacity-0 group-hover:opacity-100" style={{ color: "#7a1010" }}>✕</span>
+            <span className="absolute text-[7px] font-black opacity-0 group-hover:opacity-100" style={{ color: "#7a0000" }}>✕</span>
           </button>
           <div className="w-3 h-3 rounded-full" style={{ background: "#FFBD2E" }} />
           <div className="w-3 h-3 rounded-full" style={{ background: "#28C840" }} />
         </div>
 
-        {/* title tab */}
-        <div className="flex items-center gap-1.5 ml-3 px-3 h-full text-xs font-medium"
+        {/* active tab */}
+        <div className="flex items-center gap-1.5 h-full px-4 text-xs"
           style={{
             background: "#0D0D0D",
-            borderLeft: "1px solid rgba(255,255,255,0.07)",
-            borderRight: "1px solid rgba(255,255,255,0.07)",
-            borderTop: "1px solid #C9A227",
-            color: "rgba(255,255,255,0.65)",
-            letterSpacing: "0.03em",
-            marginTop: "1px",
+            borderLeft: "1px solid rgba(255,255,255,0.08)",
+            borderRight: "1px solid rgba(255,255,255,0.08)",
+            borderTop: "2px solid #C9A227",
+            color: "rgba(255,255,255,0.6)",
+            letterSpacing: "0.02em",
+            marginTop: "2px",
           }}>
-          <span style={{ color: "#C9A227", fontSize: "0.6rem" }}>❯</span>
-          <span className="hidden sm:inline">m.aqib — </span>bash
+          <span style={{ color: "#C9A227", fontSize: "0.65rem" }}>❯</span>
+          bash
         </div>
 
-        {/* clock */}
-        <span className="ml-auto text-xs tabular-nums" style={{ color: "rgba(255,255,255,0.18)" }}>{clock}</span>
+        {/* right side */}
+        <div className="ml-auto flex items-center gap-4">
+          <span className="hidden sm:flex items-center gap-1.5 text-xs" style={{ color: "#374151" }}>
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#10B981" }} />
+            open to work
+          </span>
+          <span className="text-xs tabular-nums" style={{ color: "#374151" }}>{clock}</span>
+        </div>
       </div>
 
       {/* ══ BODY ══ */}
       <div className="relative flex flex-1 overflow-hidden" style={{ zIndex: 5 }}>
 
-        {/* ── DESKTOP SIDEBAR ── */}
+        {/* ── SIDEBAR (desktop only) ── */}
         <motion.aside
-          initial={{ opacity: 0, x: -16 }}
+          initial={{ opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="hidden lg:flex flex-col flex-shrink-0 overflow-y-auto"
+          transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="hidden lg:flex flex-col flex-shrink-0"
           style={{
-            width: "240px",
+            width: "220px",
             background: "#111111",
             borderRight: "1px solid rgba(255,255,255,0.06)",
-            padding: "1.5rem 1rem",
+            padding: "1.5rem 1rem 1.25rem",
+            overflowY: "auto",
             scrollbarWidth: "none",
           }}
         >
-          {/* profile */}
+          {/* avatar */}
           <div className="flex flex-col items-center text-center mb-5">
             <div className="relative mb-3">
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center font-black"
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center font-black text-base select-none"
                 style={{
-                  background: "linear-gradient(135deg,#1E3A5F,#2563EB)",
-                  color: "#fff", fontSize: "1rem",
-                  boxShadow: "0 0 0 2px rgba(201,162,39,0.4), 0 8px 32px rgba(30,58,95,0.5)",
+                  background: "linear-gradient(135deg, #1E3A5F 0%, #2563EB 100%)",
+                  color: "#fff",
+                  boxShadow: "0 0 0 2px rgba(201,162,39,0.5), 0 8px 24px rgba(30,58,95,0.4)",
                 }}>
                 MA
               </div>
-              <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full border-2"
+              <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full border-[2.5px] flex items-center justify-center"
                 style={{ borderColor: "#111111", background: "#10B981" }}>
-                <div className="w-full h-full rounded-full animate-pulse" style={{ background: "#6EE7B7", opacity: 0.7 }} />
+                <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#6EE7B7" }} />
               </div>
             </div>
-            <p className="text-sm font-bold" style={{ color: "#F1F5F9" }}>Muhammad Aqib</p>
-            <p className="text-xs mt-0.5 font-medium" style={{ color: "#C9A227" }}>AI & Full Stack Eng.</p>
-            <div className="flex items-center gap-1 mt-1.5">
-              <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#10B981" }} />
-              <span className="text-xs" style={{ color: "#6B7280" }}>available for work</span>
-            </div>
+            <p className="text-sm font-bold leading-tight" style={{ color: "#F1F5F9" }}>Muhammad Aqib</p>
+            <p className="text-xs mt-1 font-medium" style={{ color: "#C9A227" }}>AI & Full Stack Eng.</p>
+            <p className="text-xs mt-1" style={{ color: "#4B5563" }}>📍 Pakistan</p>
           </div>
 
           {/* stats */}
           <div className="grid grid-cols-3 gap-1 mb-5">
             {stats.map(s => (
-              <div key={s.l} className="flex flex-col items-center rounded-lg py-2"
+              <div key={s.l} className="flex flex-col items-center rounded-xl py-2 px-1"
                 style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}>
-                <span className="text-sm font-black" style={{ color: "#C9A227" }}>{s.v}</span>
-                <span className="text-[0.58rem] mt-0.5 text-center" style={{ color: "#4B5563" }}>{s.l}</span>
+                <span className="text-sm font-black leading-none" style={{ color: "#C9A227" }}>{s.v}</span>
+                <span className="text-[0.57rem] mt-1 text-center leading-none" style={{ color: "#4B5563" }}>{s.l}</span>
               </div>
             ))}
           </div>
 
-          <div style={{ height: "1px", background: "rgba(255,255,255,0.05)", marginBottom: "1rem" }} />
+          <div style={{ height: "1px", background: "rgba(255,255,255,0.05)", margin: "0 0 1rem" }} />
 
           {/* commands */}
-          <p className="text-[0.6rem] font-bold mb-2" style={{ color: "#374151", letterSpacing: "0.2em" }}>COMMANDS</p>
+          <p className="text-[0.6rem] font-bold mb-2" style={{ color: "#374151", letterSpacing: "0.18em" }}>COMMANDS</p>
           <div className="flex flex-col gap-0.5 mb-5">
             {sideCmd.map(cmd => (
               <button key={cmd}
-                onClick={e => { e.stopPropagation(); runCommand(cmd); inputRef.current?.focus(); }}
-                className="w-full text-left text-xs rounded-lg px-3 py-2 transition-all duration-150 flex items-center gap-2"
-                style={{ color: "#6B7280", border: "1px solid transparent" }}
+                onClick={e => { e.stopPropagation(); runCommand(cmd); inputRef.current?.focus(); setFocused(true); }}
+                className="w-full text-left text-xs rounded-lg px-3 py-2 transition-all duration-150 flex items-center gap-2 group"
+                style={{ color: "#6B7280", border: "1px solid transparent", letterSpacing: "0.01em" }}
                 onMouseEnter={e => {
                   const b = e.currentTarget as HTMLButtonElement;
-                  b.style.color = "#E2E8F0"; b.style.background = "rgba(201,162,39,0.08)"; b.style.borderColor = "rgba(201,162,39,0.2)";
+                  b.style.color = "#E2E8F0"; b.style.background = "rgba(201,162,39,0.07)"; b.style.borderColor = "rgba(201,162,39,0.18)";
                 }}
                 onMouseLeave={e => {
                   const b = e.currentTarget as HTMLButtonElement;
                   b.style.color = "#6B7280"; b.style.background = "transparent"; b.style.borderColor = "transparent";
                 }}
               >
-                <span style={{ color: "#C9A227", fontWeight: 700 }}>$</span> {cmd}
+                <span style={{ color: "#C9A227", fontWeight: 700, flexShrink: 0 }}>$</span>
+                {cmd}
               </button>
             ))}
           </div>
 
-          <div style={{ height: "1px", background: "rgba(255,255,255,0.05)", marginBottom: "1rem" }} />
+          <div style={{ height: "1px", background: "rgba(255,255,255,0.05)", margin: "0 0 1rem" }} />
 
           {/* links */}
-          <p className="text-[0.6rem] font-bold mb-2" style={{ color: "#374151", letterSpacing: "0.2em" }}>LINKS</p>
-          <div className="flex flex-col gap-1 mb-6">
+          <p className="text-[0.6rem] font-bold mb-2" style={{ color: "#374151", letterSpacing: "0.18em" }}>LINKS</p>
+          <div className="flex flex-col gap-1 mb-5">
             {[
-              { label: "GitHub",   href: "https://github.com/MuhammadAqib2310",          ico: "GH" },
-              { label: "LinkedIn", href: "https://linkedin.com/in/muhammad-aqib-715397408", ico: "in" },
-              { label: "Email",    href: "mailto:aqibm8123@gmail.com",                    ico: "@"  },
+              { label: "GitHub",   href: "https://github.com/MuhammadAqib2310",                   ico: "GH" },
+              { label: "LinkedIn", href: "https://linkedin.com/in/muhammad-aqib-715397408",         ico: "in" },
+              { label: "Email",    href: "mailto:aqibm8123@gmail.com",                             ico: "@"  },
             ].map(l => (
               <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2 text-xs rounded-lg px-3 py-1.5 transition-all duration-150"
                 style={{ color: "#6B7280", textDecoration: "none", border: "1px solid transparent" }}
                 onMouseEnter={e => {
                   const a = e.currentTarget as HTMLAnchorElement;
-                  a.style.color = "#93C5FD"; a.style.background = "rgba(37,99,235,0.07)"; a.style.borderColor = "rgba(37,99,235,0.2)";
+                  a.style.color = "#93C5FD"; a.style.background = "rgba(37,99,235,0.07)"; a.style.borderColor = "rgba(37,99,235,0.18)";
                 }}
                 onMouseLeave={e => {
                   const a = e.currentTarget as HTMLAnchorElement;
@@ -468,22 +440,24 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
             ))}
           </div>
 
-          {/* switch */}
+          {/* switch button */}
           <div className="mt-auto">
             <button onClick={e => { e.stopPropagation(); triggerExit(); }}
               className="w-full text-xs font-semibold rounded-xl py-2.5 transition-all duration-200 flex items-center justify-center gap-2"
-              style={{ background: "rgba(201,162,39,0.1)", border: "1px solid rgba(201,162,39,0.25)", color: "#C9A227" }}
+              style={{ background: "rgba(201,162,39,0.1)", border: "1px solid rgba(201,162,39,0.25)", color: "#C9A227", letterSpacing: "0.04em" }}
               onMouseEnter={e => {
                 const b = e.currentTarget as HTMLButtonElement;
                 b.style.background = "rgba(201,162,39,0.18)"; b.style.borderColor = "rgba(201,162,39,0.4)";
+                b.style.boxShadow = "0 0 20px rgba(201,162,39,0.15)";
               }}
               onMouseLeave={e => {
                 const b = e.currentTarget as HTMLButtonElement;
                 b.style.background = "rgba(201,162,39,0.1)"; b.style.borderColor = "rgba(201,162,39,0.25)";
+                b.style.boxShadow = "none";
               }}
             >
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               Switch to Visual Mode
             </button>
@@ -491,37 +465,39 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
         </motion.aside>
 
         {/* ── TERMINAL PANE ── */}
-        <div className="flex-1 flex flex-col overflow-hidden" style={{ background: "#0D0D0D", minWidth: 0 }}>
+        <div className="flex-1 flex flex-col overflow-hidden" style={{ minWidth: 0 }}>
 
-          {/* ── MOBILE HEADER STRIP ── */}
-          <div className="lg:hidden flex items-center justify-between px-4 py-2 flex-shrink-0"
-            style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", background: "#111111" }}>
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg flex items-center justify-center font-black text-xs"
-                style={{ background: "linear-gradient(135deg,#1E3A5F,#2563EB)", color: "#fff", boxShadow: "0 0 0 1.5px rgba(201,162,39,0.4)" }}>
+          {/* mobile top bar */}
+          <div className="lg:hidden flex items-center justify-between flex-shrink-0 px-4 py-2.5"
+            style={{ background: "#111111", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl flex items-center justify-center font-black text-xs flex-shrink-0"
+                style={{
+                  background: "linear-gradient(135deg,#1E3A5F,#2563EB)",
+                  color: "#fff",
+                  boxShadow: "0 0 0 1.5px rgba(201,162,39,0.4)",
+                }}>
                 MA
               </div>
               <div>
-                <p className="text-xs font-bold" style={{ color: "#F1F5F9", lineHeight: 1.2 }}>Muhammad Aqib</p>
-                <p className="text-[0.6rem]" style={{ color: "#C9A227" }}>AI & Full Stack Eng.</p>
+                <p className="text-xs font-bold leading-tight" style={{ color: "#F1F5F9" }}>Muhammad Aqib</p>
+                <p className="text-[0.62rem] leading-tight" style={{ color: "#C9A227" }}>AI & Full Stack Engineer</p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1">
-                <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#10B981" }} />
-                <span className="text-[0.6rem]" style={{ color: "#6B7280" }}>available</span>
-              </div>
-              <button onClick={e => { e.stopPropagation(); triggerExit(); }}
-                className="text-[0.65rem] font-semibold rounded-lg px-2.5 py-1 transition-all"
-                style={{ background: "rgba(201,162,39,0.12)", border: "1px solid rgba(201,162,39,0.3)", color: "#C9A227" }}>
-                visual →
-              </button>
-            </div>
+            <button onClick={e => { e.stopPropagation(); triggerExit(); }}
+              className="flex items-center gap-1.5 text-xs font-semibold rounded-lg px-3 py-1.5 transition-all active:scale-95"
+              style={{ background: "rgba(201,162,39,0.1)", border: "1px solid rgba(201,162,39,0.3)", color: "#C9A227", WebkitTapHighlightColor: "transparent" }}>
+              Visual →
+            </button>
           </div>
 
-          {/* output scroll area */}
-          <div className="flex-1 overflow-y-auto"
-            style={{ padding: isMobile ? "0.75rem 1rem" : "1rem 1.25rem 0.75rem 1.25rem", scrollbarWidth: "thin", scrollbarColor: "#1E293B transparent" }}>
+          {/* ── OUTPUT AREA ── */}
+          <div ref={outputRef} className="flex-1 overflow-y-auto"
+            style={{
+              padding: "1.25rem 1.5rem 0.5rem",
+              scrollbarWidth: "thin",
+              scrollbarColor: "#1F2937 transparent",
+            }}>
 
             {lines.map(line => (
               <motion.div key={line.id}
@@ -529,12 +505,11 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.1 }}
                 style={{
-                  color: C[line.type] || "#9CA3AF",
-                  fontSize: fs,
-                  lineHeight: isMobile ? 1.75 : 1.85,
+                  color: C[line.type],
+                  fontSize: "clamp(0.78rem, 1.3vw, 0.875rem)",
+                  lineHeight: 1.8,
                   whiteSpace: "pre-wrap",
-                  wordBreak: "break-all",
-                  overflowWrap: "anywhere",
+                  wordBreak: "break-word",
                   fontWeight: line.type === "cmd" || line.type === "gold" ? 600 : 400,
                   fontStyle: line.type === "hint" ? "italic" : "normal",
                 }}
@@ -543,24 +518,30 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
               </motion.div>
             ))}
 
-            {/* ── INPUT ROW ── */}
+            <div style={{ height: "0.5rem" }} />
+          </div>
+
+          {/* ── INPUT AREA — always visible at bottom ── */}
+          <div className="flex-shrink-0 px-4 py-3"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.06)", background: "#0D0D0D" }}>
+
             {booted && !glitching && (
               <div
-                className="flex items-center mt-3 rounded-xl"
+                className="flex items-center rounded-xl cursor-text"
                 style={{
-                  padding: isMobile ? "0.65rem 0.875rem" : "0.5rem 0.75rem",
-                  background: focused ? "rgba(201,162,39,0.06)" : "rgba(255,255,255,0.03)",
-                  border: focused ? "1px solid rgba(201,162,39,0.35)" : "1px solid rgba(255,255,255,0.08)",
-                  transition: "all 0.18s ease",
-                  gap: "0.3rem",
+                  padding: "0.65rem 1rem",
+                  background: focused ? "rgba(201,162,39,0.05)" : "rgba(255,255,255,0.03)",
+                  border: focused ? "1px solid rgba(201,162,39,0.4)" : "1px solid rgba(255,255,255,0.08)",
+                  transition: "all 0.15s ease",
+                  gap: "0.25rem",
                 }}
                 onClick={() => { inputRef.current?.focus(); setFocused(true); }}
               >
-                <span style={{ color: "#C9A227", fontWeight: 700, flexShrink: 0, fontSize: fs }}>aqib</span>
-                <span style={{ color: "#374151", flexShrink: 0, fontSize: fs }}>@</span>
-                <span style={{ color: "#34D399", fontWeight: 600, flexShrink: 0, fontSize: fs }}>portfolio</span>
-                <span style={{ color: "#374151", flexShrink: 0, fontSize: fs, margin: "0 2px" }}>:~$</span>
-                <span style={{ color: "#F1F5F9", flex: 1, whiteSpace: "pre-wrap", wordBreak: "break-all", fontSize: fs }}>{input}</span>
+                <span style={{ color: "#C9A227", fontWeight: 700, flexShrink: 0, fontSize: "clamp(0.78rem,1.3vw,0.875rem)" }}>aqib</span>
+                <span style={{ color: "#374151", flexShrink: 0, fontSize: "clamp(0.78rem,1.3vw,0.875rem)" }}>@</span>
+                <span style={{ color: "#34D399", fontWeight: 600, flexShrink: 0, fontSize: "clamp(0.78rem,1.3vw,0.875rem)" }}>portfolio</span>
+                <span style={{ color: "#374151", flexShrink: 0, fontSize: "clamp(0.78rem,1.3vw,0.875rem)", margin: "0 4px" }}>:~$</span>
+                <span style={{ color: "#F1F5F9", flex: 1, whiteSpace: "pre-wrap", wordBreak: "break-word", fontSize: "clamp(0.78rem,1.3vw,0.875rem)", minWidth: 0 }}>{input}</span>
                 <span style={{
                   display: "inline-block", width: "0.5ch", height: "1.1em",
                   background: blink && focused ? "#C9A227" : "transparent",
@@ -570,58 +551,54 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
               </div>
             )}
 
-            {/* mobile keyboard hint */}
-            {booted && isMobile && (
-              <p className="mt-2 text-center" style={{ fontSize: "0.65rem", color: "#374151", fontStyle: "italic" }}>
-                tap input to type · or use buttons below
+            {/* hint text below input */}
+            {booted && (
+              <p className="mt-2 text-xs" style={{ color: "#374151", paddingLeft: "0.25rem" }}>
+                <span className="hidden lg:inline">↑/↓ history  ·  Tab autocomplete  ·  Enter run  ·  </span>
+                type <span style={{ color: "#C9A227" }}>help</span> for commands
               </p>
             )}
-
-            <div ref={bottomRef} />
           </div>
 
-          {/* ── MOBILE BOTTOM PILLS ── */}
+          {/* ── MOBILE COMMAND PILLS ── */}
           <AnimatePresence>
             {booted && (
               <motion.div
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 className="lg:hidden flex-shrink-0"
-                style={{ borderTop: "1px solid rgba(255,255,255,0.07)", background: "#111111" }}
+                style={{ background: "#111111", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "0.6rem 1rem" }}
               >
-                {/* pill row */}
-                <div className="flex items-center gap-2 px-3 py-2.5 overflow-x-auto"
-                  style={{ scrollbarWidth: "none" }}>
+                <div className="flex items-center gap-2 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
                   {mobilePills.map(cmd => (
                     <button key={cmd}
                       onClick={e => { e.stopPropagation(); runCommand(cmd); }}
                       className="text-xs font-semibold rounded-lg flex-shrink-0 active:scale-95 transition-transform"
                       style={{
-                        padding: "0.4rem 1rem",
+                        padding: "0.4rem 0.9rem",
                         background: "rgba(201,162,39,0.08)",
-                        border: "1px solid rgba(201,162,39,0.22)",
+                        border: "1px solid rgba(201,162,39,0.2)",
                         color: "#C9A227",
-                        letterSpacing: "0.03em",
                         WebkitTapHighlightColor: "transparent",
                       }}
                     >
                       {cmd}
                     </button>
                   ))}
-                  <div className="flex-shrink-0 w-px h-5" style={{ background: "rgba(255,255,255,0.08)" }} />
+                  <div className="flex-shrink-0 h-5 w-px mx-1" style={{ background: "rgba(255,255,255,0.08)" }} />
                   <button
-                    onClick={e => { e.stopPropagation(); triggerExit(); }}
+                    onClick={e => { e.stopPropagation(); runCommand("help"); }}
                     className="text-xs font-semibold rounded-lg flex-shrink-0 active:scale-95 transition-transform"
                     style={{
-                      padding: "0.4rem 1rem",
-                      background: "rgba(201,162,39,0.14)",
-                      border: "1px solid rgba(201,162,39,0.35)",
-                      color: "#C9A227",
+                      padding: "0.4rem 0.9rem",
+                      background: "rgba(96,165,250,0.08)",
+                      border: "1px solid rgba(96,165,250,0.2)",
+                      color: "#60A5FA",
                       WebkitTapHighlightColor: "transparent",
                     }}
                   >
-                    exit →
+                    help
                   </button>
                 </div>
               </motion.div>
@@ -631,24 +608,22 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
       </div>
 
       {/* ══ STATUS BAR ══ */}
-      <div className="relative flex-shrink-0 flex items-center overflow-hidden" style={{
-        height: "1.6rem", zIndex: 20, background: "#C9A227",
-      }}>
+      <div className="relative flex-shrink-0 flex items-center overflow-hidden" style={{ height: "1.6rem", zIndex: 20, background: "#C9A227" }}>
         <div className="flex items-center px-3 h-full flex-shrink-0" style={{ background: "#1E3A5F" }}>
-          <span className="text-xs font-bold" style={{ color: "#fff", letterSpacing: "0.08em" }}>M.AQIB</span>
+          <span className="text-xs font-bold" style={{ color: "#fff", letterSpacing: "0.1em" }}>M.AQIB</span>
         </div>
-        <div className="flex items-center gap-3 px-3 h-full flex-1 overflow-hidden" style={{ background: "rgba(0,0,0,0.25)" }}>
-          <span className="text-xs font-semibold flex items-center gap-1 flex-shrink-0" style={{ color: "rgba(0,0,0,0.85)" }}>
+        <div className="flex items-center gap-3 px-3 flex-1 overflow-hidden" style={{ background: "rgba(0,0,0,0.22)" }}>
+          <span className="text-xs font-semibold flex items-center gap-1.5 flex-shrink-0" style={{ color: "rgba(0,0,0,0.8)" }}>
             <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "#166534" }} />
             open to work
           </span>
-          <span className="hidden sm:inline text-xs" style={{ color: "rgba(0,0,0,0.45)" }}>·</span>
-          <span className="hidden sm:inline text-xs" style={{ color: "rgba(0,0,0,0.6)" }}>bash · UTF-8</span>
-          <span className="hidden md:inline text-xs" style={{ color: "rgba(0,0,0,0.45)" }}>·</span>
-          <span className="hidden md:inline text-xs" style={{ color: "rgba(0,0,0,0.6)" }}>📍 Pakistan</span>
+          <span className="hidden sm:inline text-xs flex-shrink-0" style={{ color: "rgba(0,0,0,0.4)" }}>·</span>
+          <span className="hidden sm:inline text-xs flex-shrink-0" style={{ color: "rgba(0,0,0,0.6)" }}>bash  UTF-8</span>
+          <span className="hidden md:inline text-xs flex-shrink-0" style={{ color: "rgba(0,0,0,0.4)" }}>·</span>
+          <span className="hidden md:inline text-xs flex-shrink-0" style={{ color: "rgba(0,0,0,0.6)" }}>📍 Pakistan</span>
         </div>
-        <div className="flex items-center px-3 h-full flex-shrink-0" style={{ background: "rgba(0,0,0,0.18)" }}>
-          <span className="text-xs font-semibold tabular-nums" style={{ color: "rgba(0,0,0,0.7)" }}>{clock}</span>
+        <div className="flex items-center px-3 flex-shrink-0" style={{ background: "rgba(0,0,0,0.15)" }}>
+          <span className="text-xs font-semibold tabular-nums" style={{ color: "rgba(0,0,0,0.65)" }}>{clock}</span>
         </div>
       </div>
 
@@ -660,12 +635,12 @@ export default function TerminalHero({ onExit }: { onExit: () => void }) {
         onKeyDown={onKeyDown}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className="fixed opacity-0"
-        style={{ width: 1, height: 1, top: -100, left: -100, pointerEvents: "none" }}
-        aria-label="Terminal command input"
+        className="fixed opacity-0 pointer-events-none"
+        style={{ width: 1, height: 1, top: -100, left: -100 }}
+        aria-label="Terminal input"
         autoComplete="off"
         autoCorrect="off"
-        autoCapitalize="off"
+        autoCapitalize="none"
         spellCheck={false}
         enterKeyHint="send"
       />
